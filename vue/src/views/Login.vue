@@ -131,31 +131,34 @@ h1 {
 }
 
 #username-label {
-  grid-area: "username-label";
+  grid-area: username-label;
   /* height: 90%; */
 }
 
 #username-field {
-  grid-area: "username-field";
+  grid-area: username-field;
   /* height: 90%; */
 }
 
 #password-label {
-  grid-area: "password-label";
+  grid-area: password-label;
   /* height: 90%; */
 }
 
 #password-field {
-  grid-area: "password-field";
+  grid-area: password-field;
   /* height: 90%; */
 }
 
 #sign-in-button {
-  grid-area: "sign-in-button";
+  grid-area: sign-in-button;
+  width: 30%;
+  margin: auto;
 }
 
 #sign-up-button {
-  grid-area: "sign-up-button";
+  grid-area: sign-up-button;
 }
+
 
 </style>
