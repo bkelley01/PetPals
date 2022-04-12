@@ -1,8 +1,8 @@
 <template>
   <div class="pet-card" :key="pet.petId">
       <h3>{{pet.name}} </h3>
-      <p>Type: </p>
-      <p>Personalities: <span v-for="(personality, index) in pet.personalities" :key="index"> </span> </p>
+      <p>Type: {{pet.type}} </p>
+      <p>Personalities: <span v-for="(personality, index) in pet.personalities" :key="index"> {{personality}} </span> </p>
   </div>
 </template>
 
