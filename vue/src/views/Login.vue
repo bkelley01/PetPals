@@ -5,18 +5,23 @@
     <h2 class="logo-text">Connect with pets and the city around you on PetPals.</h2>
     </div>
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        v-if="invalidCredentials"
-      >Invalid username and password!</div>
+      <div id="frisbee">
+          <img id="frisbee-image" src="@/images/frisbee-dog.gif" />
+      </div>
+      
+      
       <div
         class="alert alert-success"
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
       <div id="login-container">
+        <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+        <div
+        class="alert alert-danger"
+        role="alert"
+        v-if="invalidCredentials"
+      >Invalid username and password!</div>
         <!-- <label for="username" class="sr-only" id="username-label">Username</label> -->
         <input
           type="text"
@@ -37,10 +42,13 @@
           required
         />
         
-        <button type="submit" id="sign-in-button" class="btn btn-primary btn-lg">Sign in</button>
+        <button type="submit" id="sign-in-button">Sign in</button>
         <button type="submit" id="sign-up-button"><router-link :to="{ name: 'register' }" id="register-text">Need an account?</router-link></button>
+        
       </div>
+      
     </form>
+    
   </div>
 </template>
 
@@ -93,7 +101,7 @@ body {
 
 #login {
   background-color: #f0f2f5;
-  height: 100vh;
+  /* height: 100vh; */
   margin: 0;
 }
 
@@ -104,7 +112,7 @@ body {
 .logo-text {
   display: block;
   text-align: center;
-  padding-top: 2%;
+  /* padding-top: 2%; */
 
 }
 
@@ -119,35 +127,38 @@ body {
   display: block;
   text-align: center;
   border: 50px;
-  padding-top: 1%;
+  /* padding-top: 1%; */
 
 }
 
-h1 {
-  text-align: center;
-}
+
 
 #login-container {
   display: grid;
   grid-template-areas: 
-  "username-field username-field"
-  "password-field password-field"
-  "sign-in-button sign-in-button"
-  "sign-up-button sign-up-button";
-  width: 15%;
+  "h1"
+  "username-field"
+  "password-field"
+  "sign-in-button"
+  "sign-up-button"
+  /* "frisbee"; */;
+  width: 250px;
   margin: auto;
   row-gap: 5%;
   background-color: white;
-  padding: 20px;
+  padding: 40px;
   padding-top: 20px;
-  padding-bottom: 70px;
+  padding-bottom: 100px;
   border-radius: 10px;
 
   /* height: 200px; */
   /* grid-template-rows: 49% 49%; */
 }
 
-
+h1 {
+  grid-area: h1;
+  text-align: center;
+}
 
 #username-field {
   grid-area: username-field;
@@ -155,7 +166,7 @@ h1 {
   border-width: thin;
   height: 40px;
   border-style: solid;
-  border-color: #f0f2f5;
+  border-color: #d1d1d1;
   /* height: 90%; */
 }
 
@@ -168,7 +179,7 @@ h1 {
   border-width: thin;
   border-style: solid;
   height: 40px;
-  border-color:#f0f2f5;
+  border-color:#d1d1d1;
   /* height: 90%; */
 }
 
@@ -213,6 +224,27 @@ input[type="text"] {
 input[type="password"] {
   font-size:16px;
   padding-left: 10px;
+}
+
+#frisbee {
+  /* grid-area: frisbee; */
+  /* display: flex; */
+  width: 100%;
+  /* margin-left: 50%;
+  margin-right: 50%; */
+  /* justify-content: center;
+  align-items: center; */
+  height: 150px;
+  margin-bottom: 0px;
+}
+
+#frisbee-image {
+  height: 150px;
+}
+
+h2 {
+  padding: 0;
+  /* padding-top: 25px; */
 }
 
 

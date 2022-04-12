@@ -1,5 +1,6 @@
 <template>
   <div id="register" class="text-center">
+    <h2 class="logo-text">Connect with pets and the city around you on PetPals.</h2>
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -100,13 +101,13 @@ export default {
   "confirmPassword"
   "create-btn"
   "have-account-btn";
-  width: 15%;
+  width: 250px;
   margin: auto;
   row-gap: 5%;
   background-color: white;
-  padding: 3%;
+  padding: 40px;
   padding-top: 20px;
-  padding-bottom: 70px;
+  padding-bottom: 85px;
   border-radius: 10px;
 }
 
@@ -116,7 +117,7 @@ export default {
   border-width: thin;
   height: 40px;
   border-style: solid;
-  border-color: #f0f2f5;
+  border-color: #d1d1d1;
 }
 
 #password {
@@ -125,7 +126,7 @@ export default {
   border-width: thin;
   height: 40px;
   border-style: solid;
-  border-color: #f0f2f5;
+  border-color: #d1d1d1;
 }
 
 #confirmPassword {
@@ -134,7 +135,7 @@ export default {
   border-width: thin;
   height: 40px;
   border-style: solid;
-  border-color: #f0f2f5;
+  border-color: #d1d1d1;
 }
 
 #create-btn {
@@ -178,6 +179,11 @@ input[type="text"] {
 input[type="password"] {
   font-size:16px;
   padding-left: 10px;
+}
+
+h2 {
+  text-align: center;
+  padding: 2%;
 }
 
 </style>
