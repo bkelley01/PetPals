@@ -19,7 +19,77 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    fakeUsers: [
+      {
+        userId: 1,
+        username: "jerry",
+        pets: [ 
+          {
+          petId: 1,
+          name: "Spot",
+          personalities: ["energetic", "happy"],
+          type: "Dog"
+          }
+        ],
+        playdates: [1, 2]
+
+      },
+      {
+        userId: 2,
+        username: "michael",
+        pets: [
+          {
+            petId: 2,
+            name: "Sparky",
+            personalities: ["lazy", "hungry"],
+            type: "Dog"
+          },
+          {
+            petId: 3,
+            name: "Marley",
+            personalities: ["fast", "happy"],
+            type: "Dog"
+          }
+        ],
+        playdates: [1, 2]
+
+      }
+    ],
+    messages: [
+      { 
+        messageId: 1,
+        sender: "jerry",
+        message: "Spot had such a fun time hanging out with Sparky and Marley! Two top class puppers!"
+      },
+      {
+        messageId: 2,
+        sender: "michael",
+        message: "Hosting a doggie hangout at Summit Park on May 22nd. Open to all dogs who want to come!"
+      }
+    ],
+    playdates: [
+      {
+        playdateId: 1,
+        location: "Winton Woods",
+        date: "2022-04-22",
+        startTime: "2:00:00 PM",
+        endTime: "4:00:00 PM",
+        host: "jerry",
+        numPetsAttending: 3,
+        petsAttending: ["Spot", "Sparky", "Marley"]
+      },
+      {
+        playdateId: 2,
+        location: "Summit Park",
+        date: "2022-05-22",
+        startTime: "1:00:00 PM",
+        endTime: "3:00:00 PM",
+        host: "michael",
+        numPetsAttending: 4,
+        petsAttending: ["Spot", "Sparky", "Marley", "Air Bud"]
+      }
+    ]
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
