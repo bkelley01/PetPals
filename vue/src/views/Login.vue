@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <div class="logo">
-    <img class="petpals-logo" src="@/images/petpals.png" />
+    <!-- <img class="petpals-logo" src="@/images/petpals.png" /> -->
     <h2 class="logo-text">Connect with pets and the city around you on PetPals.</h2>
     </div>
     <form class="form-signin" @submit.prevent="login">
@@ -37,14 +37,16 @@
           required
         />
         
-        <button type="submit" id="sign-in-button">Sign in</button>
-        <router-link :to="{ name: 'register' }" id="sign-up-button">Need an account?</router-link>
+        <button type="submit" id="sign-in-button" class="btn btn-primary btn-lg">Sign in</button>
+        <button type="submit" id="sign-up-button"><router-link :to="{ name: 'register' }" id="register-text">Need an account?</router-link></button>
       </div>
     </form>
   </div>
 </template>
 
 <script>
+
+
 import authService from "../services/AuthService";
 
 export default {
@@ -81,10 +83,14 @@ export default {
   }
 };
 </script>
+
+
 <style scoped>
 
+
+
 .text-center {
-  background-color: pink;
+  /* background-color: pink; */
   height: 100vh;
 }
 
@@ -147,17 +153,40 @@ h1 {
 
 #password-field {
   grid-area: password-field;
+  margin-bottom: 5%;
   /* height: 90%; */
 }
 
 #sign-in-button {
   grid-area: sign-in-button;
-  width: 30%;
+  width: 100%;
   margin: auto;
+  background-color: #3399FF;
+  color: white;
+  border-radius: 5px;
+  height: 150%;
+  border: none;
+  /* width: 50%; */
+  /* margin-bottom: 5%; */
+
+  /* margin: 10px 0 10px 0; */
 }
 
 #sign-up-button {
   grid-area: sign-up-button;
+  margin-top: 5%;
+  background-color: #42B72A;
+  border-radius: 5px;
+  height: 100%;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+}
+
+#register-text {
+  color: white;
+  text-decoration: none;
 }
 
 
