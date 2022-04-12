@@ -2,12 +2,18 @@
   <div id="register" class="text-center">
     <h2 class="logo-text">Connect with pets and the city around you on PetPals.</h2>
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
-      <div class="alert alert-danger" role="alert" v-if="registrationErrors">
-        {{ registrationErrorMsg }}
+      
+      <div id="frisbee">
+          <img id="frisbee-image" src="@/images/frisbee-dog.gif" />
       </div>
+
+      
       <!-- <label for="username" class="sr-only">Username</label> -->
       <div id="register-container">
+        <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+        <div class="alert alert-danger" role="alert" v-if="registrationErrors">
+        {{ registrationErrorMsg }}
+        </div>
         <input
           type="text"
           id="username"
@@ -95,7 +101,8 @@ export default {
 
 #register-container {
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
+  "h1" 
   "username"
   "password"
   "confirmPassword"
@@ -107,8 +114,14 @@ export default {
   background-color: white;
   padding: 40px;
   padding-top: 20px;
-  padding-bottom: 85px;
+  padding-bottom: 120px;
   border-radius: 10px;
+}
+
+.form-register {
+  display: block;
+  text-align: center;
+  border: 50px;
 }
 
 #username {
@@ -169,6 +182,7 @@ export default {
 
 h1 {
   text-align: center;
+  grid-area: h1;
 }
 
 input[type="text"] {
@@ -181,9 +195,19 @@ input[type="password"] {
   padding-left: 10px;
 }
 
+#frisbee {
+  width: 100%;
+  height: 150px;
+  margin-bottom: 0px;
+}
+
+#frisbee-image {
+  height: 150px;
+}
+
 h2 {
   text-align: center;
-  padding: 2%;
+  padding: 0;
 }
 
 </style>

@@ -5,10 +5,10 @@
     <h2 class="logo-text">Connect with pets and the city around you on PetPals.</h2>
     </div>
     <form class="form-signin" @submit.prevent="login">
+      
       <div id="frisbee">
           <img id="frisbee-image" src="@/images/frisbee-dog.gif" />
       </div>
-      
       
       <div
         class="alert alert-success"
@@ -227,13 +227,7 @@ input[type="password"] {
 }
 
 #frisbee {
-  /* grid-area: frisbee; */
-  /* display: flex; */
   width: 100%;
-  /* margin-left: 50%;
-  margin-right: 50%; */
-  /* justify-content: center;
-  align-items: center; */
   height: 150px;
   margin-bottom: 0px;
 }
