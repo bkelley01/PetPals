@@ -44,7 +44,7 @@ html {
 
 .petpals-logo {
   height: auto;
-  width: 15%;
+  width: 150px;
 }
 
 .header-options {
