@@ -3,7 +3,7 @@
     <div class="logo">
       <img class="petpals-logo" src="@/images/petpals.png" />
       <div class="header-options">
-        <router-link style="text-decoration: none" v-bind:to="{ name: 'home' }">Home</router-link>
+        <router-link style="text-decoration: none" v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''" >Home</router-link>
         <router-link style="text-decoration: none" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" >&nbsp;|&nbsp;Logout</router-link>
       </div>
     </div>
@@ -23,6 +23,14 @@ export default {};
 
 * {
   font-family: 'Montserrat', sans-serif;
+}
+
+html {
+  background-color: #f0f2f5;
+}
+
+.header {
+  background-color: #f0f2f5;
 }
 
 .logo {

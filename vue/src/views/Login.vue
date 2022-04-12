@@ -92,8 +92,7 @@ body {
 }
 
 #login {
-  /* background-color: #F6F6F6; */
-  background-color: lightseagreen;
+  background-color: #f0f2f5;
   height: 100vh;
   margin: 0;
 }
@@ -105,6 +104,7 @@ body {
 .logo-text {
   display: block;
   text-align: center;
+  padding-top: 2%;
 
 }
 
@@ -119,6 +119,7 @@ body {
   display: block;
   text-align: center;
   border: 50px;
+  padding-top: 1%;
 
 }
 
@@ -136,6 +137,12 @@ h1 {
   width: 15%;
   margin: auto;
   row-gap: 5%;
+  background-color: white;
+  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 70px;
+  border-radius: 10px;
+
   /* height: 200px; */
   /* grid-template-rows: 49% 49%; */
 }
@@ -144,6 +151,11 @@ h1 {
 
 #username-field {
   grid-area: username-field;
+  border-radius: 5px;
+  border-width: thin;
+  height: 40px;
+  border-style: solid;
+  border-color: #f0f2f5;
   /* height: 90%; */
 }
 
@@ -152,6 +164,11 @@ h1 {
 #password-field {
   grid-area: password-field;
   margin-bottom: 5%;
+  border-radius: 5px;
+  border-width: thin;
+  border-style: solid;
+  height: 40px;
+  border-color:#f0f2f5;
   /* height: 90%; */
 }
 
@@ -162,8 +179,9 @@ h1 {
   background-color: #3399FF;
   color: white;
   border-radius: 5px;
-  height: 150%;
+  height: 40px;
   border: none;
+  font-size: 16px;
   /* width: 50%; */
   /* margin-bottom: 5%; */
 
@@ -185,6 +203,16 @@ h1 {
 #register-text {
   color: white;
   text-decoration: none;
+}
+
+input[type="text"] {
+  font-size:16px;
+  padding-left: 10px;
+}
+
+input[type="password"] {
+  font-size:16px;
+  padding-left: 10px;
 }
 
 
