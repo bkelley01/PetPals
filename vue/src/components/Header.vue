@@ -36,7 +36,7 @@ export default {};
 
 .petpals-logo {
   height: auto;
-  width: 25%;
+  width: 15%;
 }
 
 .header-options {

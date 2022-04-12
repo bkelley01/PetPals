@@ -17,7 +17,7 @@
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
       <div id="login-container">
-        <label for="username" class="sr-only" id="username-label">Username</label>
+        <!-- <label for="username" class="sr-only" id="username-label">Username</label> -->
         <input
           type="text"
           id="username-field"
@@ -27,7 +27,7 @@
           required
           autofocus
         />
-        <label for="password" class="sr-only" id="password-label">Password</label>
+        <!-- <label for="password" class="sr-only" id="password-label">Password</label> -->
         <input
           type="password"
           id="password-field"
@@ -87,11 +87,15 @@ export default {
 
 <style scoped>
 
+body {
+  margin: 0;
+}
 
-
-.text-center {
-  /* background-color: pink; */
+#login {
+  /* background-color: #F6F6F6; */
+  background-color: lightseagreen;
   height: 100vh;
+  margin: 0;
 }
 
 .logo {
@@ -125,31 +129,25 @@ h1 {
 #login-container {
   display: grid;
   grid-template-areas: 
-  "username-label username-field"
-  "password-label password-field"
+  "username-field username-field"
+  "password-field password-field"
   "sign-in-button sign-in-button"
   "sign-up-button sign-up-button";
-  width: 25%;
+  width: 15%;
   margin: auto;
   row-gap: 5%;
   /* height: 200px; */
   /* grid-template-rows: 49% 49%; */
 }
 
-#username-label {
-  grid-area: username-label;
-  /* height: 90%; */
-}
+
 
 #username-field {
   grid-area: username-field;
   /* height: 90%; */
 }
 
-#password-label {
-  grid-area: password-label;
-  /* height: 90%; */
-}
+
 
 #password-field {
   grid-area: password-field;
