@@ -2,9 +2,11 @@
   <div class="profile">
     <h1>Profile</h1>
     <p>You must be authenticated to see your user profile</p>
-    <username-card />
-    <my-pets />
-    <my-playdates />
+    <div class="cards-container">
+      <username-card class="profile-cards" />
+      <my-pets class="profile-cards" />
+      <my-playdates class="profile-cards" />
+    </div>
   </div>
 </template>
 
@@ -21,3 +23,24 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .profile {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cards-container{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-cards{
+    border-radius: 10px;
+    text-align: center;
+  }
+</style>
