@@ -1,31 +1,33 @@
 <template>
   <div class="container">
     <div class="title">
-      <h2>{{fakeUser.username}}'s Pets</h2> 
+      <h2>{{ fakeUser.username }}'s Pets</h2>
     </div>
     <pet-card v-for="pet in fakeUser.pets" :key="pet.petId" :pet="pet" />
   </div>
 </template>
 
 <script>
-import PetCard from '@/components/profile/PetCard.vue';
+import PetCard from "@/components/profile/PetCard.vue";
 export default {
   components: { PetCard },
-    name: "my-pets",
-    computed: {
-      fakeUser() {
-        return this.$store.state.fakeUsers.find( p => p.username == this.$route.params.username);
-      }
+  name: "my-pets",
+  computed: {
+    fakeUser() {
+      return this.$store.state.fakeUsers.find(
+        (p) => p.username == this.$route.params.username
+      );
     },
-    created() {
-      const username = this.$route.params.username;
-      console.log(username);
-    }
-}
+  },
+  created() {
+    const username = this.$route.params.username;
+    console.log(username);
+  },
+};
 </script>
 
 <style scoped>
-.title{
+.title {
   width: 50%;
 }
 

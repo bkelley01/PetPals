@@ -71,6 +71,7 @@ export default new Vuex.Store({
     playdates: [
       {
         playdateId: 1,
+        title: "Spot's Birthday Party",
         location: "Winton Woods",
         date: "2022-04-22",
         startTime: "2:00:00 PM",
@@ -81,6 +82,7 @@ export default new Vuex.Store({
       },
       {
         playdateId: 2,
+        title: "Spring into Summit",
         location: "Summit Park",
         date: "2022-05-22",
         startTime: "1:00:00 PM",
