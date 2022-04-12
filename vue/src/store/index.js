@@ -23,7 +23,7 @@ export default new Vuex.Store({
     fakeUsers: [
       {
         userId: 1,
-        username: "jerry",
+        username: "user",
         pets: [ 
           {
           petId: 1,
@@ -59,7 +59,7 @@ export default new Vuex.Store({
     messages: [
       { 
         messageId: 1,
-        sender: "jerry",
+        sender: "user",
         message: "Spot had such a fun time hanging out with Sparky and Marley! Two top class puppers!"
       },
       {
