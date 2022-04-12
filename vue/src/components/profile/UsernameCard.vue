@@ -22,7 +22,8 @@ export default {
 
 <style scoped>
 .container {
-    width: 80%;
-    border: 1px solid red;
+    width: 100%;
+    /* border: 1px solid #eecd22ff; */
+    background: white;
 }
 </style>

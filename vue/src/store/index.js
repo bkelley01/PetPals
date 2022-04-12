@@ -28,7 +28,7 @@ export default new Vuex.Store({
           {
           petId: 1,
           name: "Spot",
-          personalities: ["energetic", "happy"],
+          personalities: ["Energetic", "Happy"],
           type: "Dog"
           }
         ],
@@ -42,13 +42,13 @@ export default new Vuex.Store({
           {
             petId: 2,
             name: "Sparky",
-            personalities: ["lazy", "hungry"],
+            personalities: ["Lazy", "Hungry"],
             type: "Dog"
           },
           {
             petId: 3,
             name: "Marley",
-            personalities: ["fast", "happy"],
+            personalities: ["Fast", "Happy"],
             type: "Dog"
           }
         ],

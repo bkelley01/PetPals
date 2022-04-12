@@ -1,8 +1,7 @@
 <template>
   <div class="container">
-    <div>
-      <h2>My Pets</h2>
-      <p>List of Pets</p> 
+    <div class="title">
+      <h2>{{fakeUser.username}}'s Pets</h2> 
     </div>
     <pet-card v-for="pet in fakeUser.pets" :key="pet.petId" :pet="pet" />
   </div>
@@ -26,12 +25,17 @@ export default {
 </script>
 
 <style scoped>
+.title{
+  width: 50%;
+}
+
 .container {
-    width: 80%;
-    border: 1px solid green;
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  background: white;
+  /* border: 1px solid #eecd22ff; */
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

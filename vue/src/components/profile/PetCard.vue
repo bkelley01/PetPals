@@ -1,8 +1,19 @@
 <template>
   <div class="pet-card" :key="pet.petId">
-      <h3>{{pet.name}} </h3>
-      <p>Type: {{pet.type}} </p>
-      <p>Personalities: <span v-for="(personality, index) in pet.personalities" :key="index"> {{personality}} </span> </p>
+      <div id="first-letter"> {{pet.name.charAt(0)}} </div>
+      <div id="pet-details-container">
+        <h3 id="name">{{pet.name}} </h3>
+        <p id="type">{{pet.type}} </p>
+        <span 
+                id="personalities"
+                v-for="(personality, index) in pet.personalities"
+                :key="index"
+                >
+                {{personality}}
+                    <span id="vertical-bar" v-if="index != pet.personalities.length - 1"> | </span>
+        </span>
+      </div>
+      
   </div>
 </template>
 
@@ -21,8 +32,34 @@ export default {
 <style>
 
 .pet-card {
-    border: 1px solid orange;
-    width: 50%;
-    border-radius: 10px;
+    margin: 5px 0px 5px 0px;
+    padding: 10px;
+    border-radius: 15px;
+    width: 80%;
+    border: 2px solid #eecd22ff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around ;
+}
+
+#first-letter {
+    border: 3px solid #40a8a0ff;
+    line-height: 50px;
+    padding: 20px;
+    border-radius: 50%;
+    font-size: 2em;
+    height: 50px;
+    width: 30px;
+}
+
+h3 {
+    margin: 0px;
+}
+
+@media screen and (max-width: 768px) {
+    #vertical-bar{
+        display:none;
+    }
 }
 </style>
