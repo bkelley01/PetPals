@@ -5,6 +5,7 @@
       
       <div id="frisbee">
           <img id="frisbee-image" src="@/images/frisbee-dog.gif" />
+          <!-- credit to: https://dribbble.com/shots/10496057-Dog-catching-a-frisbee -->
       </div>
 
       
