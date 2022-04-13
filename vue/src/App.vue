@@ -17,6 +17,11 @@ export default {
   name: "app",
   components: {
     headerText
+  }, 
+  data() {
+    return {
+      showMenu: false
+    }
   }
 }
 </script>

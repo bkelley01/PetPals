@@ -87,26 +87,32 @@ router-link {
 /* Menu */
 ul { 
   list-style: none outside none; 
-  margin:0; 
+  margin: 0; 
   padding: 0; 
   }
+
 li { 
-  float: center;
-  margin: 0 10px; 
+  float: left;
+  margin: 10px; 
   position: relative;
+  font-size: 220%;
+  border-right: 2px solid #595959;
+  margin-right: 5px;
+  padding-right: 50px;
   }
 
 p#menu-btn {
   font-size: 25px;
-  color: #595959;
   padding: 0 3px 0 3px;
   margin-right: 2%;
-  border: 2px solid #595959;
+  background-color: #d1d1d1;
   border-radius: 15%;
+
 }
 
 menu-panel {
   z-index: 1;
+  margin-top: 200px;
 }
 
 
