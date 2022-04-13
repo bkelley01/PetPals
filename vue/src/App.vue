@@ -20,7 +20,8 @@ export default {
     return {
       showMenu: false
     }
-  }
+  },
+  
 }
 </script>
 
@@ -28,4 +29,3 @@ export default {
 
 
 </style>
-
