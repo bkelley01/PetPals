@@ -94,4 +94,9 @@ export default {
   list-style-type: none;
   width: 100%;
 }
+
+i {
+  height: 20px;
+  width: 20px;
+}
 </style>

@@ -55,13 +55,15 @@ export default {
 }
 
 #first-letter {
-  border: 3px solid #40a8a0ff;
-  line-height: 50px;
+  /* border: 3px solid #40a8a0ff; */
+  line-height: 30px;
   padding: 20px;
   border-radius: 50%;
   font-size: 2em;
-  height: 50px;
+  height: 30px;
   width: 30px;
+ color: white;
+ background-color: #40a8a0;
 }
 
 h3 {
