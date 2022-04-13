@@ -78,7 +78,21 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            // new stuff below
+            let newUser = this.$store.state.fakeUsers.find(u => {
+              return u.username === this.user.username;
+            });
+            console.log(newUser.username);
+            if (newUser.pets.length === 0) {
+              console.log('newUser has no pets');
+              this.$router.push('/register');
+              
+            } else {
+              console.log('newUser has pets');
+              this.$router.push("/");
+            }
+
+            
           }
         })
         .catch(error => {
