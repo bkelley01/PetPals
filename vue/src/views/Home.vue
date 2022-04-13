@@ -54,13 +54,12 @@ p {
 #dog-pic-id {
 margin:auto; /* Required */
 bottom:0; /* Aligns at the bottom */
-max-height:25%; /* images bigger than 175 px  */
-max-width:25%;  /* will be shrinked to size */ 
 grid-area: dog-pic;
 display: block;
 margin-left: auto;
 margin-right: auto;
-width: 50%
+/* width: 50%; */
+height: 150px;
 }
 
 
@@ -94,6 +93,7 @@ grid-area: returning-user;
   font-size: 16px;
   text-align: center;
   text-decoration: none;
+  width: 250px;
 }
 
 #sign-in-button {
@@ -108,11 +108,18 @@ grid-area: returning-user;
   font-size: 16px;
   text-align: center;
   text-decoration: none;
+  width: 250px;
 }
 
 #register-text {
   color: white;
   text-decoration: none;
+}
+
+@media only screen and (max-width: 768) {
+  #sign-in-button, #sign-up-button {
+    width: 250px;
+  }
 }
 
 
