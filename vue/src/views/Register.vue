@@ -162,6 +162,7 @@ export default {
   height: 40px;
   border: none;
   font-size: 16px;
+  cursor: pointer;
 }
 
 #have-account-btn {

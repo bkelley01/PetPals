@@ -194,6 +194,7 @@ h1 {
   height: 40px;
   border: none;
   font-size: 16px;
+  cursor: pointer;
   /* width: 50%; */
   /* margin-bottom: 5%; */
 

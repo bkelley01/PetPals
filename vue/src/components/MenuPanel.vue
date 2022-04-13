@@ -27,9 +27,11 @@ li.menu-buttons {
   float: left;
   margin: 10px; 
   /* position: relative; */
-  font-size: 220%;
+  font-size: 200%;
   margin-right: 5px;
   padding-right: 50px;
+  height: 50px;
+  text-align: right;
   }
 
 </style>

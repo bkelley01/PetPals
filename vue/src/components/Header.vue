@@ -50,7 +50,7 @@ html {
 
 .header {
   background-color: #f0f2f5;
-  height: 200px;
+  /* height: 200px; */
 }
 
 .desktop-menu {
@@ -63,8 +63,8 @@ html {
 }
 
 .petpals-logo {
-  height: auto;
-  width: 150px;
+  height: 50px;
+  width: auto;
 }
 
 .header-options {
@@ -80,6 +80,7 @@ ul {
   list-style: none outside none; 
   margin: 0; 
   padding: 0; 
+  justify-content: flex-end;
   }
 
   /* li { 
@@ -98,7 +99,7 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 62.5px;
+  /* height: 62.5px; */
 }
 
 @media only screen and (max-width: 768px) {
@@ -110,9 +111,10 @@ ul {
     flex-direction: row;
     width: 100%;
     margin: auto;
+    justify-content: flex-end;
   }
   .header {
-    height: 100px;
+    /* height: 100px; */
   }
   .menu {
     background-color: white;

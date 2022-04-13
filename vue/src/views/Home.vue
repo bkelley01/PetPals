@@ -1,9 +1,14 @@
 <template>
-  <div class="home">
+  <div class="main">
+    <img id="dog-pic-id" src="@/images/howling.gif" />
+    <div id="home">
+    
     <h1>What We Are</h1>
     <p>PatPals is an interactive app and online community dedicated to helping your pet connect with other pets for real-life playdates.</p>
     <!-- <img class="dog-pic" src="@/images/labrador.webp" /> -->
-    <img class="dog-pic" src="@/images/howling.gif" />
+    <!-- <div id="dog-div"> -->
+     </div> 
+    <!-- </div> -->
     <div id="credential-form">
       <div id="new-user">
         <h1>New Here?</h1>
@@ -28,9 +33,9 @@ export default {
 <style scoped>
 
 .home {
+  width: 100%;
 display: grid;
 grid-template-areas: 
-"dog-pic"
 "h1"
 "p";
 align-content: center;
@@ -46,14 +51,18 @@ p {
   grid-area: p;
 }
 
-.dog-pic {
-   margin:auto; /* Required */
- bottom:0; /* Aligns at the bottom */
- left:0;right:0; /* Aligns horizontal center */
- max-height:50%; /* images bigger than 175 px  */
- max-width:50%;  /* will be shrinked to size */ 
- grid-area: dog-pic;
+#dog-pic-id {
+margin:auto; /* Required */
+bottom:0; /* Aligns at the bottom */
+max-height:25%; /* images bigger than 175 px  */
+max-width:25%;  /* will be shrinked to size */ 
+grid-area: dog-pic;
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 50%
 }
+
 
 #credential-form {
   display: grid;
@@ -101,17 +110,10 @@ grid-area: returning-user;
   text-decoration: none;
 }
 
-/* 
-.home{
-    background-image: url('https://media.giphy.com/media/0IGRygDt5cMP2Q0Jmu/giphy.gif');
-    background-size: cover;
-    
-    
-    
-    height: 100vh;
-    padding:0;
-    margin:0;
-} */
+#register-text {
+  color: white;
+  text-decoration: none;
+}
 
 
 </style>
