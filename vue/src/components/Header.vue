@@ -82,14 +82,13 @@ ul {
   padding: 0; 
   }
 
-li { 
+  /* li { 
   float: left;
   margin: 10px; 
-  /* position: relative; */
   font-size: 220%;
   margin-right: 5px;
   padding-right: 50px;
-  }
+  } */
 
 #menu-btn {
   margin-right: 2%;
