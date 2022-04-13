@@ -1,32 +1,22 @@
 <template>
   <div class="header">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <div class="logo">
+    <div id="banner">
       <img class="petpals-logo" src="@/images/petpals.png" />
-      <!-- <div class="header-options"> commented out for modal menu -->
-        <!-- <router-link v-bind:to="{ name: 'home' }" v-if="$store.state.token != ''" >Home</router-link>
-        <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''" >&nbsp;|&nbsp;Logout</router-link> -->
-        <!-- <p v-on:click="showHideMenu">Menu</p>
-          <ul v-show="showMenu" id="menu-list">
-            <li class="menu-item">Profile</li>
-            <li class="menu-item">Playdates</li>
-            <li class="menu-item">Messages</li>
-            <li v-if="$store.state.token != ''" class="menu-item"><router-link v-bind:to="{ name: 'logout' }" >Logout</router-link></li>
-            <li v-if="$store.state.token == ''" class="menu-item"><router-link v-bind:to="{ name: 'login' }" >Login</router-link></li>
-          </ul>
-      </div> commented out for modal menu -->
-      <menu-panel v-if="showMenu"></menu-panel>
-      <p id="menu-btn" v-on:click="showHideMenu">☰</p>
-      
+      <div class="desktop-menu">
+        <menu-panel v-if="this.$store.state.showMenu"></menu-panel>
+      </div>
+      <i id="menu-btn" v-on:click="showHideMenu" class="fas fa-3x fa-bars"></i>
     </div>
-    <div class="menu">
-      <div class="my-pets"></div>
+    <div class="mobile-menu">
+        <menu-panel v-if="this.$store.state.showMenu"></menu-panel>
     </div>
+
   </div>
 </template>
 
 <script>
-import menuPanel from '@/components/Menu.vue';
+import menuPanel from '@/components/MenuPanel.vue';
 
 export default {
   components: { menuPanel },
@@ -38,8 +28,8 @@ export default {
 
   methods: {
     showHideMenu() {
-      //this.showMenu === false ? this.showMenu = true : this.showMenu = false;
-      this.showMenu = !this.showMenu;
+      // this.showMenu = !this.showMenu;
+      this.$store.commit('SET_SHOW_MENU');
     }
   }
 }
@@ -60,9 +50,10 @@ html {
 
 .header {
   background-color: #f0f2f5;
+  height: 200px;
 }
 
-.logo {
+.desktop-menu {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -94,25 +85,49 @@ ul {
 li { 
   float: left;
   margin: 10px; 
-  position: relative;
+  /* position: relative; */
   font-size: 220%;
-  border-right: 2px solid #595959;
   margin-right: 5px;
   padding-right: 50px;
   }
 
-p#menu-btn {
-  font-size: 25px;
-  padding: 0 3px 0 3px;
+#menu-btn {
   margin-right: 2%;
-  background-color: #d1d1d1;
-  border-radius: 15%;
+}
+
+#banner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 62.5px;
+}
+
+@media only screen and (max-width: 768px) {
+  .desktop-menu {
+    display: none;
+  }
+  .mobile-menu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: auto;
+  }
+  .header {
+    height: 100px;
+  }
+  .menu {
+    background-color: white;
+    z-index: 99;
+    text-align: center;
+  }
+
 
 }
 
-menu-panel {
-  z-index: 1;
-  margin-top: 200px;
+@media only screen and (min-width: 768px) {
+  .mobile-menu {
+    display: none;
+  }
 }
 
 

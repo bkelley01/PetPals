@@ -3,8 +3,6 @@
   <div id="nav">
       <!-- <img class="petpals-logo" src="@/images/petpals.png" /> -->
       <header-text></header-text>
-
-
     </div>
     <router-view />
   </div>
@@ -25,4 +23,9 @@ export default {
   }
 }
 </script>
+
+<style>
+
+
+</style>
 

@@ -20,6 +20,7 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
+    showMenu: false, // added for menu
     fakeUsers: [
       {
         userId: 1,
@@ -94,6 +95,9 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+    SET_SHOW_MENU(state) { // mutation to adjust showMenu variable above
+      state.showMenu = !state.showMenu;
+    },
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);
