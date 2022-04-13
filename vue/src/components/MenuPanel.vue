@@ -1,18 +1,24 @@
 <template>
     <div class="menu">
         <ul>
-            <li class="menu-buttons">Profile</li>
-            <li class="menu-buttons">Playdates</li>
-            <li class="menu-buttons">Messages</li>
-            <li v-if="$store.state.token != ''" class="menu-item menu-buttons"><router-link v-bind:to="{ name: 'logout' }" >Logout</router-link></li>
-            <li v-if="$store.state.token == ''" class="menu-item menu-buttons"><router-link v-bind:to="{ name: 'login' }" >Login</router-link></li>
+            <li class="menu-buttons" v-on:click="showHideMenu">Profile</li>
+            <li class="menu-buttons" v-on:click="showHideMenu">Playdates</li>
+            <li class="menu-buttons" v-on:click="showHideMenu">Messages</li>
+            <li v-if="$store.state.token != ''" class="menu-item menu-buttons" v-on:click="showHideMenu"><router-link v-bind:to="{ name: 'logout' }" >Logout</router-link></li>
+            <li v-if="$store.state.token == ''" class="menu-item menu-buttons" v-on:click="showHideMenu"><router-link v-bind:to="{ name: 'login' }" >Login</router-link></li>
         </ul>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'menu-panel'
+    name: 'menu-panel',
+    methods: {
+      showHideMenu() {
+        // this.showMenu = !this.showMenu;
+        this.$store.commit('SET_SHOW_MENU');
+    }
+  }
 }
 </script>
 
