@@ -91,16 +91,22 @@ ul {
   padding: 0; 
   }
 li { 
-  float: right;
+  float: center;
   margin: 0 10px; 
   position: relative;
   }
 
 p#menu-btn {
   font-size: 25px;
+  color: #595959;
   padding: 0 3px 0 3px;
   margin-right: 2%;
-  border: 2px solid black;
+  border: 2px solid #595959;
+  border-radius: 15%;
+}
+
+menu-panel {
+  z-index: 1;
 }
 
 
