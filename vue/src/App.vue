@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
+  <div id="nav">
       <!-- <img class="petpals-logo" src="@/images/petpals.png" /> -->
       <header-text></header-text>
 
