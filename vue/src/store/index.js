@@ -29,7 +29,7 @@ export default new Vuex.Store({
           {
           petId: 1,
           name: "Spot",
-          personalities: ["Energetic", "Happy"],
+          personalities: ["Energetic", "Happy", "Happy", "Happy", "Happy", "Happy", "Happy", "Happy", "Happy", "Happy", "Happy"],
           type: "Dog"
           }
         ],
@@ -51,9 +51,27 @@ export default new Vuex.Store({
             name: "Marley",
             personalities: ["Fast", "Happy"],
             type: "Dog"
+          },
+          {
+            petId: 3,
+            name: "Marley",
+            personalities: ["Fast", "Happy"],
+            type: "Dog"
+          },
+          {
+            petId: 3,
+            name: "Marley",
+            personalities: ["Fast", "Happy"],
+            type: "Dog"
+          },
+          {
+            petId: 3,
+            name: "Marley",
+            personalities: ["Fast", "Happy"],
+            type: "Dog"
           }
         ],
-        playdates: [1, 2]
+        playdates: [1, 2, 3, 4, 5, 6, 7]
 
       }
     ],
@@ -83,6 +101,61 @@ export default new Vuex.Store({
       },
       {
         playdateId: 2,
+        title: "Spring into Summit",
+        location: "Summit Park",
+        date: "2022-05-22",
+        startTime: "1:00:00 PM",
+        endTime: "3:00:00 PM",
+        host: "michael",
+        numPetsAttending: 4,
+        petsAttending: ["Spot", "Sparky", "Marley", "Air Bud"]
+      },
+      {
+        playdateId: 3,
+        title: "Spring into Summit",
+        location: "Summit Park",
+        date: "2022-05-22",
+        startTime: "1:00:00 PM",
+        endTime: "3:00:00 PM",
+        host: "michael",
+        numPetsAttending: 4,
+        petsAttending: ["Spot", "Sparky", "Marley", "Air Bud"]
+      },
+      {
+        playdateId: 4,
+        title: "Spring into Summit",
+        location: "Summit Park",
+        date: "2022-05-22",
+        startTime: "1:00:00 PM",
+        endTime: "3:00:00 PM",
+        host: "michael",
+        numPetsAttending: 4,
+        petsAttending: ["Spot", "Sparky", "Marley", "Air Bud"]
+      },
+      {
+        playdateId: 5,
+        title: "Spring into Summit",
+        location: "Summit Park",
+        date: "2022-05-22",
+        startTime: "1:00:00 PM",
+        endTime: "3:00:00 PM",
+        host: "michael",
+        numPetsAttending: 4,
+        petsAttending: ["Spot", "Sparky", "Marley", "Air Bud"]
+      },
+      {
+        playdateId: 6,
+        title: "Spring into Summit",
+        location: "Summit Park",
+        date: "2022-05-22",
+        startTime: "1:00:00 PM",
+        endTime: "3:00:00 PM",
+        host: "michael",
+        numPetsAttending: 4,
+        petsAttending: ["Spot", "Sparky", "Marley", "Air Bud"]
+      },
+      {
+        playdateId: 7,
         title: "Spring into Summit",
         location: "Summit Park",
         date: "2022-05-22",

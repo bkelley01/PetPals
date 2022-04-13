@@ -1,27 +1,36 @@
 <template>
   <div class="playdate-card" v-bind:key="playdate.playdateId">
     <h3>{{ playdate.title }}</h3>
-    <p>Where: {{ playdate.location }}</p>
-    <time id="date"> When: {{formattedDate}}</time>
+    <p id="location"><i class="fas fa-map-marker-alt"></i> {{ playdate.location }}</p>
+    <p id="date">
+      <time><i class="far fa-calendar-alt"></i> {{ formattedDate }}</time>
+    </p>
     <p id="times-together">
-      <time id="start-time">{{formattedTime(playdate.startTime)}}</time>
-       - 
-      <time id="end-time">{{formattedTime(playdate.endTime)}}</time>
+      <i class="far fa-clock"></i>
+      <time id="start-time"> {{ formattedTime(playdate.startTime) }}</time>
+      -
+      <time id="end-time">{{ formattedTime(playdate.endTime) }}</time>
     </p>
     <!-- <p>{{ playdate.date }}</p> -->
-    
+
     <!-- <p>{{ playdate.startTime }}</p> -->
-    
+
     <!-- <p>{{ playdate.endTime }}</p> -->
-    
-    <p id="host">Host: {{ playdate.host }}</p>
-    <p id="attendees-link" @click="showAttendees = !showAttendees">Attendees: {{ playdate.numPetsAttending }}</p>
+
+    <p id="host"><i class="far fa-user"></i> {{ playdate.host }}</p>
+    <p id="attendees-link" @click="showAttendees = !showAttendees">
+      Attendees: {{ playdate.numPetsAttending }}
+    </p>
     <ul v-if="showAttendees">
-      <li class="pets-attending" v-for="(pet, index) in playdate.petsAttending" :key="index">{{pet}}</li>
+      <li
+        class="pets-attending"
+        v-for="(pet, index) in playdate.petsAttending"
+        :key="index"
+      >
+        {{ pet }}
+      </li>
     </ul>
     <!-- <p>{{ playdate.petsAttending }}</p> -->
-    
-    
   </div>
 </template>
 
@@ -31,29 +40,34 @@ export default {
   props: ["playdate"],
   data() {
     return {
-      showAttendees: false
-    }
+      showAttendees: false,
+    };
   },
   computed: {
     formattedDate() {
-      let date = new Date( this.playdate.date);
-      const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
-      let formattedDate = date.toLocaleDateString('en-US', options);
+      let date = new Date(this.playdate.date);
+      const options = {
+        weekday: "short",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      };
+      let formattedDate = date.toLocaleDateString("en-US", options);
       return formattedDate;
-    }
+    },
   },
   methods: {
     formattedTime(time) {
-      let timeAsDate = new Date(this.playdate.date + ' ' + time);
-      const options = { hour12: true, hour: '2-digit', minute: '2-digit' };
-      let formattedTime = timeAsDate.toLocaleTimeString('en-US', options);
+      let timeAsDate = new Date(this.playdate.date + " " + time);
+      const options = { hour12: true, hour: "2-digit", minute: "2-digit" };
+      let formattedTime = timeAsDate.toLocaleTimeString("en-US", options);
       return formattedTime;
     },
     printAttendees() {
       console.log(this.showAttendees);
       return true;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -70,11 +84,18 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-
 }
 
-#times-together{
-  margin: 4px 0px 8px 0px;
+#location {
+  margin: 16px 0px 8px 0px;
+}
+
+#date {
+  margin: 8px 0px 8px 0px;
+}
+
+#times-together {
+  margin: 8px 0px 8px 0px;
 }
 
 #host {
@@ -89,7 +110,6 @@ export default {
   cursor: pointer;
 }
 
-
 .pets-attending {
   list-style-type: none;
   width: 100%;
@@ -98,5 +118,12 @@ export default {
 i {
   height: 20px;
   width: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .playdate-card {
+    width: 300px;
+    /* margin: 5px; */
+  }
 }
 </style>

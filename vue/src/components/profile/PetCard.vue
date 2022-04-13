@@ -43,7 +43,8 @@ export default {
 
 <style>
 .pet-card {
-  margin: 5px 0px 5px 0px;
+  margin: auto;
+  margin-bottom: 10px;
   padding: 10px;
   border-radius: 15px;
   width: 80%;
@@ -83,9 +84,10 @@ li {
   margin: 0px;
 }
 
-/* @media screen and (max-width: 768px) {
-  #vertical-bar {
-    display: none;
+@media screen and (min-width: 768px) {
+  .pet-card {
+    width: 300px;
+    /* margin: 5px; */
   }
-} */
+}
 </style>
