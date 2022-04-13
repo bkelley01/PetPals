@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <!-- <img class="petpals-logo" src="@/images/petpals.png" /> -->
-      <header-logo></header-logo>
+      <header-text></header-text>
 
 
     </div>
@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import headerLogo from "@/components/Header.vue"
+import headerText from "@/components/Header.vue"
 
 export default {
   name: "app",
   components: {
-    headerLogo
+    headerText
   }
 }
 </script>
