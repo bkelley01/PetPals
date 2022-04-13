@@ -77,6 +77,10 @@ ul {
   padding: 0;
 }
 
+li {
+  margin: 0px;
+}
+
 /* @media screen and (max-width: 768px) {
   #vertical-bar {
     display: none;

@@ -1,7 +1,6 @@
 <template>
   <div class="profile">
     <h1>{{fakeUser.username}}</h1>
-    <h2>{{this.$store.state.user.username}}</h2>
     <p v-show="!fakeUser">User Not Found</p>
     <div v-if="fakeUser" class="cards-container">
       <!-- <username-card class="profile-cards" /> -->
@@ -55,4 +54,5 @@ export default {
     border-radius: 10px;
     text-align: center;
   }
+
 </style>

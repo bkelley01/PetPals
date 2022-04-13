@@ -1,16 +1,25 @@
 <template>
   <div class="playdate-card" v-bind:key="playdate.playdateId">
     <h3>{{ playdate.title }}</h3>
-    <p>{{ playdate.location }}</p>
-    <time id="date">{{formattedDate}}</time>
+    <p>Where: {{ playdate.location }}</p>
+    <time id="date"> When: {{formattedDate}}</time>
+    <p id="times-together">
+      <time id="start-time">{{formattedTime(playdate.startTime)}}</time>
+       - 
+      <time id="end-time">{{formattedTime(playdate.endTime)}}</time>
+    </p>
     <!-- <p>{{ playdate.date }}</p> -->
-    <time id="start-time">{{formattedTime(playdate.startTime)}}</time>
+    
     <!-- <p>{{ playdate.startTime }}</p> -->
-    <time id="end-time">{{formattedTime(playdate.endTime)}}</time>
+    
     <!-- <p>{{ playdate.endTime }}</p> -->
-    <p>{{ playdate.host }}</p>
-    <p @click="printAttendees()">Attendees: {{ playdate.numPetsAttending }}</p>
-    <p>{{ playdate.petsAttending }}</p>
+    
+    <p id="host">Host: {{ playdate.host }}</p>
+    <p id="attendees-link" @click="showAttendees = !showAttendees">Attendees: {{ playdate.numPetsAttending }}</p>
+    <ul v-if="showAttendees">
+      <li class="pets-attending" v-for="(pet, index) in playdate.petsAttending" :key="index">{{pet}}</li>
+    </ul>
+    <!-- <p>{{ playdate.petsAttending }}</p> -->
     
     
   </div>
@@ -20,7 +29,11 @@
 export default {
   name: "playdate-card",
   props: ["playdate"],
-  showAttendees: false,
+  data() {
+    return {
+      showAttendees: false
+    }
+  },
   computed: {
     formattedDate() {
       let date = new Date( this.playdate.date);
@@ -58,5 +71,27 @@ export default {
   align-items: center;
   justify-content: space-around;
 
+}
+
+#times-together{
+  margin: 4px 0px 8px 0px;
+}
+
+#host {
+  margin: 8px 0px 8px 0px;
+}
+
+#attendees-link {
+  margin: 8px 0px 8px 0px;
+  text-decoration: underline;
+}
+#attendees-link:hover {
+  cursor: pointer;
+}
+
+
+.pets-attending {
+  list-style-type: none;
+  width: 100%;
 }
 </style>

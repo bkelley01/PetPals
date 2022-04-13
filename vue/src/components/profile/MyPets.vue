@@ -3,6 +3,9 @@
     <div class="title">
       <h2>{{ fakeUser.username }}'s Pets</h2>
     </div>
+    <button v-show="fakeUser.username === this.$store.state.user.username " id="manage-pets-btn">
+      Manage Pets
+    </button>
     <pet-card v-for="pet in fakeUser.pets" :key="pet.petId" :pet="pet" />
   </div>
 </template>
@@ -19,10 +22,6 @@ export default {
       );
     },
   },
-  created() {
-    const username = this.$route.params.username;
-    console.log(username);
-  },
 };
 </script>
 
@@ -36,8 +35,23 @@ export default {
   background: white;
   /* border: 1px solid #eecd22ff; */
   margin-top: 15px;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+#manage-pets-btn {
+  border-radius: 5px;
+  height: 40px;
+  border: none;
+  font-size: 16px;
+  background-color: #3399FF;
+  color: white;
+  margin-bottom: 10px;
 }
 </style>

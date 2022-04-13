@@ -1,6 +1,9 @@
 <template>
   <div class="container">
     <h2>My Playdates</h2>
+    <button v-show="fakeUser.username === this.$store.state.user.username " id="manage-playdates-btn">
+      Manage Playdates
+    </button>
     <playdate-card v-for="playdate in userPlaydates()" :key="playdate.playdateId" v-bind:playdate="playdate"/>
       
   </div>
@@ -21,16 +24,9 @@ export default {
     },
     methods: {
       userPlaydates() {
-        console.log(this.fakeUser.playdates);
-        // let playdates = this.fakeUser.playdates.filter( () => {
-        //   //this.$store.state.playdates.includes(playdate.playdateId);
-          
-        // });
         let playdates = this.$store.state.playdates.filter((playdate) => {
           return this.fakeUser.playdates.includes(playdate.playdateId);
         });
-        console.log(playdates);
-        console.log('hello world');
         return playdates;
       }
     }
@@ -43,6 +39,20 @@ export default {
   /* border: 1px solid #eecd22ff; */
   background: white;
   margin-top: 15px;
+}
+
+button {
+  cursor: pointer;
+}
+
+#manage-playdates-btn {
+  border-radius: 5px;
+  height: 40px;
+  border: none;
+  font-size: 16px;
+  background-color: #3399FF;
+  color: white;
+  margin-bottom: 10px;
 }
 
 </style>
