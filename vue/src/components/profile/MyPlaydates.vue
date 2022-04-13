@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <h2>My Playdates</h2>
-    <p>List of Playdates</p>
-    <playdate-card v-for="playdate in userPlaydates()" :key="playdate.playdateId" v-bind:playdate="playdate"/>  
+    <playdate-card v-for="playdate in userPlaydates()" :key="playdate.playdateId" v-bind:playdate="playdate"/>
+      
   </div>
 </template>
 
@@ -44,4 +44,5 @@ export default {
   background: white;
   margin-top: 15px;
 }
+
 </style>

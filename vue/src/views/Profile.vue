@@ -1,8 +1,10 @@
 <template>
   <div class="profile">
-    <h1>Profile</h1>
-    <div class="cards-container">
-      <username-card class="profile-cards" />
+    <h1>{{fakeUser.username}}</h1>
+    <h2>{{this.$store.state.user.username}}</h2>
+    <p v-show="!fakeUser">User Not Found</p>
+    <div v-if="fakeUser" class="cards-container">
+      <!-- <username-card class="profile-cards" /> -->
       <my-pets class="profile-cards" />
       <my-playdates class="profile-cards" />
     </div>
@@ -10,17 +12,28 @@
 </template>
 
 <script>
-import UsernameCard from '@/components/profile/UsernameCard.vue';
+// import UsernameCard from '@/components/profile/UsernameCard.vue';
 import MyPets from '@/components/profile/MyPets.vue';
 import MyPlaydates from '@/components/profile/MyPlaydates.vue';
 export default {
   name: "profile",
   components: {
-    UsernameCard,
+    // UsernameCard,
     MyPets,
     MyPlaydates
+  },
+  computed: {
+    fakeUser() {
+      if (this.$store.state.fakeUsers) {
+        return this.$store.state.fakeUsers.find(
+          (p) => p.username == this.$route.params.username
+        );
+      } else {
+        return false;
+      }
+    }
   }
-};
+}
 </script>
 
 <style scoped>

@@ -70,14 +70,10 @@ h3 {
 
 .personalities {
   list-style-type: none;
-  /* text-align: center; */
   width: 100%;
 }
 
 ul {
-  /* test */
-  border: 1px solid red;
-  /* text-align: center; */
   padding: 0;
 }
 
