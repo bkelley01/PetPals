@@ -4,7 +4,9 @@
     <button v-show="fakeUser.username === this.$store.state.user.username " id="manage-playdates-btn">
       Manage Playdates
     </button>
-    <playdate-card v-for="playdate in userPlaydates()" :key="playdate.playdateId" v-bind:playdate="playdate"/>
+    <div id="playdate-card-container">
+      <playdate-card v-for="playdate in userPlaydates()" :key="playdate.playdateId" v-bind:playdate="playdate"/>
+    </div>
       
   </div>
 </template>
@@ -55,4 +57,14 @@ button {
   margin-bottom: 10px;
 }
 
+@media screen and (min-width: 768px) {
+  #playdate-card-container {
+    /* width: 300px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+}
 </style>

@@ -6,7 +6,9 @@
     <button v-show="fakeUser.username === this.$store.state.user.username " id="manage-pets-btn">
       Manage Pets
     </button>
-    <pet-card v-for="pet in fakeUser.pets" :key="pet.petId" :pet="pet" />
+    <div id="pet-card-container">
+      <pet-card v-for="pet in fakeUser.pets" :key="pet.petId" :pet="pet" />
+    </div>
   </div>
 </template>
 
@@ -53,5 +55,20 @@ button {
   background-color: #3399FF;
   color: white;
   margin-bottom: 10px;
+}
+
+#pet-card-container {
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  #pet-card-container {
+    /* width: 300px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: wrap;
+  }
 }
 </style>
