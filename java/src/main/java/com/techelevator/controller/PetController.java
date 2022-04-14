@@ -2,9 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.PetDao;
 import com.techelevator.model.Pet;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +24,11 @@ public class PetController {
     @GetMapping (path = "/pets/{username}")
     public List<Pet> getPetsByUserName(@PathVariable String username) {
         return this.petDao.getPetsByUsername(username);
+    }
+
+    @PostMapping (path = "pets/add-pet")
+    public void addPet(@RequestBody Pet petToAdd, String username) {
+        this.petDao.addPet(petToAdd, username);
     }
 
 

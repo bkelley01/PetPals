@@ -49,14 +49,20 @@ public class JdbcPetDao implements PetDao {
     }
 
     // add pet
-    @Override
+    @Override // TODO - make this work
     public void addPet(Pet petToAdd, String username) {
+        String sql = "INSERT INTO pets (pet_name, pet_type, user_id, active)" +
+                " VALUES (?, ?, (SELECT user_id FROM users WHERE username = ?), true) RETURNING pet_id;";
+        Long petId = jdbcTemplate.queryForObject(sql, Long.class, petToAdd.getPetName(),
+                petToAdd.getAnimalType(), petToAdd.getUserId());
+        sql = "";
 
     }
 
     // deactivate pet
     @Override
     public void deactivatePet(long petId, String username) {
+
     }
 
     private Pet mapRowToPet(SqlRowSet rs) {
