@@ -1,10 +1,10 @@
 <template>
     <div class="menu">
         <ul>
-            <li class="menu-buttons" v-on:click="showHideMenu">Profile</li>
-            <li class="menu-buttons" v-on:click="showHideMenu">Playdates</li>
-            <li class="menu-buttons" v-on:click="showHideMenu">Messages</li>
-            <li v-if="$store.state.token != ''" class="menu-item menu-buttons" v-on:click="showHideMenu"><router-link v-bind:to="{ name: 'logout' }" >Logout</router-link></li>
+            <li v-if="$store.state.token" class="menu-buttons" v-on:click="openProfilePage">Profile</li>
+            <li v-if="$store.state.token" class="menu-buttons" v-on:click="showHideMenu">Playdates</li>
+            <li class="menu-buttons" v-on:click="showHideMenu">Forum</li>
+            <li v-if="$store.state.token" class="menu-item menu-buttons" v-on:click="showHideMenu"><router-link v-bind:to="{ name: 'logout' }" >Logout</router-link></li>
             <li v-if="$store.state.token == ''" class="menu-item menu-buttons" v-on:click="showHideMenu"><router-link v-bind:to="{ name: 'login' }" >Login</router-link></li>
         </ul>
     </div>
@@ -14,11 +14,16 @@
 export default {
     name: 'menu-panel',
     methods: {
-      showHideMenu() {
-        // this.showMenu = !this.showMenu;
-        this.$store.commit('SET_SHOW_MENU');
-    }
-  }
+        showHideMenu() {
+            // this.showMenu = !this.showMenu;
+            this.$store.commit('SET_SHOW_MENU');
+        },
+        openProfilePage() {
+            this.showHideMenu();
+            this.$router.push(`/profile/${this.$store.state.user.username}`);
+        }
+    
+    },
 }
 </script>
 
