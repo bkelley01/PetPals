@@ -92,7 +92,7 @@ ul {
   } */
 
 #menu-btn {
-  margin-right: 2%;
+  margin-right: 35px;
 }
 
 #banner {

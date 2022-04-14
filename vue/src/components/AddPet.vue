@@ -7,7 +7,7 @@
                 <div class="alert alert-danger" role="alert" v-if="registrationErrors">
                 {{ registrationErrorMsg }}
                 </div>
-                <label class="add-pet-form-label" for="pet-name">Pet Name:</label>
+                <label class="add-pet-form-label" for="pet-name">Pet Name<span class="required-star">*</span></label>
                 <input
                 type="text"
                 id="pet-name"
@@ -17,7 +17,7 @@
                 autofocus
                 />
                 <!-- <label for="password" class="sr-only">Password</label> -->
-                <label class="add-pet-form-label" for="personalities-list-0">Personality 1:</label>
+                <label class="add-pet-form-label" for="personalities-list-0">Personality 1</label>
                 <select
                 class="form-personalities input-height"
                 name="personalities-list-0"
@@ -33,7 +33,7 @@
                     <option value="Easy-going">Easy-Going</option>
                     <option value="Helpful">Helpful</option>
                 </select>
-                <label class="add-pet-form-label" for="personalities-list-1">Personality 2:</label>
+                <label class="add-pet-form-label" for="personalities-list-1">Personality 2</label>
                 <select
                 class="form-personalities input-height"
                 name="personalities-list-1"
@@ -49,7 +49,7 @@
                     <option value="Easy-going">Easy-Going</option>
                     <option value="Helpful">Helpful</option>
                 </select>
-                <label class="add-pet-form-label" for="personalities-list-2">Personality 3:</label>
+                <label class="add-pet-form-label" for="personalities-list-2">Personality 3</label>
                 <select
                 class="form-personalities input-height"
                 name="personalities-list-2"
@@ -65,15 +65,17 @@
                     <option value="Easy-going">Easy-Going</option>
                     <option value="Helpful">Helpful</option>
                 </select>
-                <label class="add-pet-form-label" for="pet-type-list">Pet Type:</label>
+                <label class="add-pet-form-label" for="pet-type-list">Pet Type<span class="required-star">*</span></label>
                 <select 
                 class="form-pet-type input-height"
                 name="pet-type-list"
-                v-model="newPet.type">
+                v-model="newPet.type"
+                required>
                     <option value=""></option>
                     <option value="Dog">Dog</option>
                     <option value="Cat">Cat</option>
                 </select>
+                <p id="required-p">* required</p>
                 <button class="btn btn-lg btn-primary btn-block" type="submit" id="add-pet-btn">Add Pet</button>
             </div>
         </form>
@@ -119,19 +121,35 @@ label.add-pet-form-label {
 .input-height {
     height: 30px;
     padding: 1px 0px 1px 0px;
+    
 }
 
 #add-pet-btn {
     width: 100%;
   margin: auto;
   background-color: #3399FF;
-  margin-top: 18%;
+  margin-top: 10%;
   color: white;
   border-radius: 5px;
   height: 40px;
   border: none;
   font-size: 16px;
   cursor: pointer;
+}
+
+#required-p {
+    color: red;
+    font-size: 13px;
+    margin: 0px;
+}
+
+.required-star {
+    color: red;
+    font-size: 18px;
+}
+
+.form-pet-type {
+    margin-bottom: 6px;
 }
 
 </style>

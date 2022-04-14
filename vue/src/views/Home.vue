@@ -9,7 +9,7 @@
     <!-- <div id="dog-div"> -->
      </div> 
     <!-- </div> -->
-    <div id="credential-form">
+    <div v-show="!this.$store.state.token" id="credential-form">
       <div id="new-user">
         <h1>New Here?</h1>
         <p>We're so glad to have you join our community!</p>
