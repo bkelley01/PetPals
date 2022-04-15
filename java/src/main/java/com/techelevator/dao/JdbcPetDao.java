@@ -23,7 +23,7 @@ public class JdbcPetDao implements PetDao {
     public List<Pet> getPetsByUsername(String username) {
         String sql = "SELECT pet_id, pet_name, pet_type, users.user_id FROM pets" +
                 " JOIN users ON pets.user_id = users.user_id" +
-                " WHERE username = ?;";
+                " WHERE username = ? AND active = true;";
         SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, username);
         List<Pet> pets = new ArrayList<>();
         while (rs.next()) {

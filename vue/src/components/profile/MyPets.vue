@@ -3,7 +3,7 @@
     <div class="title">
       <h2>{{ fakeUser.username }}'s Pets</h2>
     </div>
-    <button v-show="fakeUser.username === this.$store.state.user.username " id="manage-pets-btn">
+    <button @click="clickButton" v-show="fakeUser.username === this.$store.state.user.username " id="manage-pets-btn">
       Manage Pets
     </button>
     <div id="pet-card-container">
@@ -31,10 +31,14 @@ export default {
       );
     },
   },
+  methods: {
+    clickButton() {
+      console.log('clicked');
+    }
+  },
   created() {
     petService.getUserPets(this.fakeUser.username).then(response => {
       this.userPets = response.data;
-      console.log(response.data);
     })
   }
 };

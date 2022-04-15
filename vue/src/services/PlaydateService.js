@@ -6,8 +6,8 @@ const http = axios.create({
 
 export default {
 
-    getUserPets(username) {
-      return http.get(`/pets/${username}`);
+    getUserPlaydates(username) {
+      return http.get(`/playdates/${username}`);
     }
 
   // login(user) {

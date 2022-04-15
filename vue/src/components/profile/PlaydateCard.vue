@@ -19,12 +19,12 @@
 
     <p id="host"><i class="far fa-user"></i> {{ playdate.host }}</p>
     <p id="attendees-link" @click="showAttendees = !showAttendees">
-      Attendees: {{ playdate.numPetsAttending }}
+      Attendees: {{ playdate.attendees.length }}
     </p>
     <ul v-if="showAttendees">
       <li
         class="pets-attending"
-        v-for="(pet, index) in playdate.petsAttending"
+        v-for="(pet, index) in playdate.attendees"
         :key="index"
       >
         {{ pet }}

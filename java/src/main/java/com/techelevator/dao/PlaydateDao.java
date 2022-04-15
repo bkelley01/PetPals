@@ -21,6 +21,6 @@ public interface PlaydateDao {
 
     List<Playdate> getPlaydateByPetId(long petId);
 
-    List<Pet> getAttendeesByPlaydateId(long playdateId);
+    List<String> getAttendeesByPlaydateId(long playdateId);
 
 }

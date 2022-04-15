@@ -4,6 +4,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.PetDao;
 import com.techelevator.dao.PlaydateDao;
 import com.techelevator.model.Pet;
+import com.techelevator.model.Playdate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -17,6 +18,11 @@ public class PlaydateController {
 
     public PlaydateController(PlaydateDao playdateDao) {
         this.playdateDao = playdateDao;
+    }
+
+    @GetMapping (path="/playdates/{username}")
+    public List<Playdate> getPlaydatesByUsername(@PathVariable String username) {
+        return this.playdateDao.getPlaydatesByUsername(username);
     }
 
 }

@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <h2>My Playdates</h2>
-    <button v-show="fakeUser.username === this.$store.state.user.username " id="manage-playdates-btn">
+    <button @click="console.log('clicked')" v-show="fakeUser.username === this.$store.state.user.username" id="manage-playdates-btn">
       Manage Playdates
     </button>
     <div id="playdate-card-container">
-      <playdate-card v-for="playdate in userPlaydates()" :key="playdate.playdateId" v-bind:playdate="playdate"/>
+      <playdate-card v-for="playdate in userPlaydates" :key="playdate.playdateId" v-bind:playdate="playdate"/>
     </div>
       
   </div>
@@ -13,24 +13,32 @@
 
 <script>
 import PlaydateCard from '@/components/profile/PlaydateCard.vue';
+import playdateService from '@/services/PlaydateService.js';
 export default {
     name: "my-playdates",
     components: {PlaydateCard},
+    data() {
+      return {
+        userPlaydates: [],
+        showManagePetsOptions: false
+        
+      }
+    },
+    methods: {
+      clickingButton() {
+        console.log('clicked');
+      }
+    },
     computed: {
       fakeUser() {
         return this.$store.state.fakeUsers.find( p => p.username == this.$route.params.username);
       },
-      // userPlaydates() {
-      //   return this.fakeUser.playdates
-      // }
     },
-    methods: {
-      userPlaydates() {
-        let playdates = this.$store.state.playdates.filter((playdate) => {
-          return this.fakeUser.playdates.includes(playdate.playdateId);
-        });
-        return playdates;
-      }
+
+    created() {
+      playdateService.getUserPlaydates(this.fakeUser.username).then(response => {
+        this.userPlaydates = response.data;
+      })
     }
 }
 </script>
