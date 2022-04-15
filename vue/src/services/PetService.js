@@ -1,9 +1,5 @@
 import axios from 'axios';
 
-// const http = axios.create({
-//   baseURL: "http://localhost:8080"
-// });
-
 export default {
 
     getUserPets(username) {
@@ -12,14 +8,10 @@ export default {
 
     deactivatePet(petId) {
       return axios.put(`pets/${petId}`);
+    },
+
+    addPet(pet) {
+      return axios.post(pet);
     }
-
-  // login(user) {
-  //   return axios.post('/login', user)
-  // },
-
-  // register(user) {
-  //   return axios.post('/register', user)
-  // }
 
 }

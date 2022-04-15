@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import Profile from '../views/Profile.vue'
+import TempAddPet from '../views/TempAddPet.vue' // remove this later
 import store from '../store/index'
 
 Vue.use(Router)
@@ -61,7 +62,15 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    },
+    {
+      path: '/temp/add-pet', // remove this later
+      name: "temp-add-pet",
+      component: TempAddPet,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ]
 })
 
