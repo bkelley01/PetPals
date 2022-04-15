@@ -9,16 +9,14 @@ import java.util.Locale;
 public class Playdate {
 
     private long playdateId;
-    private String title;
-    private String location;
-    private LocalDate date;
+    private String playdateTitle;
+    private String playdateLocation;
+    private LocalDate playDate;
     private LocalTime startTime;
     private LocalTime endTime;
     private List<String> attendees;
     private String host;
     private boolean isActive;
-
-
 
     public long getPlaydateId() {
         return playdateId;
@@ -28,28 +26,28 @@ public class Playdate {
         this.playdateId = playdateId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getPlaydateTitle() {
+        return playdateTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setPlaydateTitle(String playdateTitle) {
+        this.playdateTitle = playdateTitle;
     }
 
-    public String getLocation() {
-        return location;
+    public String getPlaydateLocation() {
+        return playdateLocation;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setPlaydateLocation(String playdateLocation) {
+        this.playdateLocation = playdateLocation;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public LocalDate getPlayDate() {
+        return playDate;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setPlayDate(LocalDate playDate) {
+        this.playDate = playDate;
     }
 
     public LocalTime getStartTime() {
