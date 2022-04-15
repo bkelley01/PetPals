@@ -26,7 +26,7 @@ public class JdbcPlaydateDao implements PlaydateDao{
         String sql = "SELECT playdates.playdate_id, " +
                         "playdates.playdate_title, " +
                         "playdates.playdate_location, " +
-                        "playdates.play_date, " +
+                        "playdates.playdate_date, " +
                         "playdates.start_time, " +
                         "playdates.end_time, " +
                         "users.username, " +
@@ -85,13 +85,23 @@ public class JdbcPlaydateDao implements PlaydateDao{
         return attendees;
     }
 
+    @Override
+    public void createPlaydate(Playdate playdate, String username) {
+        String sql = "INSERT INTO playdates (playdate_title, playdate_location, playdate_date, start_time, end_time,host_id, active) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?);";
+
+        this.jdbcTemplate.update(sql, playdate.getPlaydateTitle(), playdate.getPlaydateLocation(), playdate.getPlaydateDate(),
+                playdate.getStartTime(), playdate.getEndTime(), userDao.findIdByUsername(username), true);
+
+    }
+
 
     private Playdate mapRowToPlaydate(SqlRowSet rs) {
         Playdate playdate = new Playdate();
         playdate.setPlaydateId(rs.getLong("playdate_id"));
-        playdate.setTitle(rs.getString("playdate_title"));
-        playdate.setLocation(rs.getString("playdate_location"));
-        playdate.setDate(rs.getDate("play_date").toLocalDate());
+        playdate.setPlaydateTitle(rs.getString("playdate_title"));
+        playdate.setPlaydateLocation(rs.getString("playdate_location"));
+        playdate.setPlaydateDate(rs.getDate("playdate_date").toLocalDate());
         playdate.setStartTime(rs.getTime("start_time").toLocalTime());
         playdate.setEndTime(rs.getTime("end_time").toLocalTime());
         playdate.setAttendees(getAttendeesByPlaydateId(playdate.getPlaydateId()));

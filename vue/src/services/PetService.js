@@ -11,7 +11,7 @@ export default {
     },
 
     addPet(pet) {
-      return axios.post(pet);
+      return axios.post('/pets', pet);
     }
 
 }

@@ -4,7 +4,7 @@
       <!-- <label for="username" class="sr-only">Username</label> -->
       <div id="register-pet-container">
         <h1 class="h3 mb-3 font-weight-normal">Add Pet</h1>
-        <div class="alert alert-danger" role="alert" v-if="registrationErrors">
+        <div class="alert alert-danger" role="alert" v-if="registrationErrorMsg">
           {{ registrationErrorMsg }}
         </div>
         <label class="add-pet-form-label" for="pet-name"
@@ -103,6 +103,8 @@
 </template>
 
 <script>
+import petService from '@/services/PetService.js';
+
 export default {
   name: "add-pet",
   data() {
@@ -112,9 +114,27 @@ export default {
         personalities: [],
         type: "",
       },
-      registrationErrors: false,
-      registrationErrorMsg: "There were problems registering this user.",
+      registrationErrorMsg: ""
     };
+  },
+  methods: {
+    registerPet() {
+      petService.addPet(this.newPet).then(r => {
+        if (r.status === 201) {
+          this.$router.push(`/profile/${this.$store.state.user.username}`);
+          this.newPet = { name: "", personalities: [], type: "" }
+        }
+      }).catch(e => {
+        this.handleErrorResponse(e);
+      })
+    },
+    handleErrorResponse(error) {
+      if (error.response) {
+        this.registrationErrorMsg = 
+          "Unable to add pet. Response received was '" +
+          error.response.statusText + "... Please try again";
+      } 
+    }
   },
 };
 </script>

@@ -11,7 +11,7 @@ public class Playdate {
     private long playdateId;
     private String playdateTitle;
     private String playdateLocation;
-    private LocalDate playDate;
+    private LocalDate playdateDate;
     private LocalTime startTime;
     private LocalTime endTime;
     private List<String> attendees;
@@ -42,12 +42,12 @@ public class Playdate {
         this.playdateLocation = playdateLocation;
     }
 
-    public LocalDate getPlayDate() {
-        return playDate;
+    public LocalDate getPlaydateDate() {
+        return playdateDate;
     }
 
-    public void setPlayDate(LocalDate playDate) {
-        this.playDate = playDate;
+    public void setPlaydateDate(LocalDate playDate) {
+        this.playdateDate = playDate;
     }
 
     public LocalTime getStartTime() {
