@@ -78,7 +78,11 @@ public class JdbcPetDao implements PetDao {
     // deactivate pet
     @Override
     public void deactivatePet(long petId, String username) {
-
+        if (doesPetBelongToUser(petId, username)) {
+            String sql = "UPDATE pets SET active = false\n" +
+                    "WHERE pet_id = ?;";
+            jdbcTemplate.update(sql, petId);
+        }
     }
 
     private Pet mapRowToPet(SqlRowSet rs) {
@@ -107,5 +111,13 @@ public class JdbcPetDao implements PetDao {
     private void addPetPersonalityRecord(long petId, String personality) {
         String sql = "INSERT INTO pet_personality (pet_id, personality) VALUES (?, ?);";
         jdbcTemplate.update(sql, petId, personality);
+    }
+
+    // TODO -- discuss if this should be a public method (and added to interface)
+    private boolean doesPetBelongToUser(long petId, String username) {
+        Long expectedUserId = (long)userDao.findIdByUsername(username);
+        String sql = "SELECT user_id FROM pets WHERE pet_id = ?;";
+        Long actualUserId = jdbcTemplate.queryForObject(sql, Long.class, petId);
+        return expectedUserId.equals(actualUserId);
     }
 }
