@@ -20,7 +20,7 @@ public class JdbcPlaydateDao implements PlaydateDao{
     }
 
     @Override
-    public List<Playdate> getPlaydateByUsername(String username) {
+    public List<Playdate> getPlaydatesByUsername(String username) {
         return null;
     }
 

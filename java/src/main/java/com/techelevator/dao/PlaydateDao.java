@@ -11,7 +11,7 @@ import java.util.List;
 public interface PlaydateDao {
     //TODO -- discuss if we should use userId instead of username here
 
-    List<Playdate> getPlaydateByUsername(String username);
+    List<Playdate> getPlaydatesByUsername(String username);
 
     List<Playdate> getPlaydatesByPersonality(String username);
 
