@@ -47,9 +47,19 @@ public class JdbcPetDao implements PetDao {
     // get all pets by personality
     @Override
     public List<Pet> getPetsByPersonality(String personality) {
-        return null;
+        List<Pet> pets = new ArrayList<>();
+        String sql = "SELECT pets.pet_id, pet_name, pet_type, user_id\n" +
+                "FROM pets\n" +
+                "JOIN pet_personality ON pet_personality.pet_id = pets.pet_id\n" +
+                "WHERE pet_personality.personality = ?;";
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, personality);
+        while (rs.next()) {
+            pets.add(mapRowToPet(rs));
+        }
+        return pets;
     }
 
+    // add a pet (including the pet personality
     @Override
     public void addPet(Pet petToAdd, String username) {
         // get the userId and add to petToAdd
