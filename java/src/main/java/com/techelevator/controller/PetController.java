@@ -37,7 +37,7 @@ public class PetController {
 
     // put to deactivate pet -
     @PutMapping (path = "/pets/{petId}")
-    public void deactivatePet(@PathVariable long petId, Principal principal) {
+    public void updatePet(@PathVariable long petId, Principal principal) {
         this.petDao.deactivatePet(petId, principal.getName());
     }
 
