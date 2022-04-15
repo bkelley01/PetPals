@@ -30,13 +30,13 @@ public class PetController {
     }
 
     // post to add pet
-    @PostMapping (path = "pets/add-pet")
+    @PostMapping (path = "/pets")
     public void addPet(@RequestBody Pet petToAdd, Principal principal) {
         this.petDao.addPet(petToAdd, principal.getName());
     }
 
     // put to deactivate pet -
-    @PutMapping (path = "pets/change-status/{petId}")
+    @PutMapping (path = "/pets/{petId}")
     public void deactivatePet(@PathVariable long petId, Principal principal) {
         this.petDao.deactivatePet(petId, principal.getName());
     }
