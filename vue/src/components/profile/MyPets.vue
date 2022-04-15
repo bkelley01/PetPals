@@ -3,7 +3,7 @@
     <div class="title">
       <h2>{{ fakeUser.username }}'s Pets</h2>
     </div>
-    <button @click="clickButton" v-show="fakeUser.username === this.$store.state.user.username " id="manage-pets-btn">
+    <button @click="toggleManagePets" v-show="fakeUser.username === this.$store.state.user.username " id="manage-pets-btn">
       Manage Pets
     </button>
     <div id="pet-card-container">
@@ -32,8 +32,9 @@ export default {
     },
   },
   methods: {
-    clickButton() {
-      console.log('clicked');
+    toggleManagePets() {
+      this.$store.commit('TOGGLE_MANAGE_PETS');
+      console.log(this.$store.state.showManagePetsOption);
     }
   },
   created() {

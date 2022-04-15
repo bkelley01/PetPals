@@ -7,9 +7,18 @@ public class Pet {
     // Instance variables
     private long petId;
     private String petName;
-    private String animalType;
+    private String petType;
     private List<String> personalities;
     private long userId;
+    private boolean active;
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     // getters & setters
     public long getPetId() {
@@ -28,12 +37,12 @@ public class Pet {
         this.petName = petName;
     }
 
-    public String getAnimalType() {
-        return animalType;
+    public String getPetType() {
+        return petType;
     }
 
-    public void setAnimalType(String animalType) {
-        this.animalType = animalType;
+    public void setPetType(String animalType) {
+        this.petType = animalType;
     }
 
     public List<String> getPersonalities() {

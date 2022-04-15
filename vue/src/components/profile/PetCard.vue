@@ -1,30 +1,33 @@
 <template>
-  <div class="pet-card" :key="pet.petId">
-    <!-- <div id="first-letter">{{ pet.name.charAt(0) }}</div> -->
-    <div id="first-letter">{{ pet.petName.charAt(0) }}</div>
-    <div id="pet-details-container">
-      <h3 id="name">{{ pet.petName }}</h3>
-      <p id="type">{{ pet.petType }}</p>
-      <ul>
-        <li
-        class="personalities"
-        v-for="(personality, index) in pet.personalities"
-        :key="index"
-      >
-        {{ personality }}
-      </li>
-      </ul>
-      <!-- <span
-        id="personalities"
-        v-for="(personality, index) in pet.personalities"
-        :key="index"
-      >
-        {{ personality }}
-        <span id="vertical-bar" v-if="index != pet.personalities.length - 1">
-          |
-        </span>
-      </span> -->
+  <div id="container">
+    <div class="pet-card" :key="pet.petId">
+      <!-- <div id="first-letter">{{ pet.name.charAt(0) }}</div> -->
+      <div id="first-letter">{{ pet.petName.charAt(0) }}</div>
+      <div id="pet-details-container">
+        <h3 id="name">{{ pet.petName }}</h3>
+        <p id="type">{{ pet.petType }}</p>
+        <ul>
+          <li
+          class="personalities"
+          v-for="(personality, index) in pet.personalities"
+          :key="index"
+        >
+          {{ personality }}
+        </li>
+        </ul>
+        <!-- <span
+          id="personalities"
+          v-for="(personality, index) in pet.personalities"
+          :key="index"
+        >
+          {{ personality }}
+          <span id="vertical-bar" v-if="index != pet.personalities.length - 1">
+            |
+          </span>
+        </span> -->
+      </div>
     </div>
+    <button id="archive-btn" v-on:click='deactivatePet'>Archive</button>
   </div>
 </template>
 
@@ -44,6 +47,12 @@ export default {
       }
     }
   },
+  methods: {
+    deactivatePet() {
+      petService.deactivatePet(this.pet.petId);
+      this.$router.push(`/profile/${this.$store.state.user.username}`)
+    }
+  },
   computed: {
     fakeUser() {
       return this.$store.state.fakeUsers.find(
@@ -55,7 +64,8 @@ export default {
     petService.getUserPets(this.fakeUser.username).then(response => {
       this.userPet.petId = response.data.petId;
     })
-  }
+  },
+  
 };
 </script>
 
@@ -107,5 +117,15 @@ li {
     width: 300px;
     /* margin: 5px; */
   }
+}
+
+#archive-btn {
+  background-color: red;
+  border-radius: 5px;
+  height: 40px;
+  border: none;
+  font-size: 16px;
+  color: white;
+  margin-bottom: 10px;
 }
 </style>

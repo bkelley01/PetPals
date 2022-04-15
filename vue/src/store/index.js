@@ -21,6 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     showMenu: false, // added for menu
+    showManagePetsOption: false,
     fakeUsers: [
       {
         userId: 1,
@@ -119,6 +120,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    TOGGLE_MANAGE_PETS(state) { // mutation to adjust manage button
+      state.showManagePetsOption = !state.showManagePetsOption;
     }
   }
 })

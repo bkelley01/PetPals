@@ -89,7 +89,7 @@ public class JdbcPetDao implements PetDao {
         Pet pet = new Pet();
         pet.setPetId(rs.getLong("pet_id"));
         pet.setPetName(rs.getString("pet_name"));
-        pet.setAnimalType(rs.getString("pet_type"));
+        pet.setPetType(rs.getString("pet_type"));
         pet.setUserId(rs.getLong("user_id"));
         pet.setPersonalities(getPersonalitiesByPetId(pet.getPetId()));
         return pet;
@@ -102,7 +102,7 @@ public class JdbcPetDao implements PetDao {
                 sql,
                 Long.class,
                 petToAdd.getPetName(),
-                petToAdd.getAnimalType(),
+                petToAdd.getPetType(),
                 petToAdd.getUserId()
         );
         return petId;

@@ -8,6 +8,10 @@ export default {
 
     getUserPets(username) {
       return http.get(`/pets/${username}`);
+    },
+
+    deactivatePet(petId) {
+      return http.put(`pets/change-status/${petId}`);
     }
 
   // login(user) {
