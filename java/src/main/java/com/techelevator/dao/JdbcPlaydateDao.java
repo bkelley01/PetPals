@@ -85,6 +85,18 @@ public class JdbcPlaydateDao implements PlaydateDao{
         return attendees;
     }
 
+    @Override
+    public void createPlaydate(Playdate playdate, String username) {
+        String sql = "INSERT INTO playdates (playdate_title, playdate_location, play_date, start_time, end_time,host_id, active) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?);";
+
+        this.jdbcTemplate.queryForObject(sql, Long.class, playdate.getTitle(), playdate.getLocation(), playdate.getDate(),
+                playdate.getStartTime(), playdate.getEndTime(), userDao.findIdByUsername(username), true);
+
+
+
+    }
+
 
     private Playdate mapRowToPlaydate(SqlRowSet rs) {
         Playdate playdate = new Playdate();

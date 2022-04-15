@@ -23,4 +23,6 @@ public interface PlaydateDao {
 
     List<String> getAttendeesByPlaydateId(long playdateId);
 
+    void createPlaydate(Playdate playdate, String username);
+
 }
