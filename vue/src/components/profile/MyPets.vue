@@ -3,8 +3,11 @@
     <div class="title">
       <h2>{{ fakeUser.username }}'s Pets</h2>
     </div>
-    <button @click="toggleManagePets" v-show="fakeUser.username === this.$store.state.user.username " id="manage-pets-btn">
+    <button @click="toggleManagePets" v-if="!this.$store.state.showManagePetsOption" v-show="fakeUser.username === this.$store.state.user.username " id="manage-pets-btn">
       Manage Pets
+    </button>
+    <button @click="toggleManagePets" v-if="this.$store.state.showManagePetsOption" v-show="fakeUser.username === this.$store.state.user.username " id="manage-pets-btn">
+      Cancel
     </button>
     <div id="pet-card-container">
       <pet-card v-for="pet in userPets" :key="pet.petId" :pet="pet" />

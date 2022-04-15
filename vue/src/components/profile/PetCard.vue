@@ -27,7 +27,7 @@
         </span> -->
       </div>
     </div>
-    <button id="archive-btn" v-on:click='deactivatePet'>Archive</button>
+    <button id="archive-btn" v-if="this.$store.state.showManagePetsOption" v-on:click='deactivatePet'>Archive</button>
   </div>
 </template>
 
@@ -50,7 +50,10 @@ export default {
   methods: {
     deactivatePet() {
       petService.deactivatePet(this.pet.petId);
-      this.$router.push(`/profile/${this.$store.state.user.username}`)
+      this.$router.go()
+    },
+    reloadPage() {
+      window.location.reload();
     }
   },
   computed: {

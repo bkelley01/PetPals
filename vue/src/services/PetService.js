@@ -1,17 +1,17 @@
 import axios from 'axios';
 
-const http = axios.create({
-  baseURL: "http://localhost:8080"
-});
+// const http = axios.create({
+//   baseURL: "http://localhost:8080"
+// });
 
 export default {
 
     getUserPets(username) {
-      return http.get(`/pets/${username}`);
+      return axios.get(`/pets/${username}`);
     },
 
     deactivatePet(petId) {
-      return http.put(`pets/change-status/${petId}`);
+      return axios.put(`pets/${petId}`);
     }
 
   // login(user) {

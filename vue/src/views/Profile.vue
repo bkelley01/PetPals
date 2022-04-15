@@ -31,6 +31,9 @@ export default {
         return false;
       }
     }
+  },
+  created() {
+    this.$store.state.showManagePetsOption = false;
   }
 }
 </script>
