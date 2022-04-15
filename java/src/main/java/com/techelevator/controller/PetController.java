@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class PetController {
 
@@ -16,10 +17,10 @@ public class PetController {
         this.petDao = petDao;
     }
 
-    @GetMapping (path = "/personalities")
-    public List<String> getPersonalities() {
-        return this.petDao.getPersonalitiesByPetId(1);
-    }
+//    @GetMapping (path = "/personalities")
+//    public List<String> getPersonalities() {
+//        return this.petDao.getPersonalitiesByPetId(1);
+//    }
 
     @GetMapping (path = "/pets/{username}")
     public List<Pet> getPetsByUserName(@PathVariable String username) {

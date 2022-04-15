@@ -1,9 +1,10 @@
 <template>
   <div class="pet-card" :key="pet.petId">
-    <div id="first-letter">{{ pet.name.charAt(0) }}</div>
+    <!-- <div id="first-letter">{{ pet.name.charAt(0) }}</div> -->
+    <div id="first-letter">{{ pet.petName.charAt(0) }}</div>
     <div id="pet-details-container">
-      <h3 id="name">{{ pet.name }}</h3>
-      <p id="type">{{ pet.type }}</p>
+      <h3 id="name">{{ pet.petName }}</h3>
+      <p id="type">{{ pet.petType }}</p>
       <ul>
         <li
         class="personalities"
@@ -28,9 +29,21 @@
 </template>
 
 <script>
+import petService from '@/services/PetService.js';
+
 export default {
   name: "pet-card",
   props: ["pet"],
+  data() {
+    return {
+      userPet: {
+        petId: 0,
+        petName: "",
+        petPersonalities: [],
+        petType: ""
+      }
+    }
+  },
   computed: {
     fakeUser() {
       return this.$store.state.fakeUsers.find(
@@ -38,6 +51,11 @@ export default {
       );
     },
   },
+  created() {
+    petService.getUserPets(this.fakeUser.username).then(response => {
+      this.userPet.petId = response.data.petId;
+    })
+  }
 };
 </script>
 
