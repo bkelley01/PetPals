@@ -4,6 +4,7 @@ import com.techelevator.dao.PetDao;
 import com.techelevator.model.Pet;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,16 +29,16 @@ public class PetController {
         return this.petDao.getPetsByUsername(username);
     }
 
-    // post to add pet -
+    // post to add pet
     @PostMapping (path = "pets/add-pet")
-    public void addPet(@RequestBody Pet petToAdd, String username) {
-        this.petDao.addPet(petToAdd, username);
+    public void addPet(@RequestBody Pet petToAdd, Principal principal) {
+        this.petDao.addPet(petToAdd, principal.getName());
     }
 
-    // put to deactivate pet - verified functionality using Postman to Postgres, IS 4/15
-    @PutMapping (path = "pets/{username}/change-status/{petId}")
-    public void deactivatePet(@PathVariable long petId, @PathVariable String username) {
-        this.petDao.deactivatePet(petId, username);
+    // put to deactivate pet -
+    @PutMapping (path = "pets/change-status/{petId}")
+    public void deactivatePet(@PathVariable long petId, Principal principal) {
+        this.petDao.deactivatePet(petId, principal.getName());
     }
 
 }
