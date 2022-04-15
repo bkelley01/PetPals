@@ -22,16 +22,22 @@ public class PetController {
 //        return this.petDao.getPersonalitiesByPetId(1);
 //    }
 
+    // verified functionality using Postman compared to query in pgAdmin, IS 4/15
     @GetMapping (path = "/pets/{username}")
     public List<Pet> getPetsByUserName(@PathVariable String username) {
         return this.petDao.getPetsByUsername(username);
     }
 
+    // post to add pet -
     @PostMapping (path = "pets/add-pet")
     public void addPet(@RequestBody Pet petToAdd, String username) {
         this.petDao.addPet(petToAdd, username);
     }
 
-
+    // put to deactivate pet - verified functionality using Postman to Postgres, IS 4/15
+    @PutMapping (path = "pets/{username}/change-status/{petId}")
+    public void deactivatePet(@PathVariable long petId, @PathVariable String username) {
+        this.petDao.deactivatePet(petId, username);
+    }
 
 }
