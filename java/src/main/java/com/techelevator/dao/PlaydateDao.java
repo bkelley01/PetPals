@@ -9,6 +9,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 public interface PlaydateDao {
+    //TODO -- discuss if we should use userId instead of username here
 
     List<Playdate> getPlaydateByUsername(String username);
 

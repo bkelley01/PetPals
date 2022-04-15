@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface PetDao {
 
+    //TODO -- discuss if we should use userId instead of username here
+
     // get all pets by username
     List<Pet> getPetsByUsername(String username);
 

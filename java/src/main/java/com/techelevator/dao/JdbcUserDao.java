@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 import com.techelevator.model.User;
 import org.springframework.util.StringUtils;
 
-@Service
+@Service //TODO -- Ask if this need to be on every interface
 @Component
 public class JdbcUserDao implements UserDao {
 
