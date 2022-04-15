@@ -37,6 +37,17 @@ li.menu-buttons {
   padding-right: 50px;
   height: 50px;
   text-align: right;
+  text-decoration: none;
   }
+
+li.menu-buttons:hover {
+      text-decoration: underline;
+  }
+
+@media screen and (max-width: 768px) {
+  li.menu-buttons {
+      text-decoration: underline;
+  }
+}
 
 </style>
