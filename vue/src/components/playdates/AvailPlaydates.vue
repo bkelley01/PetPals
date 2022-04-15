@@ -10,11 +10,11 @@ export default {
     data() {
         return {
             userChoices: {
-                dateInput: "",
-                startTimeInput: "",
-                endTimeInput: "",
-                locationInput: "",
-                
+                playdateTitle: "",
+                playdateLocation: "",
+                playdateDate: "",
+                startTime: "",
+                endTime: "",
             }
         }
     }

@@ -27,7 +27,7 @@ public class PlaydateController {
     }
 
     @PostMapping (path = "/playdates")
-    public void createPlaydate(Playdate playdate, Principal principal) {
+    public void createPlaydate(@RequestBody Playdate playdate, Principal principal) {
         this.playdateDao.createPlaydate(playdate, principal.getName());
     }
 
