@@ -11,9 +11,11 @@ import java.util.List;
 @Component
 public class JdbcPetDao implements PetDao {
     private JdbcTemplate jdbcTemplate;
+    private UserDao userDao;
 
-    public JdbcPetDao(JdbcTemplate jdbcTemplate) {
+    public JdbcPetDao(JdbcTemplate jdbcTemplate, UserDao userDao) {
         this.jdbcTemplate = jdbcTemplate;
+        this.userDao = userDao;
     }
 
     // get pets by username
@@ -48,15 +50,19 @@ public class JdbcPetDao implements PetDao {
         return null;
     }
 
-    // add pet
-    @Override // TODO - make this work
+    @Override
     public void addPet(Pet petToAdd, String username) {
-        String sql = "INSERT INTO pets (pet_name, pet_type, user_id, active)" +
-                " VALUES (?, ?, (SELECT user_id FROM users WHERE username = ?), true) RETURNING pet_id;";
-        Long petId = jdbcTemplate.queryForObject(sql, Long.class, petToAdd.getPetName(),
-                petToAdd.getAnimalType(), petToAdd.getUserId());
-        sql = "";
+        // get the userId and add to petToAdd
+        long userId = userDao.findIdByUsername(username);
+        petToAdd.setUserId(userId);
 
+        // create a pet record in database
+        long petId = addPetRecord(petToAdd);
+
+        // create pet personality records
+        for (String personality : petToAdd.getPersonalities()) {
+            addPetPersonalityRecord(petId, personality);
+        }
     }
 
     // deactivate pet
@@ -75,4 +81,21 @@ public class JdbcPetDao implements PetDao {
         return pet;
     }
 
+    private long addPetRecord(Pet petToAdd) {
+        String sql = "INSERT INTO pets (pet_name, pet_type, user_id, active)\n" +
+                "VALUES (?, ?, ?, true) RETURNING pet_id;";
+        Long petId = jdbcTemplate.queryForObject(
+                sql,
+                Long.class,
+                petToAdd.getPetName(),
+                petToAdd.getAnimalType(),
+                petToAdd.getUserId()
+        );
+        return petId;
+    }
+
+    private void addPetPersonalityRecord(long petId, String personality) {
+        String sql = "INSERT INTO pet_personality (pet_id, personality) VALUES (?, ?);";
+        jdbcTemplate.update(sql, petId, personality);
+    }
 }
