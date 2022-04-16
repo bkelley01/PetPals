@@ -46,6 +46,8 @@ export default {
   computed: {
     formattedDate() {
       let date = new Date(this.playdate.playdateDate);
+      //TODO - Figure out why you need to add one to the date
+      date.setDate(date.getDate() + 1);
       const options = {
         weekday: "short",
         year: "numeric",

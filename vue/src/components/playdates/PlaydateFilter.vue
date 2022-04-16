@@ -11,6 +11,7 @@
 
         <label>Location</label>
         <select v-model="userChoices.playdateLocation">
+            <option value="">All Locations</option>
             <option value="Summit Park">Summit Park (Blue Ash)</option>
             <option value="Washington Park">Washington Park (OTR)</option>
             <option value="Winton Woods">Winton Woods Park (Sharonville)</option>
@@ -20,8 +21,8 @@
 
         <label>Date</label>
         <input type="date" v-model="userChoices.playdateDate" />
-
-        <button @click="filterPlaydates()">Find Playdates</button>
+         
+        <button @click="logDates()">Find Playdates</button>
     </form>
     
     <playdate-card v-for="playdate in filteredPlaydates" :key="playdate.playdateId" :playdate="playdate" />
@@ -51,6 +52,11 @@ export default {
             this.$store.commit('FILTER_PLAYDATES', this.userChoices);
             this.$router.go();
             this.userChoices = {playdateTitle: "",  playdateLocation: "", playdateDate: ""}
+        },
+
+        logDates() {
+            console.log('Date in filter is' + this.userChoices.playdateDate);
+            console.log('date in database is' + this.playdates[0].playdateDate);
         }
     },
 
@@ -58,20 +64,40 @@ export default {
         playdateService.getAllPlaydates().then(response => {
             this.playdates = response.data;
         });
+
     },
 
     computed: {
         filteredPlaydates() {
-           return this.playdates.filter(curPlaydate => {
-                // let titleFilter = this.$store.state.playdateFilter.playdateTitle;
+            let fp = this.playdates;
+                // return this.playdates.filter(curPlaydate => {
+                // // let titleFilter = this.$store.state.playdateFilter.playdateTitle;
                 
-                if (this.userChoices.playdateTitle != "") {
-                    return true;
-                } else {
-                     return curPlaydate.playdateTitle.includes(this.userChoices.playdateTitle);
-                }
+                // if (this.userChoices.playdateTitle != "") {
+                //     return true;
+                // } else {
+                //      return curPlaydate.playdateTitle.includes(this.userChoices.playdateTitle);
+                // }
 
-           }); 
+            if (this.userChoices.playdateTitle != "") {
+                fp = fp.filter(curPlaydate => {
+                    return curPlaydate.playdateTitle.includes(this.userChoices.playdateTitle);
+                });
+            }
+
+            if (this.userChoices.playdateLocation != "") {
+                fp = fp.filter(curPlaydate => {
+                    return curPlaydate.playdateLocation === this.userChoices.playdateLocation;
+                });
+            }
+
+            if (this.userChoices.playdateDate != "") {
+                fp = fp.filter(curPlaydate => {
+                    return curPlaydate.playdateDate === this.userChoices.playdateDate;
+                });
+            }
+
+            return fp;
         }
     }
 }
