@@ -2,8 +2,8 @@
     <div>
         <button v-on:click="flipShowJoinPlaydate()" v-if="!showJoinPlaydate">Join Playdate</button>
         <button v-on:click="flipShowJoinPlaydate()" v-if="showJoinPlaydate">Cancel</button>
-        <select v-if="showJoinPlaydate" v-model="petSelected" id="select-pet-list" class="pet-list">
-            <option v-for="pet in userPets" v-bind:key="pet.petId">{{ pet.petName }}</option>
+        <select v-if="showJoinPlaydate" v-model.number="petSelected" id="select-pet-list" class="pet-list">
+            <option v-for="pet in userPets" v-bind:key="pet.petId" :value="Object.values(pet)[0]">{{ pet.petName }}</option>
         </select>
         <button v-on:click="addPetToPlaydate()" v-if="showJoinPlaydate">Add {{test.playdateId}}</button>
     </div>
