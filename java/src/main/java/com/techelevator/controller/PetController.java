@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.PetDao;
 import com.techelevator.model.Pet;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -30,6 +31,7 @@ public class PetController {
     }
 
     // post to add pet
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping (path = "/pets")
     public void addPet(@RequestBody Pet petToAdd, Principal principal) {
         this.petDao.addPet(petToAdd, principal.getName());

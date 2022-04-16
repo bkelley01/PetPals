@@ -48,7 +48,6 @@ export default {
         this.addPetIsOpen = !this.addPetIsOpen;
       }
       this.$store.commit('TOGGLE_MANAGE_PETS');
-      console.log(this.$store.state.showManagePetsOption);
       
 
     },

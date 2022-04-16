@@ -63,10 +63,6 @@ export default {
       let formattedTime = timeAsDate.toLocaleTimeString("en-US", options);
       return formattedTime;
     },
-    printAttendees() {
-      console.log(this.showAttendees);
-      return true;
-    },
   },
 };
 </script>

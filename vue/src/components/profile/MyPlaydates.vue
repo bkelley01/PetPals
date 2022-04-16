@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2>My Playdates</h2>
-    <button @click="console.log('clicked')" v-show="fakeUser.username === this.$store.state.user.username" id="manage-playdates-btn">
+    <button v-show="fakeUser.username === this.$store.state.user.username" id="manage-playdates-btn">
       Manage Playdates
     </button>
     <div id="playdate-card-container">
@@ -24,11 +24,7 @@ export default {
         
       }
     },
-    methods: {
-      clickingButton() {
-        console.log('clicked');
-      }
-    },
+    
     computed: {
       fakeUser() {
         return this.$store.state.fakeUsers.find( p => p.username == this.$route.params.username);

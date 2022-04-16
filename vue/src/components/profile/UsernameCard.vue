@@ -13,10 +13,6 @@ export default {
         return this.$store.state.fakeUsers.find( p => p.username == this.$route.params.username);
       }
     },
-    created() {
-      const username = this.$route.params.username;
-      console.log(username);
-    }
 }
 </script>
 

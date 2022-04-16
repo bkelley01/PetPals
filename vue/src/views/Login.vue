@@ -54,9 +54,8 @@
 </template>
 
 <script>
-
-
 import authService from "../services/AuthService";
+//import petService from '@/services/PetService.js';
 
 export default {
   name: "login",
@@ -78,30 +77,31 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            // new stuff below
             let newUser = this.$store.state.fakeUsers.find(u => {
               return u.username === this.user.username;
             });
-            console.log(newUser.username);
             if (newUser.pets.length === 0) {
-              console.log('newUser has no pets');
               this.$router.push('/register');
-              
             } else {
-              console.log('newUser has pets');
               this.$router.push("/");
             }
 
             
           }
         })
-        .catch(error => {
-          const response = error.response;
+        .catch(e => this.handleErrorResponse(e));
+        // .catch(error => {
+        //   const response = error.response;
 
-          if (response.status === 401) {
-            this.invalidCredentials = true;
-          }
-        });
+        //   if (response.status === 401) {
+        //     this.invalidCredentials = true;
+        //   }
+        // });
+    },
+    handleErrorResponse(error) {
+      if (error) {
+        alert('Unable to find matching credentials. Please try again...');
+      }
     }
   }
 };

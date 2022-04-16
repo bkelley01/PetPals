@@ -13,7 +13,7 @@ CREATE SEQUENCE seq_pet_id
 
 CREATE TABLE pets (
 	pet_id int DEFAULT nextval('seq_pet_id'::regclass) NOT NULL,
-	pet_name varchar(50) UNIQUE NOT NULL,
+	pet_name varchar(50) NOT NULL,
 	pet_type varchar(25) NOT NULL,
 	user_id int NOT NULL CONSTRAINT fk_user_id REFERENCES users(user_id),
 	active boolean NOT NULL,

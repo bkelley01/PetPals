@@ -4,9 +4,6 @@
       <!-- <label for="username" class="sr-only">Username</label> -->
       <div id="register-pet-container">
         <h1 class="h3 mb-3 font-weight-normal">Add Pet</h1>
-        <div class="alert alert-danger" role="alert" v-if="registrationErrorMsg">
-          {{ registrationErrorMsg }}
-        </div>
         <label class="add-pet-form-label" for="pet-name"
           >Pet Name<span class="required-star">*</span></label
         >
@@ -14,7 +11,7 @@
           type="text"
           id="pet-name"
           class="input-height"
-          v-model="newPet.name"
+          v-model="newPet.petName"
           required
           autofocus
         />
@@ -82,7 +79,7 @@
         <select
           class="form-pet-type input-height"
           name="pet-type-list"
-          v-model="newPet.type"
+          v-model="newPet.petType"
           required
         >
           <option value=""></option>
@@ -110,9 +107,9 @@ export default {
   data() {
     return {
       newPet: {
-        name: "",
+        petName: "",
         personalities: [],
-        type: "",
+        petType: "",
       },
       registrationErrorMsg: ""
     };
@@ -121,18 +118,22 @@ export default {
     registerPet() {
       petService.addPet(this.newPet).then(r => {
         if (r.status === 201) {
-          this.$router.push(`/profile/${this.$store.state.user.username}`);
-          this.newPet = { name: "", personalities: [], type: "" }
+          this.newPet = { petName: "", personalities: [], petType: "" };
+          if (this.$route.name === 'profile') {
+            this.$router.go();
+          } else {
+            this.$router.push(`/profile/${this.$store.state.user.username}`);
+          }
         }
-      }).catch(e => {
-        this.handleErrorResponse(e);
-      })
+      }).catch(e => this.handleErrorResponse(e));
+      
+      // }).catch(e => {
+      //   this.handleErrorResponse(e);
+      // })
     },
     handleErrorResponse(error) {
-      if (error.response) {
-        this.registrationErrorMsg = 
-          "Unable to add pet. Response received was '" +
-          error.response.statusText + "... Please try again";
+      if (error) {
+        alert('Unable to add pet. Please try again...');
       } 
     }
   },
