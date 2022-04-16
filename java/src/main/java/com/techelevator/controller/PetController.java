@@ -43,4 +43,10 @@ public class PetController {
         this.petDao.deactivatePet(petId, principal.getName());
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping (path = "/pet-playdate/{petId}/{playdateId}")
+    public void addPetToPlayDate(@PathVariable long petId, @PathVariable long playdateId) {
+        this.petDao.addPetToPlayDate(petId, playdateId);
+    }
+
 }

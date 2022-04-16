@@ -101,7 +101,7 @@ public class JdbcPlaydateDao implements PlaydateDao{
                      "FROM playdates " +
                         "JOIN users ON users.user_id = playdates.host_id " +
                      "WHERE playdate_date >= CURRENT_DATE " +
-                     "ORDER BY playdate_date;";
+                     "ORDER BY playdate_date, start_time;";
 
         SqlRowSet rowSet = this.jdbcTemplate.queryForRowSet(sql);
 

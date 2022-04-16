@@ -85,6 +85,12 @@ public class JdbcPetDao implements PetDao {
         }
     }
 
+    @Override
+    public void addPetToPlayDate(long petId, long playdateId) {
+        String sql = "INSERT INTO pet_playdate (pet_id, playdate_id, acceptance_status) VALUES (?, ?, 'Accepted');";
+        jdbcTemplate.update(sql, petId, playdateId);
+    }
+
     private Pet mapRowToPet(SqlRowSet rs) {
         Pet pet = new Pet();
         pet.setPetId(rs.getLong("pet_id"));

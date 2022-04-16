@@ -24,4 +24,7 @@ public interface PetDao {
     // TODO -- discuss if this should return a boolean
     void deactivatePet(long petId, String username);
 
+    // add pet to playdate
+    void addPetToPlayDate(long petId, long playdateId);
+
 }

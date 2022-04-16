@@ -22,7 +22,6 @@
         <label>Date</label>
         <input type="date" v-model="userChoices.playdateDate" />
          
-        <button @click="logDates()">Find Playdates</button>
     </form>
     
     <playdate-card v-for="playdate in filteredPlaydates" :key="playdate.playdateId" :playdate="playdate" />
@@ -53,11 +52,6 @@ export default {
             this.$router.go();
             this.userChoices = {playdateTitle: "",  playdateLocation: "", playdateDate: ""}
         },
-
-        logDates() {
-            console.log('Date in filter is' + this.userChoices.playdateDate);
-            console.log('date in database is' + this.playdates[0].playdateDate);
-        }
     },
 
     created() {
@@ -81,7 +75,7 @@ export default {
 
             if (this.userChoices.playdateTitle != "") {
                 fp = fp.filter(curPlaydate => {
-                    return curPlaydate.playdateTitle.includes(this.userChoices.playdateTitle);
+                    return curPlaydate.playdateTitle.toLowerCase().includes(this.userChoices.playdateTitle.toLowerCase());
                 });
             }
 
