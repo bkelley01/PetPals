@@ -131,4 +131,8 @@ li {
   color: white;
   margin-bottom: 10px;
 }
+
+#archive-btn:hover {
+  cursor: pointer;
+}
 </style>

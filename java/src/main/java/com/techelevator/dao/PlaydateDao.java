@@ -25,4 +25,6 @@ public interface PlaydateDao {
 
     void createPlaydate(Playdate playdate, String username);
 
+    List<Playdate> getAllPlaydates();
+
 }

@@ -2,7 +2,7 @@
     <div class="menu">
         <ul>
             <li v-if="$store.state.token" class="menu-buttons" v-on:click="openProfilePage">Profile</li>
-            <li v-if="$store.state.token" class="menu-buttons" v-on:click="showHideMenu">Playdates</li>
+            <li v-if="$store.state.token" class="menu-buttons" v-on:click="showHideMenu"><router-link v-bind:to="{ name: 'playdates' }" >Playdates </router-link></li>
             <li class="menu-buttons" v-on:click="showHideMenu">Forum</li>
             <li v-if="$store.state.token" class="menu-item menu-buttons" v-on:click="showHideMenu"><router-link v-bind:to="{ name: 'logout' }" >Logout</router-link></li>
             <li v-if="$store.state.token == ''" class="menu-item menu-buttons" v-on:click="showHideMenu"><router-link v-bind:to="{ name: 'login' }" >Login</router-link></li>
@@ -37,12 +37,12 @@ li.menu-buttons {
   padding-right: 50px;
   height: 50px;
   text-align: right;
-  text-decoration: none;
-  }
+}
+
 
 li.menu-buttons:hover {
       text-decoration: underline;
-  }
+}
 
 @media screen and (max-width: 768px) {
   li.menu-buttons {

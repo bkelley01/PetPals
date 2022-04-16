@@ -8,6 +8,7 @@ import Profile from '../views/Profile.vue'
 import TempAddPet from '../views/TempAddPet.vue' // remove this later
 import Schedule from '@/components/profile/SchedulePlayDate.vue'
 import store from '../store/index'
+import Playdates from '@/views/Playdates.vue'
 
 Vue.use(Router)
 
@@ -76,6 +77,14 @@ const router = new Router({
       path: "/schedule",
       name: "schedule",
       component: Schedule,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/playdates",
+      name: "playdates",
+      component: Playdates,
       meta: {
         requiresAuth: false
       }

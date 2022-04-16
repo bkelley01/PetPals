@@ -1,7 +1,7 @@
 <template>
   <div class="playdate-card" v-bind:key="playdate.playdateId">
-    <h3>{{ playdate.title }}</h3>
-    <p id="location"><i class="fas fa-map-marker-alt"></i> {{ playdate.location }}</p>
+    <h3>{{ playdate.playdateTitle }}</h3>
+    <p id="playdate-location"><i class="fas fa-map-marker-alt"></i> {{ playdate.playdateLocation }}</p>
     <p id="date">
       <time><i class="far fa-calendar-alt"></i> {{ formattedDate }}</time>
     </p>
@@ -45,7 +45,7 @@ export default {
   },
   computed: {
     formattedDate() {
-      let date = new Date(this.playdate.date);
+      let date = new Date(this.playdate.playdateDate);
       const options = {
         weekday: "short",
         year: "numeric",
@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     formattedTime(time) {
-      let timeAsDate = new Date(this.playdate.date + " " + time);
+      let timeAsDate = new Date(this.playdate.playdateDate + " " + time);
       const options = { hour12: true, hour: "2-digit", minute: "2-digit" };
       let formattedTime = timeAsDate.toLocaleTimeString("en-US", options);
       return formattedTime;
@@ -82,7 +82,7 @@ export default {
   justify-content: space-around;
 }
 
-#location {
+#playdate-location {
   margin: 16px 0px 8px 0px;
 }
 

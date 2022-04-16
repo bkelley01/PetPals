@@ -31,4 +31,9 @@ public class PlaydateController {
         this.playdateDao.createPlaydate(playdate, principal.getName());
     }
 
+    @GetMapping (path = "/playdates")
+    public List<Playdate> getAllPlaydates() {
+        return this.playdateDao.getAllPlaydates();
+    }
+
 }

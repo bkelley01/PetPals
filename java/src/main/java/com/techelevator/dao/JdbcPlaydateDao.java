@@ -95,6 +95,24 @@ public class JdbcPlaydateDao implements PlaydateDao{
 
     }
 
+    @Override
+    public List<Playdate> getAllPlaydates() {
+        String sql = "SELECT playdate_id, playdate_title, playdate_location, playdate_date, start_time, end_time, username, active " +
+                     "FROM playdates " +
+                        "JOIN users ON users.user_id = playdates.host_id " +
+                     "WHERE playdate_date >= CURRENT_DATE " +
+                     "ORDER BY playdate_date;";
+
+        SqlRowSet rowSet = this.jdbcTemplate.queryForRowSet(sql);
+
+        List<Playdate> playdates = new ArrayList<>();
+        while (rowSet.next()) {
+            playdates.add(mapRowToPlaydate(rowSet));
+        }
+
+        return playdates;
+    }
+
 
     private Playdate mapRowToPlaydate(SqlRowSet rs) {
         Playdate playdate = new Playdate();

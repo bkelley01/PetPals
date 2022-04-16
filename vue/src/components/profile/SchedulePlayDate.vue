@@ -67,7 +67,7 @@ export default {
   padding-bottom: 50px;
   border-radius: 20px;
 
-},
+}
 
 #start {
 padding: 40px;

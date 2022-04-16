@@ -22,6 +22,11 @@ export default new Vuex.Store({
     user: currentUser || {},
     showMenu: false, // added for menu
     showManagePetsOption: false,
+    playdateFilter: {
+      playdateTitle: "",
+      playdateLocation: "",
+      playdateDate: ""
+    },
     fakeUsers: [
       {
         userId: 1,
@@ -123,6 +128,10 @@ export default new Vuex.Store({
     },
     TOGGLE_MANAGE_PETS(state) { // mutation to adjust manage button
       state.showManagePetsOption = !state.showManagePetsOption;
+    },
+
+    FILTER_PLAYDATES(state, filterObject) {
+      state.playdateFilter = filterObject;
     }
   }
 })
