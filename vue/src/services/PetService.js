@@ -6,6 +6,10 @@ export default {
       return axios.get(`/pets/${username}`);
     },
 
+    getAllPets() {
+      return axios.get('/pets');
+    },
+
     deactivatePet(petId) {
       return axios.put(`pets/${petId}`);
     },
