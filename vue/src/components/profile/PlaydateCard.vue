@@ -31,7 +31,7 @@
       </li>
     </ul>
     <!-- <p>{{ playdate.petsAttending }}</p> -->
-    <add-pet-to-playdate v-bind:test="playdate" v-if="this.$route.name === 'playdates'"/>
+    <add-pet-to-playdate v-bind:playdate="playdate" v-if="this.$route.name === 'playdates'"/>
   </div>
 </template>
 
