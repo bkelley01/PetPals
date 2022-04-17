@@ -37,7 +37,8 @@ public class JdbcPlaydateDao implements PlaydateDao{
                      "WHERE pet_id IN ( " +
                         "SELECT pet_id FROM pets " +
                             "JOIN users ON users.user_id = pets.user_id " +
-                        "WHERE users.username = ?);";
+                        "WHERE users.username = ?) " +
+                        "GROUP BY users.username, playdates.playdate_id;";
 
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, username);
         List<Playdate> playdates = new ArrayList<>();

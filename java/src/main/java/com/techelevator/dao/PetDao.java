@@ -27,4 +27,6 @@ public interface PetDao {
     // add pet to playdate
     void addPetToPlayDate(long petId, long playdateId);
 
+    List<Pet> getAllPets();
+
 }

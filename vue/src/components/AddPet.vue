@@ -25,15 +25,9 @@
           v-model="newPet.personalities[0]"
         >
           <option value=""></option>
-          <option value="Friendly">Friendly</option>
-          <option value="Curious">Curious</option>
-          <option value="Playful">Playful</option>
-          <option value="Happy">Happy</option>
-          <option value="Social">Social</option>
-          <option value="Individualistic">Individualistic</option>
-          <option value="Loyal">Loyal</option>
-          <option value="Easy-going">Easy-Going</option>
-          <option value="Helpful">Helpful</option>
+          <option v-for="(personality, index) in this.$store.state.personalityOptions" 
+          v-bind:key="index" 
+          v-bind:value="personality">{{personality}}</option>
         </select>
         <label class="add-pet-form-label" for="personalities-list-1"
           >Personality 2</label
@@ -44,15 +38,9 @@
           v-model="newPet.personalities[1]"
         >
           <option value=""></option>
-          <option value="Friendly">Friendly</option>
-          <option value="Curious">Curious</option>
-          <option value="Playful">Playful</option>
-          <option value="Happy">Happy</option>
-          <option value="Social">Social</option>
-          <option value="Individualistic">Individualistic</option>
-          <option value="Loyal">Loyal</option>
-          <option value="Easy-going">Easy-Going</option>
-          <option value="Helpful">Helpful</option>
+           <option v-for="(personality, index) in this.$store.state.personalityOptions" 
+           v-bind:key="index" 
+           v-bind:value="personality">{{personality}}</option>
         </select>
         <label class="add-pet-form-label" for="personalities-list-2"
           >Personality 3</label
@@ -63,15 +51,9 @@
           v-model="newPet.personalities[2]"
         >
           <option value=""></option>
-          <option value="Friendly">Friendly</option>
-          <option value="Curious">Curious</option>
-          <option value="Playful">Playful</option>
-          <option value="Happy">Happy</option>
-          <option value="Social">Social</option>
-          <option value="Individualistic">Individualistic</option>
-          <option value="Loyal">Loyal</option>
-          <option value="Easy-going">Easy-Going</option>
-          <option value="Helpful">Helpful</option>
+           <option v-for="(personality, index) in this.$store.state.personalityOptions" 
+           v-bind:key="index" 
+           v-bind:value="personality">{{personality}}</option>
         </select>
         <label class="add-pet-form-label" for="pet-type-list"
           >Pet Type<span class="required-star">*</span></label

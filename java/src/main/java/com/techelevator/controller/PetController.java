@@ -49,4 +49,9 @@ public class PetController {
         this.petDao.addPetToPlayDate(petId, playdateId);
     }
 
+    @GetMapping (path = "/pets")
+    public List<Pet> getAllPets() {
+        return this.petDao.getAllPets();
+    }
+
 }

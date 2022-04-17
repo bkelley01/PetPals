@@ -46,14 +46,6 @@ export default {
         }
     },
 
-    methods: {
-        filterPlaydates() {
-            this.$store.commit('FILTER_PLAYDATES', this.userChoices);
-            this.$router.go();
-            this.userChoices = {playdateTitle: "",  playdateLocation: "", playdateDate: ""}
-        },
-    },
-
     created() {
         playdateService.getAllPlaydates().then(response => {
             this.playdates = response.data;

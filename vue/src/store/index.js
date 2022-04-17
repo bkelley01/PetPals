@@ -27,6 +27,9 @@ export default new Vuex.Store({
       playdateLocation: "",
       playdateDate: ""
     },
+    personalityOptions: ['Friendly', 'Curious', 'Playful', 
+                          'Happy', 'Social', 'Individualistic', 
+                          'Loyal', 'Easy-going', 'Helpful'],
     fakeUsers: [
       {
         userId: 1,

@@ -126,4 +126,17 @@ public class JdbcPetDao implements PetDao {
         Long actualUserId = jdbcTemplate.queryForObject(sql, Long.class, petId);
         return expectedUserId.equals(actualUserId);
     }
+
+    public List<Pet> getAllPets() {
+        String sql = "SELECT pet_id, pet_name, pet_type, user_id" +
+                        " FROM pets" +
+                        " WHERE active = true;";
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
+        List<Pet> results = new ArrayList<>();
+        while (rs.next()) {
+            Pet pet = mapRowToPet(rs);
+            results.add(pet);
+        }
+        return results;
+    }
 }
