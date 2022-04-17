@@ -60,10 +60,12 @@ export default {
                     return curPet.petName.toLowerCase().includes(this.userChoices.petName.toLowerCase());
                 });
             }
-            // need to bring in personalities in Java query to work
+            // TODO - fix
             if (this.userChoices.personality != "") {
                 fp = fp.filter(curPet => {
-                    return curPet.personality === this.userChoices.personality;
+                    return curPet.personalities.filter(p => {
+                        return p === this.userChoices.personality
+                        });
                 });
             }
             if (this.userChoices.petType != "") {
