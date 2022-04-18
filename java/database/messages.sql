@@ -13,11 +13,15 @@ CREATE TABLE messages(
 	message_id int DEFAULT nextval('seq_pet_id'::regclass) NOT NULL,
 	user_id int NOT NULL CONSTRAINT fk_user_id REFERENCES users(user_id),
 	pet_id int NULL CONSTRAINT fk_pet_id REFERENCES pets(pet_id),
-	posted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	msg_text varchar(280) NOT NULL
+	posted_at timestamp DEFAULT CURRENT_TIMESTAMP,
+	msg_text varchar(280) NOT NULL,
+	msg_deleted boolean DEFAULT false
 );
 
 INSERT INTO messages (user_id, pet_id, msg_text)
 VALUES (3, 1, 'The default user left a test message about Spot');
+
+INSERT INTO messages (user_id, msg_text)
+VALUES (3, 'The default user left a generic test message');
 
 COMMIT TRANSACTION;

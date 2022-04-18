@@ -5,11 +5,11 @@ import java.util.List;
 public class Pet {
 
     // Instance variables
-    private long petId;
+    private Long petId;
     private String petName;
     private String petType;
     private List<String> personalities;
-    private long userId;
+    private Long userId;
     private String username;
     private boolean active;
 
