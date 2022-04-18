@@ -60,12 +60,9 @@ export default {
                     return curPet.petName.toLowerCase().includes(this.userChoices.petName.toLowerCase());
                 });
             }
-            // TODO - fix
             if (this.userChoices.personality != "") {
                 fp = fp.filter(curPet => {
-                    return curPet.personalities.filter(p => {
-                        return p === this.userChoices.personality
-                        });
+                    return curPet.personalities.includes(this.userChoices.personality);
                 });
             }
             if (this.userChoices.petType != "") {

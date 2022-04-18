@@ -128,15 +128,21 @@ public class JdbcPetDao implements PetDao {
     }
 
     public List<Pet> getAllPets() {
-        String sql = "SELECT pet_id, pet_name, pet_type, user_id" +
+        /*String sql = "SELECT pet_id, pet_name, pet_type, user_id" +
                         " FROM pets" +
-                        " WHERE active = true;";
+                        " WHERE active = true;";*/
+        String sql = "SELECT pet_id, pet_name, pet_type, users.user_id, users.username" +
+                " FROM pets" +
+                " JOIN users ON pets.user_id = users.user_id" +
+                " WHERE active = true;";
         SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
         List<Pet> results = new ArrayList<>();
         while (rs.next()) {
             Pet pet = mapRowToPet(rs);
+            pet.setUsername(rs.getString("username"));
             results.add(pet);
         }
         return results;
     }
+
 }

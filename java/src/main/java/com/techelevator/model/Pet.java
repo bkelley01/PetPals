@@ -10,15 +10,8 @@ public class Pet {
     private String petType;
     private List<String> personalities;
     private long userId;
+    private String username;
     private boolean active;
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
 
     // getters & setters
     public long getPetId() {
@@ -59,5 +52,21 @@ public class Pet {
 
     public void setUserId(long userId) {
         this.userId = userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }
