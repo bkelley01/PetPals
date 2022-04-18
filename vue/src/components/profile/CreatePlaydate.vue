@@ -2,71 +2,80 @@
   <div id="main-div">
     <div id="container">
       <form id="schedule">
+        <h2>Create Playdate</h2>
         <div id="title">
           <label>What is the name of your event?</label>
           <input
             type="text"
             id="title-text"
-            placeholder="i.e. 'Spot's Birthday Party'"
+            v-model="newPlaydate.playdateTitle"
           />
         </div>
         <div id="date">
           <label>What day are you scheduling for?</label>
-          <input type="date" id="date-input" />
+          <input type="date" id="date-input" v-model="newPlaydate.playdateDate" />
         </div>
         <div id="start">
           <label>What time does this event start?</label>
-          <select id="start-time">
-            <option value="choose" selected>Select Time</option>
-            <option value="9am">9:00 A.M.</option>
-            <option value="930am">9:30 A.M.</option>
-            <option value="10am">10:00 A.M.</option>
-            <option value="1030am">10:30 A.M.</option>
-            <option value="11am">11:00 A.M.</option>
-            <option value="1130am">11:30 A.M.</option>
-            <option value="12pm">12:00 P.M.</option>
-            <option value="1230pm">12:30 P.M.</option>
-            <option value="1pm">1:00 P.M.</option>
-            <option value="130pm">1:30 P.M.</option>
-            <option value="2pm">2:00 P.M.</option>
-            <option value="230pm">2:30 P.M.</option>
+          <select id="start-time" v-model="newPlaydate.startTime">
+            <option value="">Select Time</option>
+            <option value="09:00:00">9:00 A.M.</option>
+            <option value="09:30:00">9:30 A.M.</option>
+            <option value="10:00:00">10:00 A.M.</option>
+            <option value="10:30:00">10:30 A.M.</option>
+            <option value="11:00:00">11:00 A.M.</option>
+            <option value="11:30:00">11:30 A.M.</option>
+            <option value="12:00:00">12:00 P.M.</option>
+            <option value="12:30:00">12:30 P.M.</option>
+            <option value="13:00:00">1:00 P.M.</option>
+            <option value="13:30:00">1:30 P.M.</option>
+            <option value="14:00:00">2:00 P.M.</option>
+            <option value="14:30:00">2:30 P.M.</option>
           </select>
           <br />
         </div>
         <div id="end">
           <label>What time does this event end?</label>
-          <select id="end-time">
-            <option value="choose" selected>Select Time</option>
-            <option value="9am">9:00 A.M.</option>
-            <option value="930am">9:30 A.M.</option>
-            <option value="10am">10:00 A.M.</option>
-            <option value="1030am">10:30 A.M.</option>
-            <option value="11am">11:00 A.M.</option>
-            <option value="1130am">11:30 A.M.</option>
-            <option value="12pm">12:00 P.M.</option>
-            <option value="1230pm">12:30 P.M.</option>
-            <option value="1pm">1:00 P.M.</option>
-            <option value="130pm">1:30 P.M.</option>
-            <option value="2pm">2:00 P.M.</option>
-            <option value="230pm">2:30 P.M.</option>
+          <select id="end-time" v-model="newPlaydate.endTime">
+            <option value="">Select Time</option>
+            <option value="09:00:00">9:00 A.M.</option>
+            <option value="09:30:00">9:30 A.M.</option>
+            <option value="10:00:00">10:00 A.M.</option>
+            <option value="10:30:00">10:30 A.M.</option>
+            <option value="11:00:00">11:00 A.M.</option>
+            <option value="11:30:00">11:30 A.M.</option>
+            <option value="12:00:00">12:00 P.M.</option>
+            <option value="12:30:00">12:30 P.M.</option>
+            <option value="13:00:00">1:00 P.M.</option>
+            <option value="13:30:00">1:30 P.M.</option>
+            <option value="14:00:00">2:00 P.M.</option>
+            <option value="14:30:00">2:30 P.M.</option>
           </select>
           <br />
         </div>
         <div id="location">
           <label>What location will this event take place at?</label>
-          <input
-            type="text"
+          <select
             id="location-text"
-            placeholder="i.e. 'Winton Wood's'"
-          />
+            v-model="newPlaydate.playdateLocation"
+          >
+            <option value=""></option>
+            <option 
+                v-for="(location, index) in this.$store.state.locationOptions"
+                :key="index"
+                :value="location.locationName"
+            > 
+            {{location.locationName}} ({{location.neighborhood}})
+            </option>  
+          </select>
         </div>
         <div>
           <button
             class="btn btn-lg btn-primary btn-block"
-            type="submit"
-            id="add-availability-btn"
+            id="create-playdate-btn"
+            @click="createPlaydate()"
           >
-            Add Availability
+            Create Playdate
           </button>
         </div>
       </form>
@@ -78,33 +87,34 @@
 import playdateService from "@/services/PlaydateService.js";
 
 export default {
-  name: "add-availability",
+  name: "create-playdate",
   data() {
     return {
-      newAvailability: {
+      newPlaydate: {
         playdateTitle: "",
         playdateLocation: "",
         playdateDate: "",
         startTime: "",
-        endTime: "",
+        endTime: ""
       },
       registrationErrorMsg: "",
     };
   },
   methods: {
-    registerAvailability() {
+    createPlaydate() {
       playdateService
-        .addAvailability(this.newAvailability)
+        .createPlaydate(this.newPlaydate)
         .then((r) => {
           if (r.status === 201) {
-            this.newAvailability = {
+            alert(`Successfully created ${this.newPlaydate.playdateTitle}`);
+            this.newPlaydate = {
               playdateTitle: "",
               playdateLocation: "",
               playdateDate: "",
               startTime: "",
               endTime: "",
             };
-            this.$router.push('/playdates');
+            // this.$router.push('/playdates');
           }
         })
         .catch((e) => this.handleErrorResponse(e));
@@ -126,7 +136,7 @@ export default {
   text-align: center;
   width: 40%;
   padding: 20px;
-  padding-top: 50px;
+  padding-top: 20px;
   padding-bottom: 50px;
   border-radius: 20px;
 }
@@ -191,7 +201,7 @@ export default {
     text-align: center;
     width: 80%;
     padding: 20px;
-    padding-top: 50px;
+    padding-top: 20px;
     padding-bottom: 50px;
     border-radius: 20px;
   }

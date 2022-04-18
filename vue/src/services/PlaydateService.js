@@ -10,7 +10,7 @@ export default {
       return axios.get('/playdates');
     },
 
-    addAvailability(playdate) {
+    createPlaydate(playdate) {
       return axios.post('/playdates', playdate);
     }
 }

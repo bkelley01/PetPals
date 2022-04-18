@@ -30,6 +30,14 @@ export default new Vuex.Store({
     personalityOptions: ['Friendly', 'Curious', 'Playful', 
                           'Happy', 'Social', 'Individualistic', 
                           'Loyal', 'Easy-going', 'Helpful'],
+    locationOptions: 
+    [
+      {locationName: 'Summit Park', neighborhood: 'Blue Ash'},
+      {locationName: 'Washington Park', neighborhood: 'OTR'},
+      {locationName: 'Winton Woods', neighborhood: 'Sharonville'},
+      {locationName: 'Fido Field', neighborhood: 'Downtown'},
+      {locationName: 'Eden Park', neighborhood: 'Mt. Adams'},
+    ],
     fakeUsers: [
       {
         userId: 1,
