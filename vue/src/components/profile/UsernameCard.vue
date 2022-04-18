@@ -10,7 +10,7 @@ export default {
     name: "username-card",
     computed: {
       fakeUser() {
-        return this.$store.state.fakeUsers.find( p => p.username == this.$route.params.username);
+        return this.$store.state.fakeUsers.find( p => p.username == this.$route.params.username); // TODO - is this causing the issue with user profile not displaying?
       }
     },
 }
