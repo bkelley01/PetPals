@@ -2,9 +2,13 @@
   <div id="main-div">
     <div id="container">
       <form id="schedule">
+        <div id="date">
+          <label>What day are you scheduling for?</label>
+          <input type="date" id="date-input" />
+        </div>
         <div id="start">
           <label>What time does this event start?</label>
-          <select>
+          <select id="start-time">
             <option value="choose" selected>Select Time</option>
             <option value="9am">9:00 A.M.</option>
             <option value="930am">9:30 A.M.</option>
@@ -22,7 +26,7 @@
         </div>
         <div id="end">
           <label>What time does this event end?</label>
-          <select>
+          <select id="end-time">
             <option value="choose" selected>Select Time</option>
             <option value="9am">9:00 A.M.</option>
             <option value="930am">9:30 A.M.</option>
@@ -40,7 +44,7 @@
         </div>
         <div id="location">
           <label>What location will this event take place at?</label>
-          <input type="text" />
+          <input type="text" id="location-text" placeholder="i.e. 'Winton Wood's'" />
         </div>
       </form>
     </div>
@@ -79,6 +83,56 @@ padding: 40px;
 
 #location {
 padding: 40px;
+}
+
+#start-time {
+margin: 10px;
+width: 40%;
+}
+
+#end-time {
+margin: 10px;
+width: 40%;
+}
+
+#location-text {
+margin: 10px;
+width: 80%;
+}
+
+#date-input {
+margin: 10px;
+width: 40%;
+}
+
+@media only screen and (max-width: 450px) {
+  #start-time {
+  margin: 10px;
+  width: 80%;
+  }
+
+  #end-time {
+  margin: 10px;
+  width: 80%;
+  }
+
+  #location-text {
+  margin: 10px;
+  width: 80%;
+  }
+
+  #schedule {
+  display: block;
+  background-color: white;
+  margin: auto;
+  text-align: center;
+  width: 80%;
+  padding: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-radius: 20px;
+
+  }
 }
 
 </style>
