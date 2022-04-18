@@ -88,7 +88,7 @@ public class JdbcPlaydateDao implements PlaydateDao{
 
     @Override
     public void createPlaydate(Playdate playdate, String username) {
-        String sql = "INSERT INTO playdates (playdate_title, playdate_location, playdate_date, start_time, end_time,host_id, active) " +
+        String sql = "INSERT INTO playdates (playdate_title, playdate_location, playdate_date, start_time, end_time, host_id, active) " +
                      "VALUES (?, ?, ?, ?, ?, ?, ?);";
 
         this.jdbcTemplate.update(sql, playdate.getPlaydateTitle(), playdate.getPlaydateLocation(), playdate.getPlaydateDate(),
