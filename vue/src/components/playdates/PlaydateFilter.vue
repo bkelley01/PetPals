@@ -12,11 +12,13 @@
         <label>Location</label>
         <select v-model="userChoices.playdateLocation">
             <option value="">All Locations</option>
-            <option value="Summit Park">Summit Park (Blue Ash)</option>
-            <option value="Washington Park">Washington Park (OTR)</option>
-            <option value="Winton Woods">Winton Woods Park (Sharonville)</option>
-            <option value="Fido Field">Fido Field (Downtown)</option>
-            <option value="Eden Park">Eden Park (Mt. Adams)</option>              
+            <option 
+                v-for="(location, index) in this.$store.state.locationOptions"
+                :key="index"
+                :value="location.locationName"
+            > 
+            {{location.locationName}} ({{location.neighborhood}})
+            </option>              
         </select>
 
         <label>Date</label>

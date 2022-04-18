@@ -1,6 +1,6 @@
 <template>
   <div id="playdates-section-container">
-      <button>Create Playdate </button>
+      <button @click="() => {this.$router.push('/playdates/create')}">Create Playdate </button>
       <playdate-filter />
       <!-- <playdates-list /> -->
   </div>
@@ -14,7 +14,8 @@ export default {
   components: { 
     PlaydateFilter,
     // PlaydatesList 
-    },
+  },
+
 
 }
 </script>

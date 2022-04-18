@@ -6,7 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import Profile from '../views/Profile.vue'
 import TempAddPet from '../views/TempAddPet.vue' // remove this later
-import AddAvailability from '@/components/profile/AddAvailability.vue'
+import CreatePlaydate from '@/components/profile/CreatePlaydate.vue'
 import store from '../store/index'
 import Playdates from '@/views/Playdates.vue'
 
@@ -74,9 +74,9 @@ const router = new Router({
       }
     },
     {
-      path: "/add-availability",
-      name: "add-availability",
-      component: AddAvailability,
+      path: "/playdates/create",
+      name: "create-playdate",
+      component: CreatePlaydate,
       meta: {
         requiresAuth: true
       }
