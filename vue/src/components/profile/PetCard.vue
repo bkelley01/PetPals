@@ -58,15 +58,18 @@ export default {
   },
   computed: {
     fakeUser() {
-      return this.$store.state.fakeUsers.find(
-        (p) => p.username == this.$route.params.username
-      );
+      if (this.$route.name === 'profile') {
+        return this.$store.state.fakeUsers.find(
+          (p) => p.username == this.$route.params.username
+        );
+      } 
+      return true;
     },
   },
   created() {
     petService.getUserPets(this.fakeUser.username).then(response => {
       this.userPet.petId = response.data.petId;
-    })
+    });
   },
   
 };
