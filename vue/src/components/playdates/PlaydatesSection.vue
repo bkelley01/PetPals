@@ -1,6 +1,6 @@
 <template>
   <div id="playdates-section-container">
-      <button>Create Playdate </button>
+      <button id="create-playdate"><router-link :to="{ name: 'add-availability' }" id="create-playdate-router">Create Playdate</router-link></button>
       <playdate-filter />
       <!-- <playdates-list /> -->
   </div>
@@ -25,4 +25,24 @@ export default {
     flex-direction: column;
     justify-content: center;
   }
+  #create-playdate {
+    background-color: #3399FF;
+    width: 250px;
+    height: 40px;
+    margin: auto;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  #create-playdate-router {
+    background-color: #3399FF;
+    width: 100px;
+    margin: auto;
+    color: white;
+    text-decoration: none; 
+  }
+  
 </style>
