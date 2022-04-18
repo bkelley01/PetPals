@@ -1,7 +1,6 @@
 <template>
   <div class="profile">
     <h1>{{fakeUser.username}}</h1>
-    <h2 v-on:click="printUserList()">Button</h2>
     <p v-show="!fakeUser">User Not Found</p>
     <div v-if="fakeUser" class="cards-container">
       <!-- <username-card class="profile-cards" /> -->
