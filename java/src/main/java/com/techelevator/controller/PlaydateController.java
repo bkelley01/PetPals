@@ -5,6 +5,7 @@ import com.techelevator.dao.PetDao;
 import com.techelevator.dao.PlaydateDao;
 import com.techelevator.model.Pet;
 import com.techelevator.model.Playdate;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -26,6 +27,7 @@ public class PlaydateController {
         return this.playdateDao.getPlaydatesByUsername(username);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping (path = "/playdates")
     public void createPlaydate(@RequestBody Playdate playdate, Principal principal) {
         this.playdateDao.createPlaydate(playdate, principal.getName());

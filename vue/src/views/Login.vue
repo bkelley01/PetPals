@@ -55,7 +55,8 @@
 
 <script>
 import authService from "../services/AuthService";
-//import petService from '@/services/PetService.js';
+import userService from '@/services/UserService.js';
+import petService from '@/services/PetService.js';
 
 export default {
   name: "login",
@@ -66,6 +67,7 @@ export default {
         username: "",
         password: ""
       },
+      userList: [],
       invalidCredentials: false
     };
   },
@@ -77,16 +79,17 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            let newUser = this.$store.state.fakeUsers.find(u => {
-              return u.username === this.user.username;
-            });
-            if (newUser.pets.length === 0) {
-              this.$router.push('/register');
-            } else {
-              this.$router.push("/");
-            }
-
+            // let newUser = this.userList.find(u => {
+            //   return u.username === this.user.username;
+            // });
             
+            petService.getUserPets(this.user.username).then((response) => {
+              if (response.data.length === 0) {
+              this.$router.push('/register');
+              } else {
+              this.$router.push("/");
+              }
+            });
           }
         })
         .catch(e => this.handleErrorResponse(e));
@@ -102,7 +105,12 @@ export default {
       if (error) {
         alert('Unable to find matching credentials. Please try again...');
       }
-    }
+    },
+  },
+  created() {
+    userService.getAllUsers().then(r => {
+      this.userList = r.data;
+    });
   }
 };
 </script>
