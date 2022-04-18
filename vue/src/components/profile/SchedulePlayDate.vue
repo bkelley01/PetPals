@@ -2,6 +2,10 @@
   <div id="main-div">
     <div id="container">
       <form id="schedule">
+        <div id="title">
+          <label>What is the name of your event?</label>
+          <input type="text" id="title-text" placeholder="i.e. 'Spot's Birthday Party'" />
+        </div>
         <div id="date">
           <label>What day are you scheduling for?</label>
           <input type="date" id="date-input" />
@@ -97,12 +101,17 @@ width: 40%;
 
 #location-text {
 margin: 10px;
-width: 80%;
+width: 40%;
 }
 
 #date-input {
 margin: 10px;
 width: 40%;
+}
+
+#title-text {
+margin: 10px;
+width: 40%;  
 }
 
 @media only screen and (max-width: 450px) {
