@@ -8,16 +8,15 @@
             type="text"
             id="title-text"
             placeholder="i.e. 'Spot's Birthday Party'"
-            v-model="newAvailability.title"
           />
         </div>
         <div id="date">
           <label>What day are you scheduling for?</label>
-          <input type="date" id="date-input" v-model="newAvailability.playdateDate" />
+          <input type="date" id="date-input" />
         </div>
         <div id="start">
           <label>What time does this event start?</label>
-          <select id="start-time" v-model="newAvailability.startTime">
+          <select id="start-time">
             <option value="choose" selected>Select Time</option>
             <option value="9am">9:00 A.M.</option>
             <option value="930am">9:30 A.M.</option>
@@ -36,7 +35,7 @@
         </div>
         <div id="end">
           <label>What time does this event end?</label>
-          <select id="end-time" v-model="newAvailability.endTime">
+          <select id="end-time">
             <option value="choose" selected>Select Time</option>
             <option value="9am">9:00 A.M.</option>
             <option value="930am">9:30 A.M.</option>
@@ -59,7 +58,6 @@
             type="text"
             id="location-text"
             placeholder="i.e. 'Winton Wood's'"
-            v-model="newAvailability.playdateLocation"
           />
         </div>
         <div>
@@ -113,7 +111,7 @@ export default {
     },
     handleErrorResponse(error) {
       if (error) {
-        alert("Unable to add playdate. Please try again...");
+        alert("Unable to add pet. Please try again...");
       }
     },
   },
