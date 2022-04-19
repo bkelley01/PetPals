@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Find Pet Friends</h2>
-        <form>
+        <form id="filter">
             <label class="search-label">Pet Name</label>
             <input 
             type="text" 
@@ -77,5 +77,9 @@ export default {
 </script>
 
 <style>
+
+form {
+    text-align: center;
+}
 
 </style>

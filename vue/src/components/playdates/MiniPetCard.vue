@@ -3,10 +3,8 @@
         <h3>{{pet.petName}}</h3>
         <p>Owner: {{owner}} </p>
         <p>Type: 
-            <span v-if="pet.petType === 'Dog'">Dog</span>
-            <span v-else>Cat</span>
-            <i class="fas fa-dog"></i>
-            <i class="fas fa-cat"></i>
+            <span v-if="pet.petType === 'Dog'"><i class="fas fa-dog"></i>Dog</span>
+            <span v-else><i class="fas fa-cat"></i>Cat</span>
         </p>
         <p @click="showPlaydates = !showPlaydates" id="pet-playdates-list">Playdates: {{playdates.length}}</p>
         <ul v-if="showPlaydates === true">
@@ -62,4 +60,24 @@ export default {
 #pet-playdates-list {
     text-decoration: underline;
 }
+
+#mini-pet-card-container {
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  width: 80%;
+  border: 2px solid #eecd22ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media screen and (min-width: 768px) {
+    #mini-pet-card-container {
+        width: 300px;
+    }
+}
+
 </style>
