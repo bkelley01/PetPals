@@ -8,7 +8,7 @@ import java.util.Locale;
 
 public class Playdate {
 
-    private long playdateId;
+    private Long playdateId;
     private String playdateTitle;
     private String playdateLocation;
     private LocalDate playdateDate;

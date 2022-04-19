@@ -8,4 +8,5 @@ psql -U postgres -d $DATABASE -f "$BASEDIR/pet.sql" &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/playdate.sql" &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/pet_personality.sql" &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/pet_playdate.sql" &&
+psql -U postgres -d $DATABASE -f "$BASEDIR/messages.sql" &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/user.sql"
