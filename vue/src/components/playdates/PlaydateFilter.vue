@@ -1,32 +1,43 @@
 <template>
-  <div class="main">
-    <form>
-        <label>Title</label>
-        <input
-        type="text"
-        id="playdate-title"
-        class="input-fields"
-        v-model="userChoices.playdateTitle"
-        required />
+  <div id="main-find-playdates">
+    <div id="find-playdates-main-div">
+        <div id='find-playdates-filter-div'>
+            <h2>Find Available Playdates</h2>
+            <form id="playdate-filter-form">
+                
+                <label>Title</label>
+                <input
+                type="text"
+                id="playdate-title"
+                class="playdate-search-field"
+                v-model="userChoices.playdateTitle"
+                required />
 
-        <label>Location</label>
-        <select v-model="userChoices.playdateLocation">
-            <option value="">All Locations</option>
-            <option 
-                v-for="(location, index) in this.$store.state.locationOptions"
-                :key="index"
-                :value="location.locationName"
-            > 
-            {{location.locationName}} ({{location.neighborhood}})
-            </option>              
-        </select>
+                <label>Location</label>
+                <select 
+                class="playdate-search-field"
+                v-model="userChoices.playdateLocation">
+                    <option value="">All Locations</option>
+                    <option 
+                        v-for="(location, index) in this.$store.state.locationOptions"
+                        :key="index"
+                        :value="location.locationName"
+                    > 
+                    {{location.locationName}} ({{location.neighborhood}})
+                    </option>              
+                </select>
 
-        <label>Date</label>
-        <input type="date" v-model="userChoices.playdateDate" />
-         
-    </form>
-    
-    <playdate-card v-for="playdate in filteredPlaydates" :key="playdate.playdateId" :playdate="playdate" />
+                <label>Date</label>
+                <input
+                class="playdate-search-field"
+                type="date" v-model="userChoices.playdateDate" />     
+            </form>
+        </div>
+
+        <div id="playdate-results-div">    
+            <playdate-card v-for="playdate in filteredPlaydates" :key="playdate.playdateId" :playdate="playdate" />
+        </div>
+    </div>
   </div>
 </template>
 
@@ -92,5 +103,36 @@ export default {
 </script>
 
 <style>
+#main-find-playdates {
+    border-radius: 15px;
+    background-color: #d1d1d1;
+}
+
+#playdate-filter-form {
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 40px;
+  border-radius: 15px;
+  width: 300px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.playdate-search-field {
+    width: 250px;
+    height: 38px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+#playdate-results-div {
+    display: flex;
+    flex-wrap: wrap;
+    width: 725px;
+    margin: auto;
+}
 
 </style>

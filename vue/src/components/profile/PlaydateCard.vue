@@ -81,10 +81,10 @@ export default {
   padding: 10px;
   border-radius: 15px;
   width: 80%;
-  border: 2px solid #eecd22ff;
-  display: flex;
+  background-color: white;
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; */
   justify-content: space-around;
 }
 

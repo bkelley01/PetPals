@@ -1,6 +1,7 @@
 <template>
   <div id="playdates-section-container">
-      <button id="create-playdate" @click="() => {this.$router.push('/playdates/create')}">Create Playdate </button>
+      <!-- <h2>Need Your Own Playdate?</h2>
+      <button id="create-playdate" @click="() => {this.$router.push('/playdates/create')}">Create Playdate</button> -->
       <playdate-filter />
       <!-- <playdates-list /> -->
   </div>
@@ -27,7 +28,7 @@ export default {
     justify-content: center;
   }
 
-  #create-playdate {
+  /* #create-playdate {
     background-color: #3399FF;
     width: 250px;
     height: 40px;
@@ -38,6 +39,6 @@ export default {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-  }
+  } */
 
 </style>
