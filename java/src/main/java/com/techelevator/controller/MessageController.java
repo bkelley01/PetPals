@@ -28,6 +28,6 @@ public class MessageController {
     public void createMessage(@RequestBody Message message, Principal principal) {
         if (principal.getName().equals(message.getSenderUsername())) {
             messageDao.createMessage(message);
-        };
+        }
     }
 }
