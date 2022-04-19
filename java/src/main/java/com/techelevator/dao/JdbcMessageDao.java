@@ -35,7 +35,21 @@ public class JdbcMessageDao implements MessageDao {
 
     @Override
     public boolean createMessage(Message newMessage) {
-        return false;
+        String sql = "INSERT INTO messages (user_id, msg_text, msg_deleted)\n" +
+                "VALUES (1, 'Test message posted', false)\n" +
+                "RETURNING message_id;";
+        Long userId = userDao.findIdByUsername(newMessage.getSenderUsername());
+        Long messageId = jdbcTemplate.queryForObject(sql, Long.class, userId, newMessage.getMessageText());
+
+        for (String petName : newMessage.getPetNames()) {
+            addPetMessageRecord(messageId, userId, petName);
+        }
+
+        if (messageId != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -71,5 +85,16 @@ public class JdbcMessageDao implements MessageDao {
             petIds.add(rs.getString("pet_name"));
         }
         return petIds;
+    }
+
+    private void addPetMessageRecord(Long messageId, Long userId, String petName) {
+        String sql = "INSERT INTO pet_message (message_id, pet_id)\n" +
+                "VALUES (?,(\n" +
+                "\tSELECT pet_id\n" +
+                "\tFROM pets\n" +
+                "\tWHERE pet_name = ? AND user_id = ? AND active = true\n" +
+                "\tORDER BY pet_id DESC LIMIT 1\n" +
+                "));";
+        jdbcTemplate.update(sql, messageId, petName, userId);
     }
 }

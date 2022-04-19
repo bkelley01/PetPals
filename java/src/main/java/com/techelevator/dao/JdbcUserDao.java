@@ -28,10 +28,10 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public int findIdByUsername(String username) {
+    public long findIdByUsername(String username) {
         if (! StringUtils.hasText(username)) throw new IllegalArgumentException();
         try {
-            return jdbcTemplate.queryForObject("select user_id from users where username = ?", Integer.class, username);
+            return jdbcTemplate.queryForObject("select user_id from users where username = ?", Long.class, username);
         } catch(EmptyResultDataAccessException e) {
             throw new UsernameNotFoundException("User " + username + " was not found.");
         }
