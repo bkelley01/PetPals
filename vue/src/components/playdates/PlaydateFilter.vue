@@ -103,12 +103,7 @@ export default {
 </script>
 
 <style>
-#main-find-playdates {
-    border-radius: 15px;
-    background-color: #d1d1d1;
-}
-
-#playdate-filter-form {
+#find-playdates-filter-div {
   margin: auto;
   margin-bottom: 10px;
   padding: 40px;
@@ -129,8 +124,6 @@ export default {
 }
 
 #playdate-results-div {
-    display: flex;
-    flex-wrap: wrap;
     width: 725px;
     margin: auto;
 }

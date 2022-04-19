@@ -85,18 +85,7 @@ export default {
 </script>
 
 <style>
-#main-find-pets {
-    border-radius: 15px;
-    background-color: #d1d1d1;
-
-}
-
-#find-pets-main-div {
-    border: 1px solid #d1d1d1;
-    border-radius: 15px;
-}
-
-#pet-filter-form {
+#find-pets-filter-div {
   margin: auto;
   margin-bottom: 10px;
   padding: 40px;
@@ -117,8 +106,6 @@ export default {
 }
 
 #pets-results-div {
-    display: flex;
-    flex-wrap: wrap;
     width: 725px;
     margin: auto;
 }
