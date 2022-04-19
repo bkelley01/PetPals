@@ -1,18 +1,30 @@
 <template>
   <div class="container">
-    <h2>{{fakeUser.username}}</h2>
-    <p>{{fakeUser.username}}'s profile details</p>  
+    <h2>{{user.username}}</h2>
+    <p>{{user.username}}'s profile details</p>  
   </div>
 </template>
 
 <script>
+import userService from '@/services/UserService.js'
+
 export default {
     name: "username-card",
-    computed: {
-      fakeUser() {
-        return this.$store.state.fakeUsers.find( p => p.username == this.$route.params.username); // TODO - is this causing the issue with user profile not displaying?
+    data() {
+      return {
+        userList: []
       }
     },
+    computed: {
+      user() {
+        return this.userList.find( p => p.username.toLowerCase() === this.$route.params.username.toLowerCase());
+      }
+    },
+  created() {
+    userService.getAllUsers().then(r => {
+      this.userList = r.data;
+    })
+  }
 }
 </script>
 

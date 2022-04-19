@@ -33,6 +33,7 @@
 
 <script>
 import petService from '@/services/PetService.js';
+import userService from '@/services/UserService.js';
 
 export default {
   name: "pet-card",
@@ -43,8 +44,9 @@ export default {
         petId: 0,
         petName: "",
         petPersonalities: [],
-        petType: ""
-      }
+        petType: "",
+      },
+      userList: []
     }
   },
   methods: {
@@ -57,19 +59,22 @@ export default {
     }
   },
   computed: {
-    fakeUser() {
+    compUser() {
       if (this.$route.name === 'profile') {
-        return this.$store.state.fakeUsers.find(
-          (p) => p.username == this.$route.params.username
-        );
+        return this.userList.find(p => {
+          p.username.toLowerCase() === this.$route.params.username.toLowerCase();
+        });
       } 
       return true;
     },
   },
   created() {
-    petService.getUserPets(this.fakeUser.username).then(response => {
+    petService.getUserPets(this.$route.params.username).then(response => {
       this.userPet.petId = response.data.petId;
     });
+    userService.getAllUsers().then(r => {
+      this.userList = r.data;
+    })
   },
   
 };

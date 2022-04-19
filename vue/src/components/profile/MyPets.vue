@@ -1,16 +1,16 @@
 <template>
   <div class="container">
     <div class="title">
-      <h2>{{ fakeUser.username }}'s Pets</h2>
+      <h2>{{ compUser.username }}'s Pets</h2>
     </div>
-    <button @click="toggleManagePets" v-if="!this.$store.state.showManagePetsOption" v-show="fakeUser.username === this.$store.state.user.username " class="pets-blue-btns">
+    <button @click="toggleManagePets" v-if="!this.$store.state.showManagePetsOption" v-show="compUser.username === this.$store.state.user.username " class="pets-blue-btns">
       Manage Pets
     </button>
     <div id="pets-add-cancel-container">
-      <button @click="openAddPets" v-if="this.$store.state.showManagePetsOption && !this.addPetIsOpen" v-show="fakeUser.username === this.$store.state.user.username " class="pets-blue-btns">
+      <button @click="openAddPets" v-if="this.$store.state.showManagePetsOption && !this.addPetIsOpen" v-show="compUser.username === this.$store.state.user.username " class="pets-blue-btns">
       Add Pet
       </button>
-      <button @click="toggleManagePets" v-if="this.$store.state.showManagePetsOption" v-show="fakeUser.username === this.$store.state.user.username " class="pets-blue-btns">
+      <button @click="toggleManagePets" v-if="this.$store.state.showManagePetsOption" v-show="compUser.username === this.$store.state.user.username " class="pets-blue-btns">
       Cancel
       </button>
     </div>
@@ -25,22 +25,30 @@
 import PetCard from "@/components/profile/PetCard.vue";
 import petService from '@/services/PetService.js';
 import AddPet from '../AddPet.vue';
+import userService from '@/services/UserService.js'
 
 export default {
   components: { PetCard, AddPet },
   name: "my-pets",
   data() {
     return {
-      userPets: [],
-      addPetIsOpen: false
+      addPetIsOpen: false,
+      userList: [],
+      userPets: []
     }
   },
   computed: {
-    fakeUser() {
-      return this.$store.state.fakeUsers.find(
-        (p) => p.username == this.$route.params.username
-      );
+    compUser() {
+      return this.userList.find(
+        (p) => p.username.toLowerCase() == this.$route.params.username.toLowerCase());
     },
+    // userPets() {
+    //   let pets = [];
+    //   petService.getUserPets(this.compUser.username).then(r => {
+    //     pets = r.data;
+    //   });
+    //   return pets;
+    // }
   },
   methods: {
     toggleManagePets() {
@@ -48,23 +56,22 @@ export default {
         this.addPetIsOpen = !this.addPetIsOpen;
       }
       this.$store.commit('TOGGLE_MANAGE_PETS');
-      
-
     },
 
     openAddPets() {
       this.addPetIsOpen = true;
-
     },
 
     closeManageBtns() {
       this.addPetClicked = false;
-
     }
   },
   created() {
-    petService.getUserPets(this.fakeUser.username).then(response => {
+    petService.getUserPets( this.$route.params.username).then(response => {
       this.userPets = response.data;
+    });
+    userService.getAllUsers().then(r => {
+      this.userList = r.data;
     })
   }
 };

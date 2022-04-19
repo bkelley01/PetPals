@@ -1,9 +1,8 @@
 <template>
   <div class="profile">
-    <h1>{{fakeUser.username}}</h1>
-    <p v-show="!fakeUser">User Not Found</p>
-    <div v-if="fakeUser" class="cards-container">
-      <!-- <username-card class="profile-cards" /> -->
+    <h1>{{compUser.username}}</h1>
+    <p v-show="!compUser">User Not Found</p>
+    <div v-if="compUser" class="cards-container">
       <my-pets class="profile-cards" />
       <my-playdates class="profile-cards" />
     </div>
@@ -11,7 +10,6 @@
 </template>
 
 <script>
-// import UsernameCard from '@/components/profile/UsernameCard.vue';
 import MyPets from '@/components/profile/MyPets.vue';
 import MyPlaydates from '@/components/profile/MyPlaydates.vue';
 import userService from '@/services/UserService.js';
@@ -19,36 +17,25 @@ import userService from '@/services/UserService.js';
 export default {
   name: "profile",
   components: {
-    // UsernameCard,
     MyPets,
     MyPlaydates
   },
   data() {
     return {
       userList: [],
-      fakeUser: {}
     }
   },
   computed: {
-    // fakeUser() {
-    //   if (this.userList) {
-    //     return this.userList.find(
-    //       (p) => p.username == this.$route.params.username
-    //     );
-    //   } else {
-    //     return false;
-    //   }
-    // }
+    compUser() {
+        return this.userList
+        .find( p => p.username.toLowerCase() == this.$route.params.username.toLowerCase());
+      },
   },
   created() {
     this.$store.state.showManagePetsOption = false;
     userService.getAllUsers().then(r => {
       this.userList = r.data;
-    }).then(() => {
-      this.fakeUser = this.userList.find(p => {
-      p.username === this.$route.params.username;
-    })});
-
+    })
   },
   methods: {
     printUserList() {
