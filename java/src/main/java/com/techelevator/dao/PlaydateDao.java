@@ -19,7 +19,7 @@ public interface PlaydateDao {
 
     List<Playdate> getPlaydatesBetweenTimes(LocalDate date, LocalTime startTime, LocalTime endTime);
 
-    List<Playdate> getPlaydateByPetId(long petId);
+    List<Playdate> getPlaydatesByPetId(long petId);
 
     List<String> getAttendeesByPlaydateId(long playdateId);
 

@@ -66,8 +66,23 @@ public class JdbcPlaydateDao implements PlaydateDao{
     }
 
     @Override
-    public List<Playdate> getPlaydateByPetId(long petId) {
-        return null;
+    public List<Playdate> getPlaydatesByPetId(long petId) {
+        String sql = "SELECT playdates.playdate_id, playdate_title, playdate_location, playdate_date, start_time, end_time, username, playdates.active " +
+                     "FROM pet_playdate " +
+                        "JOIN pets ON pets.pet_id = pet_playdate.pet_id " +
+                        "JOIN playdates ON playdates.playdate_id = pet_playdate.playdate_id " +
+                        "JOIN users ON users.user_id = pets.user_id " +
+                     "WHERE pets.pet_id = ?;";
+
+        SqlRowSet rs = this.jdbcTemplate.queryForRowSet(sql, petId);
+
+        List<Playdate> playdates = new ArrayList<>();
+        while (rs.next()) {
+            Playdate playdate = mapRowToPlaydate(rs);
+            playdates.add(playdate);
+        }
+
+        return playdates;
     }
 
     @Override

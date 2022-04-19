@@ -98,6 +98,21 @@ public class JdbcUserDao implements UserDao {
         return userCreated;
     }
 
+    public String getUsernameByPetId(long petId) {
+        String result = "";
+        String sql = "SELECT users.username " +
+                     "FROM users " +
+                        "JOIN pets ON pets.user_id = users.user_id " +
+                     "WHERE pet_id = ? AND active = true;";
+
+        SqlRowSet rs = this.jdbcTemplate.queryForRowSet(sql, petId);
+        if(rs.next()){
+            result = rs.getString("username");
+        }
+
+        return result;
+    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getLong("user_id"));

@@ -20,6 +20,10 @@ export default {
 
     addPetToPlaydate(petId, playdateId) {
       return axios.post(`/pet-playdate/${petId}/${playdateId}`);
+    },
+
+    getPlaydatesByPetId(petId) {
+      return axios.get(`/pet-playdate/${petId}`);
     }
 
 }

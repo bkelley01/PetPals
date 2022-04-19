@@ -38,4 +38,9 @@ public class PlaydateController {
         return this.playdateDao.getAllPlaydates();
     }
 
+    @GetMapping (path = "/pet-playdate/{petId}")
+    public List<Playdate> getPlaydatesByPetId(@PathVariable long petId) {
+        return this.playdateDao.getPlaydatesByPetId(petId);
+    }
+
 }

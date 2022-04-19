@@ -4,6 +4,7 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.model.User;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,5 +24,7 @@ public class UserController<Users> {
         return this.userDao.findAll();
     }
 
+    @GetMapping(path = "/users/{petId}")
+    public String getUsernameByPetId(@PathVariable long petId) {return this.userDao.getUsernameByPetId(petId); }
 
 }

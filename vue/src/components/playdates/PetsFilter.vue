@@ -27,16 +27,16 @@
 
         </form>
 
-        <pet-card v-for="pet in filteredPets" v-bind:key="pet.petId" v-bind:pet="pet"/>
+        <mini-pet-card v-for="pet in filteredPets" v-bind:key="pet.petId" v-bind:pet="pet"/>
     </div>
 </template>
 
 <script>
-import PetCard from '../profile/PetCard.vue';
+import MiniPetCard from '@/components/playdates/MiniPetCard.vue';
 import petService from '@/services/PetService.js';
 
 export default {
-  components: { PetCard },
+  components: { MiniPetCard },
     data() {
         return {
             userChoices: {
