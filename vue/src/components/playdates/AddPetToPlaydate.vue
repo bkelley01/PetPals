@@ -1,11 +1,14 @@
 <template>
     <div>
-        <button v-on:click="flipShowJoinPlaydate()" v-if="!showJoinPlaydate">Join Playdate</button>
-        <button v-on:click="flipShowJoinPlaydate()" v-if="showJoinPlaydate">Cancel</button>
-        <select v-if="showJoinPlaydate" v-model.number="petSelected" id="select-pet-list" class="pet-list">
-            <option v-for="pet in userPets" v-bind:key="pet.petId" :value="pet.petId">{{ pet.petName }}</option> <!-- :value="Object.values(pet)[0]" -->
-        </select>
-        <button v-on:click="addPetToPlaydate()" v-if="showJoinPlaydate">Add</button>
+        <div id="controls-div">
+            <button id="join-btn" v-on:click="flipShowJoinPlaydate()" v-if="!showJoinPlaydate">Join Playdate</button>
+            <select v-if="showJoinPlaydate" v-model.number="petSelected" id="select-pet-list" class="pet-list">
+                <option v-for="pet in userPets" v-bind:key="pet.petId" :value="pet.petId">{{ pet.petName }}</option> <!-- :value="Object.values(pet)[0]" -->
+            </select>        
+            <button id="add-btn" v-on:click="addPetToPlaydate()" v-if="showJoinPlaydate"><i class="fas fa-check"></i></button>
+            <button id="cancel-btn" v-on:click="flipShowJoinPlaydate()" v-if="showJoinPlaydate"><i class="fas fa-times"></i></button>
+        </div>
+        
     </div>
 </template>
 
@@ -57,5 +60,63 @@ export default {
 </script>
 
 <style>
+
+#controls-div {
+    display: flex;
+    flex-direction: row;
+
+}
+
+#join-btn {
+    display: block;
+    background-color: #3399FF;
+    width: 150px;
+    height: 26px;
+    margin: auto;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#cancel-btn {
+    display: block;
+    background-color: rgb(255, 74, 74);
+    width: 70px;
+    height: 20px;
+    margin: auto;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    height: 26px;
+    /* font-weight: bolder; */
+}
+
+#add-btn {
+    display: block;
+    background-color: #3399FF;
+    width: 70px;
+    height: 20px;
+    margin: auto;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    height: 26px;
+    margin-left: 5px;
+}
+
+#select-pet-list {
+    width: 150px;
+    height: 26px;
+    border-radius: 5px;
+}
 
 </style>

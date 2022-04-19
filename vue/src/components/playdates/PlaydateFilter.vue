@@ -5,7 +5,7 @@
             <h2>Find Available Playdates</h2>
             <form id="playdate-filter-form">
                 
-                <label>Title</label>
+                <label class="search-label">Title</label>
                 <input
                 type="text"
                 id="playdate-title"
@@ -13,7 +13,7 @@
                 v-model="userChoices.playdateTitle"
                 required />
 
-                <label>Location</label>
+                <label class="search-label">Location</label>
                 <select 
                 class="playdate-search-field"
                 v-model="userChoices.playdateLocation">
@@ -27,7 +27,7 @@
                     </option>              
                 </select>
 
-                <label>Date</label>
+                <label class="search-label">Date</label>
                 <input
                 class="playdate-search-field"
                 type="date" v-model="userChoices.playdateDate" />     
@@ -106,10 +106,8 @@ export default {
 #find-playdates-filter-div {
   margin: auto;
   margin-bottom: 10px;
-  padding: 40px;
+  padding: 10px;
   border-radius: 15px;
-  width: 300px;
-  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -121,11 +119,21 @@ export default {
     height: 38px;
     border-radius: 5px;
     font-size: 20px;
+    border: 1px solid #d1d1d1;
 }
 
 #playdate-results-div {
-    width: 725px;
     margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#playdate-title {
+    padding: 0px;
+    padding-left: 10px;
+    border: 1px solid #d1d1d1;
+    height: 34px;
+    align-items: center;
 }
 
 </style>

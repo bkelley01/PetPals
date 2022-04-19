@@ -4,20 +4,22 @@
       <form id="schedule">
         <h2>Create Playdate</h2>
         <div id="title">
-          <label>What is the name of your event?</label>
+          <label>What is the name of your event?</label><br />
           <input
             type="text"
             id="title-text"
+            class="inputs"
+            placeholder="Enter Title"
             v-model="newPlaydate.playdateTitle"
           />
         </div>
-        <div id="date">
-          <label>What day are you scheduling for?</label>
-          <input type="date" id="date-input" v-model="newPlaydate.playdateDate" />
+        <div id="date-create">
+          <label>What day are you scheduling for?</label> <br />
+          <input type="date" id="date-input" class="inputs" v-model="newPlaydate.playdateDate" />
         </div>
         <div id="start">
-          <label>What time does this event start?</label>
-          <select id="start-time" v-model="newPlaydate.startTime">
+          <label>What time does this event start?</label><br />
+          <select id="start-time" class="inputs" v-model="newPlaydate.startTime"> <!-- TODO look into time input on thursday and add more times -->
             <option value="">Select Time</option>
             <option value="09:00:00">9:00 A.M.</option>
             <option value="09:30:00">9:30 A.M.</option>
@@ -35,8 +37,8 @@
           <br />
         </div>
         <div id="end">
-          <label>What time does this event end?</label>
-          <select id="end-time" v-model="newPlaydate.endTime">
+          <label>What time does this event end?</label><br />
+          <select id="end-time" class="inputs" v-model="newPlaydate.endTime">
             <option value="">Select Time</option>
             <option value="09:00:00">9:00 A.M.</option>
             <option value="09:30:00">9:30 A.M.</option>
@@ -54,12 +56,13 @@
           <br />
         </div>
         <div id="location">
-          <label>What location will this event take place at?</label>
+          <label>What location will this event take place at?</label><br />
           <select
             id="location-text"
+            class="inputs"
             v-model="newPlaydate.playdateLocation"
           >
-            <option value=""></option>
+            <option value="">Select Location</option>
             <option 
                 v-for="(location, index) in this.$store.state.locationOptions"
                 :key="index"
@@ -79,6 +82,7 @@
           </button>
         </div>
       </form>
+      <img id="ball" src="@/images/ball.gif" />
     </div>
   </div>
 </template>
@@ -121,7 +125,7 @@ export default {
     },
     handleErrorResponse(error) {
       if (error) {
-        alert("Unable to add pet. Please try again...");
+        alert("Please answer all fields");
       }
     },
   },
@@ -134,23 +138,32 @@ export default {
   background-color: white;
   margin: auto;
   text-align: center;
-  width: 40%;
-  padding: 20px;
+  width: 25%;
   padding-top: 20px;
   padding-bottom: 50px;
   border-radius: 20px;
+  font-size: 16px;
+
+}
+
+#title {
+  padding: 20px;
+}
+
+#date-create {
+  padding: 20px;
 }
 
 #start {
-  padding: 40px;
+  padding: 20px;
 }
 
 #end {
-  padding: 40px;
+  padding: 20px;
 }
 
 #location {
-  padding: 40px;
+  padding: 20px;
 }
 
 #start-time {
@@ -168,6 +181,11 @@ export default {
   width: 40%;
 }
 
+#title-text {
+  margin: 10px;
+  width: 40%;
+}
+
 #date-input {
   margin: 10px;
   width: 40%;
@@ -175,10 +193,40 @@ export default {
 
 #title-text {
   margin: 10px;
-  width: 40%;
+  width: 37%;
+
 }
 
-@media only screen and (max-width: 450px) {
+#ball {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 62.5%;
+  height: 300px;
+  width: auto;
+}
+
+#create-playdate-btn {
+  grid-area: sign-up-button;
+  margin-top: 5%;
+  background-color: #42B72A;
+  border-radius: 5px;
+  height: 40px;
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  color: white;
+  font-size: 16px;
+}
+
+.inputs {
+  border-radius: 5px;
+  border: 1px solid #d1d1d1;
+  height: 38px;
+}
+
+@media only screen and (max-width: 1200px ) {
   #start-time {
     margin: 10px;
     width: 80%;
@@ -195,15 +243,15 @@ export default {
   }
 
   #schedule {
-    display: block;
+    /* display: block;
     background-color: white;
     margin: auto;
-    text-align: center;
-    width: 80%;
-    padding: 20px;
+    text-align: center; */
+    width: 300px;
+    /* padding: 20px;
     padding-top: 20px;
     padding-bottom: 50px;
-    border-radius: 20px;
+    border-radius: 20px; */
   }
 }
 </style>

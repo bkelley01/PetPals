@@ -7,9 +7,9 @@
     </p>
     <p id="times-together">
       <i class="far fa-clock"></i>
-      <time id="start-time"> {{ formattedTime(playdate.startTime) }}</time>
+      <time id="start-time">{{formattedTime(playdate.startTime)}}</time>
       -
-      <time id="end-time">{{ formattedTime(playdate.endTime) }}</time>
+      <time id="end-time">{{formattedTime(playdate.endTime)}}</time>
     </p>
     <!-- <p>{{ playdate.date }}</p> -->
 

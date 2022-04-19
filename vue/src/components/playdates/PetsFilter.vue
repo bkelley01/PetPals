@@ -88,10 +88,11 @@ export default {
 #find-pets-filter-div {
   margin: auto;
   margin-bottom: 10px;
-  padding: 40px;
+  padding: 10px;
   border-radius: 15px;
-  width: 300px;
-  background-color: white;
+  /* width: 400px; */
+  /* background-color: white; */
+  /* align-items: center; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -100,14 +101,21 @@ export default {
 
 .pet-search-field {
     width: 250px;
-    height: 38px;
+    height: 34px;
     border-radius: 5px;
     font-size: 20px;
+    border: 1px solid #d1d1d1;
 }
 
 #pets-results-div {
-    width: 725px;
     margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search-label {
+    padding: 20px;
+    font-size: 20px;
 }
 
 </style>

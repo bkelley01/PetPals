@@ -1,9 +1,8 @@
 <template>
     <div id="mini-pet-card-container">
         <h3>{{pet.petName}}</h3>
-        <p>Owner: {{owner}} </p>
-        <p>Type: 
-            <span v-if="pet.petType === 'Dog'"><i class="fas fa-dog"></i>Dog</span>
+        <p><i class="far fa-user"></i> {{owner}} </p>
+        <p><i class="fas fa-paw"></i> <span v-if="pet.petType === 'Dog'">Dog</span>
             <span v-else><i class="fas fa-cat"></i>Cat</span>
         </p>
         <p @click="showPlaydates = !showPlaydates" id="pet-playdates-list">Playdates: {{playdates.length}}</p>
@@ -72,6 +71,7 @@ export default {
   flex-direction: column;
   align-items: center; */
   justify-content: space-around;
+  border: 1px solid #eecd22;
 }
 
 @media screen and (min-width: 768px) {

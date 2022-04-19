@@ -10,6 +10,7 @@ import CreatePlaydate from '@/components/profile/CreatePlaydate.vue'
 import store from '../store/index'
 import Playdates from '@/views/Playdates.vue'
 import Messages from '@/views/Messages.vue'
+import FindFriends from "@/views/FindFriends.vue"
 
 Vue.use(Router)
 
@@ -94,6 +95,14 @@ const router = new Router({
       path: "/messages",
       name: "messages",
       component: Messages,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/find-friends",
+      name: "find-friends",
+      component: FindFriends,
       meta: {
         requiresAuth: false
       }
