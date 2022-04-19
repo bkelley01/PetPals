@@ -8,14 +8,14 @@
     <div id="pet-mini-cards-div">
       <pet-mini-card />
     </div>
-      <div id="playdates-div">
-        <div id="playdates-section-div">
-          <playdates-section />
-        </div>
-        <div id="playdates-filter-div">
-          <pets-filter/>
-        </div>
+    <div id="playdates-div">
+      <div id="playdates-section-div">
+        <playdates-section />
       </div>
+      <div id="playdates-filter-div">
+        <pets-filter/>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -29,30 +29,47 @@ export default {
     PlaydatesSection,
     PetsFilter,
     PetMiniCard
+  },
+  data() {
+    return {
+      showPetsOrPlaydates: true
+    }
+  },
+  methods: {
+    flipShowPetsOrPlaydates() {
+      this.showPetsOrPlaydates = !this.showPetsOrPlaydates;
+    }
   }
 }
 
 </script>
 
 <style>
-#playdates-div {
-  display: grid;
-  grid-template-areas:
-    "create-playdate-div   create-playdate-div"
-    "playdates-section-div playdates-filter-div";
-}
-
-#playdates-section-div {
-  grid-area: playdates-section-div;
-}
-
-#playdates-filter-div {
-  grid-area: playdates-filter-div;
+#find-toggle-btn {
+    display: block;
+    background-color: #3399FF;
+    width: 250px;
+    height: 40px;
+    margin: auto;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 #create-playdate-div {
-  grid-area: create-playdate-div;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 40px;
+  border-radius: 15px;
+  width: 300px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 }
 
 #create-playdate {
