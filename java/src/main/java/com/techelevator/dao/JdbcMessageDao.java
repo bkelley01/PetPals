@@ -23,8 +23,9 @@ public class JdbcMessageDao implements MessageDao {
     public List<Message> getAllMessages() {
         List<Message> messages = new ArrayList<>();
         String sql = "SELECT message_id, user_id, posted_at, msg_text\n" +
-                "FROM messages\n" +
-                "WHERE msg_deleted = false;";
+                     "FROM messages\n" +
+                     "WHERE msg_deleted = false " +
+                     "ORDER BY posted_at DESC;";
         SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
         while (rs.next()) {
             messages.add(mapRowToMessage(rs));
