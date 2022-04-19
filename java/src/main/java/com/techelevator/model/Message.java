@@ -1,39 +1,40 @@
 package com.techelevator.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Message {
 
     // Instance variables
     private Long messageId;
-    private Long senderId;
-    private Long petId;
+    private String senderUsername;
+    private List<String> petNames;
     private String messageText;
     private LocalDateTime messageTimestamp;
 
     // getters & setters
-    public long getMessageId() {
+    public Long getMessageId() {
         return messageId;
     }
 
-    public void setMessageId(long messageId) {
+    public void setMessageId(Long messageId) {
         this.messageId = messageId;
     }
 
-    public long getSenderId() {
-        return senderId;
+    public String getSenderUsername() {
+        return senderUsername;
     }
 
-    public void setSenderId(long senderId) {
-        this.senderId = senderId;
+    public void setSenderUsername(String senderUsername) {
+        this.senderUsername = senderUsername;
     }
 
-    public long getPetId() {
-        return petId;
+    public List<String> getPetNames() {
+        return petNames;
     }
 
-    public void setPetId(long petId) {
-        this.petId = petId;
+    public void setPetNames(List<String> petNames) {
+        this.petNames = petNames;
     }
 
     public String getMessageText() {

@@ -9,6 +9,7 @@ import TempAddPet from '../views/TempAddPet.vue' // remove this later
 import CreatePlaydate from '@/components/profile/CreatePlaydate.vue'
 import store from '../store/index'
 import Playdates from '@/views/Playdates.vue'
+import Messages from '@/views/Messages.vue'
 
 Vue.use(Router)
 
@@ -88,7 +89,16 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/messages",
+      name: "messages",
+      component: Messages,
+      meta: {
+        requiresAuth: false
+      }
     }
+
   ]
 })
 
