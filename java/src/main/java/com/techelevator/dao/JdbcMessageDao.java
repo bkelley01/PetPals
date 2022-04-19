@@ -54,19 +54,20 @@ public class JdbcMessageDao implements MessageDao {
         message.setMessageText(rs.getString("msg_text"));
         message.setMessageTimestamp(rs.getTimestamp("posted_at").toLocalDateTime());
 
-        message.setPetIds(getPetIdsByMessageId(message.getMessageId()));
+        message.setPetNames(getPetNamesByMessageId(message.getMessageId()));
 
         return message;
     }
 
-    private List<Long> getPetIdsByMessageId(long messageId) {
-        List<Long> petIds = new ArrayList<>();
-        String sql = "SELECT pet_id\n" +
-                "FROM pet_message\n" +
-                "WHERE message_id = ?;";
+    private List<String> getPetNamesByMessageId(long messageId) {
+        List<String> petIds = new ArrayList<>();
+        String sql = "SELECT pet_name " +
+                     "FROM pets " +
+                        "JOIN pet_message ON pet_message.pet_id = pets.pet_id " +
+                     "WHERE message_id = ?;";
         SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, messageId);
         while (rs.next()) {
-            petIds.add(rs.getLong("pet_id"));
+            petIds.add(rs.getString("pet_name"));
         }
         return petIds;
     }

@@ -8,7 +8,7 @@ public class Message {
     // Instance variables
     private Long messageId;
     private String senderUsername;
-    private List<Long> petIds;
+    private List<String> petNames;
     private String messageText;
     private LocalDateTime messageTimestamp;
 
@@ -29,12 +29,12 @@ public class Message {
         this.senderUsername = senderUsername;
     }
 
-    public List<Long> getPetIds() {
-        return petIds;
+    public List<String> getPetNames() {
+        return petNames;
     }
 
-    public void setPetIds(List<Long> petIds) {
-        this.petIds = petIds;
+    public void setPetNames(List<String> petNames) {
+        this.petNames = petNames;
     }
 
     public String getMessageText() {
