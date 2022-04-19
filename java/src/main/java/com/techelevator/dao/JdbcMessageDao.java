@@ -36,7 +36,7 @@ public class JdbcMessageDao implements MessageDao {
     @Override
     public boolean createMessage(Message newMessage) {
         String sql = "INSERT INTO messages (user_id, msg_text, msg_deleted)\n" +
-                "VALUES (1, 'Test message posted', false)\n" +
+                "VALUES (?, ?, false)\n" +
                 "RETURNING message_id;";
         Long userId = userDao.findIdByUsername(newMessage.getSenderUsername());
         Long messageId = jdbcTemplate.queryForObject(sql, Long.class, userId, newMessage.getMessageText());
