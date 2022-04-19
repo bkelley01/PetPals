@@ -7,7 +7,7 @@ public class Message {
 
     // Instance variables
     private Long messageId;
-    private Long senderId;
+    private String senderUsername;
     private List<Long> petIds;
     private String messageText;
     private LocalDateTime messageTimestamp;
@@ -21,12 +21,12 @@ public class Message {
         this.messageId = messageId;
     }
 
-    public Long getSenderId() {
-        return senderId;
+    public String getSenderUsername() {
+        return senderUsername;
     }
 
-    public void setSenderId(Long senderId) {
-        this.senderId = senderId;
+    public void setSenderUsername(String senderUsername) {
+        this.senderUsername = senderUsername;
     }
 
     public List<Long> getPetIds() {

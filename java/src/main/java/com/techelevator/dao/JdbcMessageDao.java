@@ -11,10 +11,12 @@ import java.util.List;
 @Component
 public class JdbcMessageDao implements MessageDao {
     private JdbcTemplate jdbcTemplate;
+    private UserDao userDao;
 
     //Constructor
-    public JdbcMessageDao(JdbcTemplate jdbcTemplate) {
+    public JdbcMessageDao(JdbcTemplate jdbcTemplate, UserDao userDao) {
         this.jdbcTemplate = jdbcTemplate;
+        this.userDao = userDao;
     }
 
     @Override
@@ -48,7 +50,7 @@ public class JdbcMessageDao implements MessageDao {
     private Message mapRowToMessage(SqlRowSet rs) {
         Message message = new Message();
         message.setMessageId(rs.getLong("message_id"));
-        message.setSenderId(rs.getLong("user_id"));
+        message.setSenderUsername(userDao.getUserById(rs.getLong("user_id")).getUsername());
         message.setMessageText(rs.getString("msg_text"));
         message.setMessageTimestamp(rs.getTimestamp("posted_at").toLocalDateTime());
 
