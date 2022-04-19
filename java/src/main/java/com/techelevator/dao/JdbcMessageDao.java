@@ -20,7 +20,7 @@ public class JdbcMessageDao implements MessageDao {
     @Override
     public List<Message> getAllMessages() {
         List<Message> messages = new ArrayList<>();
-        String sql = "SELECT message_id, user_id, pet_id, posted_at, msg_text\n" +
+        String sql = "SELECT message_id, user_id, posted_at, msg_text\n" +
                 "FROM messages\n" +
                 "WHERE msg_deleted = false;";
         SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
@@ -49,10 +49,23 @@ public class JdbcMessageDao implements MessageDao {
         Message message = new Message();
         message.setMessageId(rs.getLong("message_id"));
         message.setSenderId(rs.getLong("user_id"));
-        message.setPetId(rs.getLong("pet_id"));
         message.setMessageText(rs.getString("msg_text"));
         message.setMessageTimestamp(rs.getTimestamp("posted_at").toLocalDateTime());
 
+        message.setPetIds(getPetIdsByMessageId(message.getMessageId()));
+
         return message;
+    }
+
+    private List<Long> getPetIdsByMessageId(long messageId) {
+        List<Long> petIds = new ArrayList<>();
+        String sql = "SELECT pet_id\n" +
+                "FROM pet_message\n" +
+                "WHERE message_id = ?;";
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, messageId);
+        while (rs.next()) {
+            petIds.add(rs.getLong("pet_id"));
+        }
+        return petIds;
     }
 }
