@@ -36,12 +36,12 @@ public class JdbcMessageDao implements MessageDao {
     }
 
     @Override
-    public boolean deleteMessage() {
+    public boolean deleteMessage(long messageId) {
         return false;
     }
 
     @Override
-    public boolean updateMessage(Message updatedMessage) {
+    public boolean updateMessage(Message updatedMessage, long messageId) {
         return false;
     }
 

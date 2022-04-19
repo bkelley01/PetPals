@@ -8,7 +8,7 @@ public interface MessageDao {
 
     boolean createMessage(Message newMessage);
 
-    boolean deleteMessage();
+    boolean deleteMessage(long messageId);
 
-    boolean updateMessage(Message updatedMessage);
+    boolean updateMessage(Message updatedMessage, long messageId);
 }

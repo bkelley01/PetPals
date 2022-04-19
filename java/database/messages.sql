@@ -10,7 +10,7 @@ CREATE SEQUENCE seq_message_id
 	CACHE 1;
   
 CREATE TABLE messages(
-	message_id int DEFAULT nextval('seq_pet_id'::regclass) NOT NULL,
+	message_id int DEFAULT nextval('seq_message_id'::regclass) NOT NULL,
 	user_id int NOT NULL CONSTRAINT fk_user_id REFERENCES users(user_id),
 	pet_id int NULL CONSTRAINT fk_pet_id REFERENCES pets(pet_id),
 	posted_at timestamp DEFAULT CURRENT_TIMESTAMP,
