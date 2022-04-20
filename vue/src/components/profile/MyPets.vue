@@ -84,7 +84,7 @@ export default {
 
 .container {
   width: 100%;
-  background: white;
+  background: #f0f2f5;
   /* border: 1px solid #eecd22ff; */
   margin-top: 15px;
   padding-bottom: 20px;

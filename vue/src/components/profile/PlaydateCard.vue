@@ -79,7 +79,7 @@ export default {
   margin: auto;
   margin-bottom: 10px;
   padding: 10px;
-  border: 1px solid #eecd22;
+  border: 1px solid #d1d1d1;
   border-radius: 15px;
   width: 80%;
   background-color: white;

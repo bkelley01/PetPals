@@ -50,6 +50,7 @@ html {
 
 .header {
   background-color: #f0f2f5;
+  margin-bottom: 30px;
   /* height: 200px; */
 }
 
