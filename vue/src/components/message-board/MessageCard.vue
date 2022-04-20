@@ -88,11 +88,12 @@ export default {
   padding: 10px;
   border-radius: 15px;
   width: 300px;
-  border: 2px solid #eecd22ff;
+  border: 1px solid #d1d1d1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  background-color: white;
 }
 
   #pets-tagged{

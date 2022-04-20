@@ -58,6 +58,7 @@ export default {
 
 #pet-playdates-list {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 #mini-pet-card-container {

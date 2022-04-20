@@ -94,6 +94,7 @@ ul {
 
 #menu-btn {
   margin-right: 35px;
+  cursor: pointer;
 }
 
 #banner {
