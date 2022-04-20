@@ -83,9 +83,9 @@ export default {
   border-radius: 15px;
   width: 80%;
   background-color: white;
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  align-items: center; */
+  align-items: center;
   justify-content: space-around;
 }
 

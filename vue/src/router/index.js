@@ -88,7 +88,7 @@ const router = new Router({
       name: "playdates",
       component: Playdates,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -104,7 +104,7 @@ const router = new Router({
       name: "find-friends",
       component: FindFriends,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     }
 

@@ -21,6 +21,8 @@ export default {
       showMenu: false
     }
   },
-  
+  created() {
+    this.$store.commit('UPDATE_USER_LIST');
+  }
 }
 </script>

@@ -33,7 +33,6 @@
 
 <script>
 import petService from '@/services/PetService.js';
-import userService from '@/services/UserService.js';
 
 export default {
   name: "pet-card",
@@ -72,9 +71,7 @@ export default {
     petService.getUserPets(this.$route.params.username).then(response => {
       this.userPet.petId = response.data.petId;
     });
-    userService.getAllUsers().then(r => {
-      this.userList = r.data;
-    })
+    this.userList = this.$store.state.userList;
   },
   
 };

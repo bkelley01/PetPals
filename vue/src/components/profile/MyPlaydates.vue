@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2>My Playdates</h2>
-    <button v-show="compUser.username === this.$store.state.user.username" id="manage-playdates-btn">
+    <button v-show="compUser.username === this.$store.state.user.username" v-on:click="goToPlaydates()" id="manage-playdates-btn">
       Manage Playdates
     </button>
     <div id="playdate-card-container">
@@ -14,7 +14,6 @@
 <script>
 import PlaydateCard from '@/components/profile/PlaydateCard.vue';
 import playdateService from '@/services/PlaydateService.js';
-import userService from '@/services/UserService.js'
 
 export default {
     name: "my-playdates",
@@ -24,6 +23,11 @@ export default {
         userPlaydates: [],
         showManagePetsOptions: false,
         userList: []
+      }
+    },
+    methods: {
+      goToPlaydates() {
+        this.$router.push('/playdates');
       }
     },
     
@@ -37,9 +41,7 @@ export default {
       playdateService.getUserPlaydates(this.$route.params.username).then(response => {
         this.userPlaydates = response.data;
       });
-      userService.getAllUsers().then(r => {
-        this.userList = r.data;
-      });
+      this.userList = this.$store.state.userList;
     }
 }
 </script>

@@ -55,7 +55,6 @@
 
 <script>
 import authService from "../services/AuthService";
-import userService from '@/services/UserService.js';
 import petService from '@/services/PetService.js';
 
 export default {
@@ -79,9 +78,6 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            // let newUser = this.userList.find(u => {
-            //   return u.username === this.user.username;
-            // });
             
             petService.getUserPets(this.user.username).then((response) => {
               if (response.data.length === 0) {
@@ -108,9 +104,7 @@ export default {
     },
   },
   created() {
-    userService.getAllUsers().then(r => {
-      this.userList = r.data;
-    });
+    this.$store.commit('UPDATE_USER_LIST');
   }
 };
 </script>

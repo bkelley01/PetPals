@@ -6,7 +6,7 @@
                 <option v-for="pet in userPets" v-bind:key="pet.petId" :value="pet.petId">{{ pet.petName }}</option> <!-- :value="Object.values(pet)[0]" -->
             </select>        
             <button id="add-btn" v-on:click="addPetToPlaydate()" v-if="showJoinPlaydate"><i class="fas fa-check"></i></button>
-            <button id="cancel-btn" v-on:click="flipShowJoinPlaydate()" v-if="showJoinPlaydate"><i class="fas fa-times"></i></button>
+            <button id="cancel-btn" v-on:click="flipShowJoinPlaydate()" v-if="showJoinPlaydate"><i class="fas fa-ban"></i></button>
         </div>
         
     </div>

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import userService from '@/services/UserService.js';
 
 Vue.use(Vuex)
 
@@ -38,84 +39,7 @@ export default new Vuex.Store({
       {locationName: 'Fido Field', neighborhood: 'Downtown'},
       {locationName: 'Eden Park', neighborhood: 'Mt. Adams'},
     ],
-    fakeUsers: [
-      {
-        userId: 1,
-        username: "user",
-        pets: [ 
-          {
-          petId: 1,
-          name: "Spot",
-          personalities: ["Energetic", "Happy"],
-          type: "Dog"
-          }
-        ],
-        playdates: [1, 2]
-
-      },
-      {
-        userId: 2,
-        username: "michael",
-        pets: [
-          {
-            petId: 2,
-            name: "Sparky",
-            personalities: ["Lazy", "Hungry"],
-            type: "Dog"
-          },
-          {
-            petId: 3,
-            name: "Marley",
-            personalities: ["Fast", "Happy"],
-            type: "Dog"
-          },
-        ],
-        playdates: [1, 2]
-
-      },
-      {
-        userId: 3,
-        username: "steve",
-        pets: [],
-        playdates: []
-      }
-    ],
-    messages: [
-      { 
-        messageId: 1,
-        sender: "user",
-        message: "Spot had such a fun time hanging out with Sparky and Marley! Two top class puppers!"
-      },
-      {
-        messageId: 2,
-        sender: "michael",
-        message: "Hosting a doggie hangout at Summit Park on May 22nd. Open to all dogs who want to come!"
-      }
-    ],
-    playdates: [
-      {
-        playdateId: 1,
-        title: "Spot's Birthday Party",
-        location: "Winton Woods",
-        date: "2022-04-22",
-        startTime: "2:00:00 PM",
-        endTime: "4:00:00 PM",
-        host: "jerry",
-        numPetsAttending: 3,
-        petsAttending: ["Spot", "Sparky", "Marley"]
-      },
-      {
-        playdateId: 2,
-        title: "Spring into Summit",
-        location: "Summit Park",
-        date: "2022-05-22",
-        startTime: "1:00:00 PM",
-        endTime: "3:00:00 PM",
-        host: "michael",
-        numPetsAttending: 4,
-        petsAttending: ["Spot", "Sparky", "Marley", "Air Bud"]
-      },
-    ]
+    userList: []
   },
   mutations: {
     SET_SHOW_MENU(state) { // mutation to adjust showMenu variable above
@@ -143,6 +67,11 @@ export default new Vuex.Store({
 
     FILTER_PLAYDATES(state, filterObject) {
       state.playdateFilter = filterObject;
+    },
+    UPDATE_USER_LIST(state) {
+      userService.getAllUsers().then(response => {
+        state.userList = response.data;
+      });
     }
   }
 })

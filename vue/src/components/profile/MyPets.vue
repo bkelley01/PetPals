@@ -3,14 +3,14 @@
     <div class="title">
       <h2>{{ compUser.username }}'s Pets</h2>
     </div>
-    <button @click="toggleManagePets" v-if="!this.$store.state.showManagePetsOption" v-show="compUser.username === this.$store.state.user.username " class="pets-blue-btns">
+    <button @click="toggleManagePets" v-if="!this.$store.state.showManagePetsOption && compUser.username === this.$store.state.user.username" class="pets-blue-btns">
       Manage Pets
     </button>
     <div id="pets-add-cancel-container">
-      <button @click="openAddPets" v-if="this.$store.state.showManagePetsOption && !this.addPetIsOpen" v-show="compUser.username === this.$store.state.user.username " class="pets-blue-btns">
+      <button @click="openAddPets" v-if="this.$store.state.showManagePetsOption && !this.addPetIsOpen && compUser.username === this.$store.state.user.username" class="pets-blue-btns">
       Add Pet
       </button>
-      <button @click="toggleManagePets" v-if="this.$store.state.showManagePetsOption" v-show="compUser.username === this.$store.state.user.username " class="pets-blue-btns">
+      <button @click="toggleManagePets" v-if="this.$store.state.showManagePetsOption && compUser.username === this.$store.state.user.username" class="pets-blue-btns">
       Cancel
       </button>
     </div>
@@ -25,7 +25,6 @@
 import PetCard from "@/components/profile/PetCard.vue";
 import petService from '@/services/PetService.js';
 import AddPet from '../AddPet.vue';
-import userService from '@/services/UserService.js'
 
 export default {
   components: { PetCard, AddPet },
@@ -39,16 +38,13 @@ export default {
   },
   computed: {
     compUser() {
-      return this.userList.find(
+      let user = this.userList.find(
         (p) => p.username.toLowerCase() == this.$route.params.username.toLowerCase());
-    },
-    // userPets() {
-    //   let pets = [];
-    //   petService.getUserPets(this.compUser.username).then(r => {
-    //     pets = r.data;
-    //   });
-    //   return pets;
-    // }
+        if (user === null) {
+          user = {username: ""};
+        }
+        return user;
+    }
   },
   methods: {
     toggleManagePets() {
@@ -70,9 +66,7 @@ export default {
     petService.getUserPets( this.$route.params.username).then(response => {
       this.userPets = response.data;
     });
-    userService.getAllUsers().then(r => {
-      this.userList = r.data;
-    })
+    this.userList = this.$store.state.userList;
   }
 };
 </script>

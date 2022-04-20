@@ -12,7 +12,6 @@
 <script>
 import MyPets from '@/components/profile/MyPets.vue';
 import MyPlaydates from '@/components/profile/MyPlaydates.vue';
-import userService from '@/services/UserService.js';
 
 export default {
   name: "profile",
@@ -27,15 +26,15 @@ export default {
   },
   computed: {
     compUser() {
-        return this.userList
-        .find( p => p.username.toLowerCase() == this.$route.params.username.toLowerCase());
-      },
+      return this.userList.find( p => p.username.toLowerCase() == this.$route.params.username.toLowerCase());
+    },
+
   },
   created() {
     this.$store.state.showManagePetsOption = false;
-    userService.getAllUsers().then(r => {
-      this.userList = r.data;
-    })
+    this.userList = this.$store.state.userList;
+    console.log(this.userList);
+    console.log(this.$store.state.userList);
   },
   methods: {
     printUserList() {
