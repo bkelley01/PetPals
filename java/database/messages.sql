@@ -20,9 +20,9 @@ CREATE TABLE messages(
 );
 
 INSERT INTO messages (user_id, msg_text)
-VALUES (1, 'The default user left a test message');
+VALUES (6, 'The weather is so nice today, I''m taking Spot to Fido Park around 3:30, hope to see some of you there!');
 
 INSERT INTO messages (user_id, msg_text)
-VALUES (3, 'Michael left a generic test message');
+VALUES (4, 'Charlie can''t stay still for more than 20 minutes, off to Winton Woods we go!');
 
 COMMIT TRANSACTION;
