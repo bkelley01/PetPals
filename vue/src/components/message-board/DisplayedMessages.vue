@@ -22,8 +22,8 @@
           v-model="newMessage.messageText"
         >
         </textarea>
-        <p id="tag-pets">Want to tag your pets?</p>
-        <div id="pets-to-tag">
+        <p id="tag-pets" @click="showPetList = !showPetList">Want to tag your pets?</p>
+        <div id="pets-to-tag" v-if="showPetList === true">
           <span v-for="(pet, index) in userPets" :key="pet.petId">
             <input
               type="checkbox"
@@ -81,6 +81,7 @@ export default {
       petsTagged: [],
       showFilters: false,
       showCreatePlaydate: false,
+      showPetList: false
     };
   },
 

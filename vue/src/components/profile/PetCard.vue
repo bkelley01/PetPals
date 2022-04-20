@@ -94,12 +94,12 @@ export default {
 
 #first-letter {
   /* border: 3px solid #40a8a0ff; */
-  line-height: 30px;
+  line-height: 40px;
   padding: 20px;
   border-radius: 50%;
   font-size: 2em;
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
  color: white;
  background-color: #40a8a0;
 }

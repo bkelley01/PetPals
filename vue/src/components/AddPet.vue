@@ -142,7 +142,8 @@ label.add-pet-form-label {
 
 .input-height {
   height: 30px;
-  padding: 1px 0px 1px 0px;
+  padding: 1px 5px 1px 5px;
+  border-radius: 5px;
 }
 
 #add-pet-btn {
