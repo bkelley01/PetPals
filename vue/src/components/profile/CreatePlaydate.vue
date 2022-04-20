@@ -118,10 +118,10 @@ export default {
               startTime: "",
               endTime: "",
             };
-            // this.$router.push('/playdates');
           }
         })
         .catch((e) => this.handleErrorResponse(e));
+        this.$router.push('/playdates');
     },
     handleErrorResponse(error) {
       if (error) {
@@ -218,6 +218,7 @@ export default {
   border: none;
   color: white;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .inputs {

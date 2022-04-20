@@ -14,6 +14,7 @@
 <script>
 import PlaydateCard from '@/components/profile/PlaydateCard.vue';
 import playdateService from '@/services/PlaydateService.js';
+import userService from '@/services/UserService.js';
 
 export default {
     name: "my-playdates",
@@ -38,10 +39,12 @@ export default {
     },
 
     created() {
+      userService.getAllUsers().then(response => {
+        this.userList = response.data;
+      })
       playdateService.getUserPlaydates(this.$route.params.username).then(response => {
         this.userPlaydates = response.data;
       });
-      this.userList = this.$store.state.userList;
     }
 }
 </script>

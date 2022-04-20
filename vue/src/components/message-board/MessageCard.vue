@@ -26,15 +26,6 @@ export default {
     }
   },
 
-  methods: {
-    printTimeStamp() {
-      // let date = new Date(this.curMessage.messageTimestamp.substring(0,10));
-      // let time = this.curMessage.messageTimestamp.substring(11,19);
-      console.log("Date of message is " + this.curMessageDate);
-      console.log("Time of message is " + this.curMessageTime);
-    }
-  },
-
   computed: {
     formattedTime(time) {
       let timeAsDate = new Date(this.playdate.playdateDate + " " + time);

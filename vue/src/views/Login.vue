@@ -89,13 +89,6 @@ export default {
           }
         })
         .catch(e => this.handleErrorResponse(e));
-        // .catch(error => {
-        //   const response = error.response;
-
-        //   if (response.status === 401) {
-        //     this.invalidCredentials = true;
-        //   }
-        // });
     },
     handleErrorResponse(error) {
       if (error) {

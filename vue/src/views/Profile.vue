@@ -12,6 +12,7 @@
 <script>
 import MyPets from '@/components/profile/MyPets.vue';
 import MyPlaydates from '@/components/profile/MyPlaydates.vue';
+import userService from '@/services/UserService.js'
 
 export default {
   name: "profile",
@@ -31,16 +32,12 @@ export default {
 
   },
   created() {
+    userService.getAllUsers().then(response => {
+      this.userList = response.data;
+    })
     this.$store.state.showManagePetsOption = false;
     this.userList = this.$store.state.userList;
-    console.log(this.userList);
-    console.log(this.$store.state.userList);
   },
-  methods: {
-    printUserList() {
-      console.log(this.userList);
-    }
-  }
 }
 </script>
 

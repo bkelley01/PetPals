@@ -25,6 +25,7 @@
 import PetCard from "@/components/profile/PetCard.vue";
 import petService from '@/services/PetService.js';
 import AddPet from '../AddPet.vue';
+import userService from '@/services/UserService.js';
 
 export default {
   components: { PetCard, AddPet },
@@ -63,10 +64,12 @@ export default {
     }
   },
   created() {
+    userService.getAllUsers().then(response => {
+      this.userList = response.data;
+    })
     petService.getUserPets( this.$route.params.username).then(response => {
       this.userPets = response.data;
     });
-    this.userList = this.$store.state.userList;
   }
 };
 </script>
