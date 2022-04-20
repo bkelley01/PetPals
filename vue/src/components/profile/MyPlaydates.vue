@@ -50,7 +50,7 @@ export default {
 .container {
   width: 100%;
   /* border: 1px solid #eecd22ff; */
-  background: white;
+  background: #f0f2f5;
   margin-top: 15px;
 }
 

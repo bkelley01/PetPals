@@ -21,9 +21,10 @@ CREATE TABLE pets (
 	CONSTRAINT PK_pet_id PRIMARY KEY (pet_id)
 );
 
-INSERT INTO pets (pet_name, pet_type, user_id, active) VALUES ('Spot', 'Dog', 1, true);
-INSERT INTO pets (pet_name, pet_type, user_id, active) VALUES ('Charlie', 'Dog', 1, true);
-INSERT INTO pets (pet_name, pet_type, user_id, active) VALUES ('Sparky', 'Dog', 3, true);
-INSERT INTO pets (pet_name, pet_type, user_id, active) VALUES ('Marley', 'Dog', 3, true);
+INSERT INTO pets (pet_name, pet_type, user_id, active) VALUES ('Spot', 'Dog', 6, true);
+INSERT INTO pets (pet_name, pet_type, user_id, active) VALUES ('Charlie', 'Dog', 4, true);
+INSERT INTO pets (pet_name, pet_type, user_id, active) VALUES ('Sparky', 'Dog', 5, true);
+INSERT INTO pets (pet_name, pet_type, user_id, active) VALUES ('Marley', 'Dog', 5, true);
+INSERT INTO pets (pet_name, pet_type, user_id, active) VALUES ('Koda', 'Dog', 4, true);
 
 COMMIT TRANSACTION;

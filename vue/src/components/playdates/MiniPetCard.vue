@@ -58,6 +58,7 @@ export default {
 
 #pet-playdates-list {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 #mini-pet-card-container {
@@ -71,7 +72,7 @@ export default {
   flex-direction: column;
   align-items: center; */
   justify-content: space-around;
-  border: 1px solid #eecd22;
+  border: 1px solid #d1d1d1;
 }
 
 @media screen and (min-width: 768px) {

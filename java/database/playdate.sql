@@ -24,11 +24,11 @@ CREATE TABLE playdates (
 	CONSTRAINT PK_playdate_id PRIMARY KEY (playdate_id)
 );
 
-INSERT INTO playdates (playdate_title, playdate_location, playdate_date, start_time, end_time, host_id, active) VALUES ('Spot''s Birthday Party', 'Winton Woods', '2022-04-02', '2:00 PM', '4:00 PM', 1, true);
-INSERT INTO playdates (playdate_title, playdate_location, playdate_date, start_time, end_time, host_id, active) VALUES ('Sprint into Summit', 'Summit Park', '2022-04-22', '1:00 PM', '3:00 PM', 3, true);
-INSERT INTO playdates (playdate_title, playdate_location, playdate_date, start_time, end_time, host_id, active) VALUES ('Sprint into Fido', 'Fido Field', '2022-05-01', '1:00 PM', '3:00 PM', 2, true);
-INSERT INTO playdates (playdate_title, playdate_location, playdate_date, start_time, end_time, host_id, active) VALUES ('Test Playdate', 'Fido Field', '2022-05-02', '1:00 PM', '3:00 PM', 2, true);
-INSERT INTO playdates (playdate_title, playdate_location, playdate_date, start_time, end_time, host_id, active) VALUES ('Test Playdate After Party', 'Fido Field', '2022-05-01', '9:00 PM', '11:00 PM', 2, true);
+INSERT INTO playdates (playdate_title, playdate_location, playdate_date, start_time, end_time, host_id, active) VALUES ('Spot''s Birthday Party', 'Winton Woods', '2022-04-24', '2:00 PM', '4:00 PM', 6, true);
+INSERT INTO playdates (playdate_title, playdate_location, playdate_date, start_time, end_time, host_id, active) VALUES ('Sprint into Summit', 'Summit Park', '2022-04-22', '1:00 PM', '3:00 PM', 6, true);
+INSERT INTO playdates (playdate_title, playdate_location, playdate_date, start_time, end_time, host_id, active) VALUES ('Sprint into Fido', 'Fido Field', '2022-05-01', '1:00 PM', '3:00 PM', 6, true);
+INSERT INTO playdates (playdate_title, playdate_location, playdate_date, start_time, end_time, host_id, active) VALUES ('Meet on the Grid', 'Fido Field', '2022-05-13', '1:00 PM', '3:00 PM', 5, true);
+INSERT INTO playdates (playdate_title, playdate_location, playdate_date, start_time, end_time, host_id, active) VALUES ('Charlie''s Get Together', 'Winton Woods', '2022-05-07', '9:00 PM', '11:00 PM', 4, true);
 
 
 
