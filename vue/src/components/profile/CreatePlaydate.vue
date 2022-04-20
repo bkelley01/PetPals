@@ -76,7 +76,7 @@
           <button
             class="btn btn-lg btn-primary btn-block"
             id="create-playdate-btn"
-            @click="createPlaydate()"
+            @click.prevent="createPlaydate()"
           >
             Create Playdate
           </button>
@@ -118,10 +118,12 @@ export default {
               startTime: "",
               endTime: "",
             };
-          }
+            this.$router.push('/playdates');
+          } 
+          
         })
         .catch((e) => this.handleErrorResponse(e));
-        this.$router.push('/playdates');
+        
     },
     handleErrorResponse(error) {
       if (error) {

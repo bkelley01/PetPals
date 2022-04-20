@@ -2,7 +2,7 @@
   <div>
     <div id="create-playdate-div">
       <h2>Need Your Own Playdate?</h2>
-      <button id="create-playdate" @click="() => {this.$router.push('/playdates/create')}">Create Playdate</button>
+      <button id="create-playdate" @click="$router.push('/playdates/create')">Create Playdate</button>
     </div>
     <div>
       <h2>{{showPetsOrPlaydates ? "Looking For A Specific PetPal?" : "Looking To Join An Existing Playdate?"}}</h2>

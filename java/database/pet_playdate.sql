@@ -12,6 +12,11 @@ CREATE TABLE pet_playdate (
 
 INSERT INTO pet_playdate (pet_id, playdate_id, acceptance_status) VALUES (1, 1, 'Accepted');
 INSERT INTO pet_playdate (pet_id, playdate_id, acceptance_status) VALUES (1, 2, 'Accepted');
-INSERT INTO pet_playdate (pet_id, playdate_id, acceptance_status) VALUES (2, 5, 'Accepted');
+INSERT INTO pet_playdate (pet_id, playdate_id, acceptance_status) VALUES (2, 4, 'Accepted');
+INSERT INTO pet_playdate (pet_id, playdate_id, acceptance_status) VALUES (3, 3, 'Accepted');
+INSERT INTO pet_playdate (pet_id, playdate_id, acceptance_status) VALUES (4, 3, 'Accepted');
+INSERT INTO pet_playdate (pet_id, playdate_id, acceptance_status) VALUES (7, 1, 'Accepted');
+INSERT INTO pet_playdate (pet_id, playdate_id, acceptance_status) VALUES (6, 1, 'Accepted');
+
 
 COMMIT TRANSACTION;
