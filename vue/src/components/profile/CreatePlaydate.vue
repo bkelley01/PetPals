@@ -57,9 +57,7 @@
             <option value="18:30:00">6:30 P.M.</option>
             <option value="19:00:00">7:00 P.M.</option>
             <option value="19:30:00">7:30 P.M.</option>
-            <option value="20:00:00">8:00 P.M.</option>
-            <option value="20:30:00">8:30 P.M.</option>
-            <option value="21:00:00">9:00 P.M.</option>
+            <option value="20:00:00">8:00 P.M.</option> 
           </select>
           <br />
         </div>
