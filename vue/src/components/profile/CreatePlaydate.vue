@@ -15,12 +15,26 @@
         </div>
         <div id="date-create">
           <label>What day are you scheduling for?</label> <br />
-          <input type="date" id="date-input" class="inputs" v-model="newPlaydate.playdateDate" />
+          <input
+            type="date"
+            id="date-input"
+            class="inputs"
+            v-model="newPlaydate.playdateDate"
+          />
         </div>
         <div id="start">
           <label>What time does this event start?</label><br />
-          <select id="start-time" class="inputs" v-model="newPlaydate.startTime"> <!-- TODO look into time input on thursday and add more times -->
+          <select
+            id="start-time"
+            class="inputs"
+            v-model="newPlaydate.startTime"
+          >
+            <!-- TODO look into time input on thursday and add more times -->
             <option value="">Select Time</option>
+            <option value="07:00:00">7:00 A.M.</option>
+            <option value="07:30:00">7:30 A.M.</option>
+            <option value="08:00:00">8:00 A.M.</option>
+            <option value="08:30:00">8:30 A.M.</option>
             <option value="09:00:00">9:00 A.M.</option>
             <option value="09:30:00">9:30 A.M.</option>
             <option value="10:00:00">10:00 A.M.</option>
@@ -33,6 +47,19 @@
             <option value="13:30:00">1:30 P.M.</option>
             <option value="14:00:00">2:00 P.M.</option>
             <option value="14:30:00">2:30 P.M.</option>
+            <option value="15:00:00">3:00 P.M.</option>
+            <option value="15:30:00">3:30 P.M.</option>
+            <option value="16:00:00">4:00 P.M.</option>
+            <option value="16:30:00">4:30 P.M.</option>
+            <option value="17:00:00">5:00 P.M.</option>
+            <option value="17:30:00">5:30 P.M.</option>
+            <option value="18:00:00">6:00 P.M.</option>
+            <option value="18:30:00">6:30 P.M.</option>
+            <option value="19:00:00">7:00 P.M.</option>
+            <option value="19:30:00">7:30 P.M.</option>
+            <option value="20:00:00">8:00 P.M.</option>
+            <option value="20:30:00">8:30 P.M.</option>
+            <option value="21:00:00">9:00 P.M.</option>
           </select>
           <br />
         </div>
@@ -40,6 +67,9 @@
           <label>What time does this event end?</label><br />
           <select id="end-time" class="inputs" v-model="newPlaydate.endTime">
             <option value="">Select Time</option>
+            <option value="07:30:00">7:30 A.M.</option>
+            <option value="08:00:00">8:00 A.M.</option>
+            <option value="08:30:00">8:30 A.M.</option>
             <option value="09:00:00">9:00 A.M.</option>
             <option value="09:30:00">9:30 A.M.</option>
             <option value="10:00:00">10:00 A.M.</option>
@@ -52,6 +82,18 @@
             <option value="13:30:00">1:30 P.M.</option>
             <option value="14:00:00">2:00 P.M.</option>
             <option value="14:30:00">2:30 P.M.</option>
+            <option value="15:00:00">3:00 P.M.</option>
+            <option value="15:30:00">3:30 P.M.</option>
+            <option value="16:00:00">4:00 P.M.</option>
+            <option value="16:30:00">4:30 P.M.</option>
+            <option value="17:00:00">5:00 P.M.</option>
+            <option value="17:30:00">5:30 P.M.</option>
+            <option value="18:00:00">6:00 P.M.</option>
+            <option value="18:30:00">6:30 P.M.</option>
+            <option value="19:00:00">7:00 P.M.</option>
+            <option value="19:30:00">7:30 P.M.</option>
+            <option value="20:00:00">8:00 P.M.</option>
+            <option value="20:30:00">8:30 P.M.</option>
           </select>
           <br />
         </div>
@@ -63,13 +105,13 @@
             v-model="newPlaydate.playdateLocation"
           >
             <option value="">Select Location</option>
-            <option 
-                v-for="(location, index) in this.$store.state.locationOptions"
-                :key="index"
-                :value="location.locationName"
-            > 
-            {{location.locationName}} ({{location.neighborhood}})
-            </option>  
+            <option
+              v-for="(location, index) in this.$store.state.locationOptions"
+              :key="index"
+              :value="location.locationName"
+            >
+              {{ location.locationName }} ({{ location.neighborhood }})
+            </option>
           </select>
         </div>
         <div>
@@ -99,7 +141,7 @@ export default {
         playdateLocation: "",
         playdateDate: "",
         startTime: "",
-        endTime: ""
+        endTime: "",
       },
       registrationErrorMsg: "",
     };
@@ -121,7 +163,7 @@ export default {
           }
         })
         .catch((e) => this.handleErrorResponse(e));
-        this.$router.push('/playdates');
+      this.$router.push("/playdates");
     },
     handleErrorResponse(error) {
       if (error) {
@@ -143,7 +185,6 @@ export default {
   padding-bottom: 50px;
   border-radius: 20px;
   font-size: 16px;
-
 }
 
 #title {
@@ -194,7 +235,6 @@ export default {
 #title-text {
   margin: 10px;
   width: 37%;
-
 }
 
 #ball {
@@ -209,7 +249,7 @@ export default {
 #create-playdate-btn {
   grid-area: sign-up-button;
   margin-top: 5%;
-  background-color: #42B72A;
+  background-color: #42b72a;
   border-radius: 5px;
   height: 40px;
   width: 250px;
@@ -227,7 +267,7 @@ export default {
   height: 38px;
 }
 
-@media only screen and (max-width: 1200px ) {
+@media only screen and (max-width: 1200px) {
   #start-time {
     margin: 10px;
     width: 80%;
