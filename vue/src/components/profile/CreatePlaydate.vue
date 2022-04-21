@@ -146,6 +146,15 @@ export default {
       registrationErrorMsg: "",
     };
   },
+
+  //
+
+  /*
+  Things to validate for playdate:
+    - No fields are empty (can be done with required keyword w/in form)
+    - Date is today or in the future
+    - End time is after start time
+  */
   methods: {
     createPlaydate() {
       playdateService
@@ -166,6 +175,21 @@ export default {
         })
         .catch((e) => this.handleErrorResponse(e));
         
+    },
+
+    validatePlaydate(inputPlaydate) {
+      let hasAnyEmptyField = !inputPlaydate.playdateTitle || !inputPlaydate.playdateLocation || !inputPlaydate.playdateDate ||
+        !inputPlaydate.startTime || !inputPlaydate.endTime;
+
+
+
+      if (hasAnyEmptyField) {
+        return false;
+      }
+
+
+      return true;
+
     },
     handleErrorResponse(error) {
       if (error) {
