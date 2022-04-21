@@ -76,14 +76,6 @@ const router = new Router({
       }
     },
     {
-      path: "/playdates/create",
-      name: "create-playdate",
-      component: CreatePlaydate,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
       path: "/playdates",
       name: "playdates",
       component: Playdates,
@@ -91,6 +83,15 @@ const router = new Router({
         requiresAuth: true
       }
     },
+    {
+      path: "/playdates/create",
+      name: "create-playdate",
+      component: CreatePlaydate,
+      meta: {
+        requiresAuth: true
+      }
+    },
+
     {
       path: "/messages",
       name: "messages",

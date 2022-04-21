@@ -26,5 +26,7 @@ INSERT INTO pets (pet_name, pet_type, user_id, active) VALUES ('Charlie', 'Dog',
 INSERT INTO pets (pet_name, pet_type, user_id, active) VALUES ('Sparky', 'Dog', 5, true);
 INSERT INTO pets (pet_name, pet_type, user_id, active) VALUES ('Marley', 'Dog', 5, true);
 INSERT INTO pets (pet_name, pet_type, user_id, active) VALUES ('Koda', 'Dog', 4, true);
+INSERT INTO pets (pet_name, pet_type, user_id, active) VALUES ('Gouda', 'Cat', 7, true);
+INSERT INTO pets (pet_name, pet_type, user_id, active) VALUES ('PepperJack', 'Cat', 7, true);
 
 COMMIT TRANSACTION;
