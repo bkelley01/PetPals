@@ -98,19 +98,22 @@ export default {
   },
   methods: {
     registerPet() {
-      if (this.hasNameAndTypeFilled()) {
-        petService.addPet(this.newPet).then(r => {
-          if (r.status === 201) {
-            this.newPet = { petName: "", personalities: [], petType: "" };
-            if (this.$route.name === 'profile') {
-              this.$router.go();
-            } else {
-              this.$router.push(`/profile/${this.$store.state.user.username}`);
+
+      if(!this.hasNameAndTypeFilled()) {
+          alert('Unable to add pet. Please try again...');
+      } else if (!this.hasUniquePersonalities()) {
+        alert('Cannot enter duplicate personalities');
+      }   else {
+          petService.addPet(this.newPet).then(r => {
+            if (r.status === 201) {
+              this.newPet = { petName: "", personalities: [], petType: "" };
+              if (this.$route.name === 'profile') {
+                this.$router.go();
+              } else {
+                this.$router.push(`/profile/${this.$store.state.user.username}`);
+              }
             }
-          }
-        }).catch(e => this.handleErrorResponse(e));
-      } else {
-        alert('Pet name and type required.')
+          }).catch(e => this.handleErrorResponse(e));
       }
     },
     handleErrorResponse(error) {
@@ -125,10 +128,15 @@ export default {
       let personalityArr = this.newPet.personalities.filter(personality => {
         return personality;
       });
-      if (!personalityArr.length() || personalityArr.length()) {
+
+      if (personalityArr.length === 0 || personalityArr.length === 1) {
         return true; 
       } else if (personalityArr.length === 2) {
-        return true;
+        return personalityArr[0] !== personalityArr[1];
+      } else {
+        return personalityArr[0] !== personalityArr[1] &&
+               personalityArr[1] !== personalityArr[2] &&
+               personalityArr[0] !== personalityArr[2]
       }
     }
   },

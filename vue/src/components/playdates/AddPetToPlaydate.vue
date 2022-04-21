@@ -17,7 +17,7 @@ import petService from '@/services/PetService.js';
 
 
 export default {
-    props: [ "playdate" ],
+    props: [ "playdate", "attendees" ],
     data() {
         return {
             petSelected: -1,
@@ -36,16 +36,19 @@ export default {
         },
         addPetToPlaydate() {
             petService.addPetToPlaydate(this.petSelected, this.playdate.playdateId)
-            .then(e => {
-                if (e.status === 201) {
-                    let p = this.petName;
-                    let pd = this.playdate.playdateTitle;
-                    alert(`Successfully added ${p} to ${pd}`);
-                    this.$router.go();
+                .then(e => {
+                    if (e.status === 201) {
+                        let p = this.petName;
+                        let pd = this.playdate.playdateTitle;
+                        alert(`Successfully added ${p} to ${pd}`);
+                        this.$router.go();
+                    }
                 }
-            });
+            );
             this.flipShowJoinPlaydate();
-        },
+            }
+            
+        ,
     
     },
     computed: {
