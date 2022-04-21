@@ -38,7 +38,9 @@ export default {
     flipShowPetsOrPlaydates() {
       this.showPetsOrPlaydates = !this.showPetsOrPlaydates;
     }
-  }
+  },
+
+  
 }
 
 </script>

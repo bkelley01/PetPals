@@ -155,6 +155,9 @@ export default {
   */
   methods: {
     createPlaydate() {
+      
+      if (this.isValidPlaydate()) {
+
       playdateService
         .createPlaydate(this.newPlaydate)
         .then((r) => {
@@ -172,16 +175,19 @@ export default {
           
         })
         .catch((e) => this.handleErrorResponse(e));
+
+      } else {
+        alert('Please enter a valid playdate');
+      }
         
     },
 
-    validatePlaydate(inputPlaydate) {
-      let hasAnyEmptyField = !inputPlaydate.playdateTitle || !inputPlaydate.playdateLocation || !inputPlaydate.playdateDate ||
-        !inputPlaydate.startTime || !inputPlaydate.endTime;
-
-
-
-      if (hasAnyEmptyField) {
+    isValidPlaydate() {
+      if (this.hasAnyEmptyFields()) {
+        return false;
+      } else if (!this.isValidDate()) {
+        return false;
+      } else if (!this.endTimeAfterStartTime()) {
         return false;
       }
 
@@ -189,12 +195,43 @@ export default {
       return true;
 
     },
+
+    isValidDate() {
+      let unixDate = new Date(Date.now()) ;
+      let curDate = new Date(unixDate.toLocaleDateString());
+
+      let pdDate = new Date(this.newPlaydate.playdateDate);
+
+      pdDate.setDate(pdDate.getDate() + 1);
+      const options = {
+        weekday: "short",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      };
+      let formattedDate = pdDate.toLocaleDateString("en-US", options);
+      let pdDateString = new Date(formattedDate);
+      
+      return pdDateString.getTime() >= curDate.getTime();
+    },
+
+    hasAnyEmptyFields() {
+      return !this.newPlaydate.playdateTitle || !this.newPlaydate.playdateLocation || !this.newPlaydate.playdateDate ||
+        !this.newPlaydate.startTime || !this.newPlaydate.endTime;
+    },
+
+    endTimeAfterStartTime() {
+      return this.newPlaydate.endTime > this.newPlaydate.startTime;
+    },
+
     handleErrorResponse(error) {
       if (error) {
         alert("Please answer all fields");
       }
     },
   },
+
+  
 };
 </script>
 
@@ -233,32 +270,32 @@ export default {
 
 #start-time {
   margin: 10px;
-  width: 40%;
+  width: 70%;
 }
 
 #end-time {
   margin: 10px;
-  width: 40%;
+  width: 70%;
 }
 
 #location-text {
   margin: 10px;
-  width: 40%;
+  width: 70%;
 }
 
 #title-text {
   margin: 10px;
-  width: 40%;
+  width: 70%;
 }
 
 #date-input {
   margin: 10px;
-  width: 40%;
+  width: 70%;
 }
 
 #title-text {
   margin: 10px;
-  width: 37%;
+  width: 68%;
 }
 
 #ball {
