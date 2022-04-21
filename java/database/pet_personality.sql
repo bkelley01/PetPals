@@ -11,5 +11,7 @@ CREATE TABLE pet_personality (
 INSERT INTO pet_personality (pet_id, personality) VALUES (1, 'Friendly');
 INSERT INTO pet_personality (pet_id, personality) VALUES (1, 'Curious');
 INSERT INTO pet_personality (pet_id, personality) VALUES (1, 'Playful');
+INSERT INTO pet_personality (pet_id, personality) VALUES (2, 'Friendly');
+INSERT INTO pet_personality (pet_id, personality) VALUES (4, 'Friendly');
 
 COMMIT TRANSACTION;
