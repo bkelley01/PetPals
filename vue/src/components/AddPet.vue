@@ -98,25 +98,38 @@ export default {
   },
   methods: {
     registerPet() {
-      petService.addPet(this.newPet).then(r => {
-        if (r.status === 201) {
-          this.newPet = { petName: "", personalities: [], petType: "" };
-          if (this.$route.name === 'profile') {
-            this.$router.go();
-          } else {
-            this.$router.push(`/profile/${this.$store.state.user.username}`);
+      if (this.hasNameAndTypeFilled()) {
+        petService.addPet(this.newPet).then(r => {
+          if (r.status === 201) {
+            this.newPet = { petName: "", personalities: [], petType: "" };
+            if (this.$route.name === 'profile') {
+              this.$router.go();
+            } else {
+              this.$router.push(`/profile/${this.$store.state.user.username}`);
+            }
           }
-        }
-      }).catch(e => this.handleErrorResponse(e));
-      
-      // }).catch(e => {
-      //   this.handleErrorResponse(e);
-      // })
+        }).catch(e => this.handleErrorResponse(e));
+      } else {
+        alert('Pet name and type required.')
+      }
     },
     handleErrorResponse(error) {
       if (error) {
         alert('Unable to add pet. Please try again...');
       } 
+    },
+    hasNameAndTypeFilled() {
+    return this.newPet.petName && this.newPet.petType;
+    },
+    hasUniquePersonalities() {
+      let personalityArr = this.newPet.personalities.filter(personality => {
+        return personality;
+      });
+      if (!personalityArr.length() || personalityArr.length()) {
+        return true; 
+      } else if (personalityArr.length === 2) {
+        return true;
+      }
     }
   },
 };
